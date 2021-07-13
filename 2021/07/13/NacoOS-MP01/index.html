@@ -179,7 +179,8 @@
 <p>V() 釋放一個 semaphore 資源，並且 pop 出下一個在 semaphore.queue 的 thread 放進 readyList，等到 scheduler 安排此 thread 可以使用 CPU 時，才能輸出下一個字元。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* threads/synch.cc */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Semaphore::V</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;    </span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">queue</span>-&gt;IsEmpty()) &#123; </span><br><span class="line">	kernel-&gt;scheduler-&gt;ReadyToRun(<span class="built_in">queue</span>-&gt;RemoveFront());</span><br><span class="line">    &#125;</span><br><span class="line">    value++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3><span id="implement-four-io-system-calls-in-nachos">Implement four I/O system calls in NachOS</span></h3><ul>
+<h3><span id="implementation">Implementation</span></h3><p><strong>Implement four I/O system calls in NachOS</strong></p>
+<ul>
 <li>OpenFileId Open(char *name);</li>
 <li>int Write(char *buffer, int size, OpenFileId id);</li>
 <li>int Read(char *buffer, int size, OpenFileId id);</li>
