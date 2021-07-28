@@ -238,7 +238,7 @@ header .nav-list-item a{
 }
 .home.post-list .post-list-item{
     padding:1em 0 2em;
-    border-bottom:1px solid #ddd
+    border-bottom:1px solid #dbeaff
 }
 .home.post-list .post-list-item:last-child{
     border-bottom:0px
@@ -323,7 +323,7 @@ header .nav-list-item a{
 }
 .post-content h2{
     font-size:32px;
-    border-bottom: 1px solid  #dbeaff;
+    border-bottom:1px solid #dbeaff
     
     /*linear-gradient(180deg, transparent 90%, rgba(116,192,252,0.4) 0);*/
     
@@ -331,7 +331,7 @@ header .nav-list-item a{
 }
 .post-content h3{
     font-size:28px;
-    border-bottom: 1px solid  #dbeaff;
+    border-bottom:1px solid #dbeaff
 }
 .post-content h4{
     font-size:22px
