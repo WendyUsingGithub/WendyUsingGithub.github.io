@@ -286,7 +286,7 @@ header .nav-list-item a{
 .post-block .post-title{
     margin:0.65em 0;
     color:#2c3e50;
-    font-size:42px
+    font-size:36px
 }
 .post-block .post-info{
     color:#7f8c8d;
@@ -322,10 +322,10 @@ header .nav-list-item a{
     content:"#"
 }
 .post-content h2{
-    font-size:36px
+    font-size:28px;
 }
 .post-content h3{
-    font-size:26px
+    font-size:28px
 }
 .post-content h4{
     font-size:22px
