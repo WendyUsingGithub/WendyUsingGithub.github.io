@@ -349,13 +349,11 @@ header .nav-list-item a{
 }
 .post-content blockquote{
     margin:2em 0;
-
     border-left:4px solid #0d79ff;
     font-size:18px;
     padding:1px;
-    color:#157ed1;
+ 
     background-color: #f5fafe;
-
     padding-left:20px;
 }
 .post-content img{
