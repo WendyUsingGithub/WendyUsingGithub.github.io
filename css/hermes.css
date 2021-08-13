@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css?family=Dosis&display=swap");
 
 /* #0d79ff */
+/* #ff930d */
 
 html{
     font-family:sans-serif;
@@ -148,11 +149,11 @@ td,th{
 }
 ::-moz-selection{
     color:#FFFFFF;
-    background-color:##0d79ff
+    background-color:#348fff;
 }
 ::selection{
-    color:#FFFFFF;
-    background-color:##0d79ff
+    color:#fff;
+    background-color:#348fff
 }
 html,body{
     width:100%;
@@ -280,7 +281,7 @@ header .nav-list-item a{
 }
 .archive .post-title-link:hover{
     border-bottom:0;
-    color:#267B54
+    color:#ff930d
 }
 .archive .post-info{
     float:left;
@@ -554,13 +555,14 @@ pre .coffeescript .javascript,pre .javascript .xml,pre .tex .formula,pre .xml .j
     margin:0 4px;
     padding:4px 12px;
     border-radius:4px;
-    border-bottom:4px solid #3aa373;
+    border-bottom:4px solid #0d79ff;
     font-size:14px;
     color:#fff;
-    background-color:#4fc08d
+    background-color:#348fff
 }
 .paginator .prev:hover,.paginator .next:hover{
-    background-color:#22bd77
+    background-color:#ffa534;
+    border-bottom:4px solid #ff930d;
 }
 .ds-thread,#disqus_thread{
     margin-bottom:2em
