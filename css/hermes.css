@@ -370,6 +370,11 @@ header .nav-list-item a{
     color:#0d79ff;
     word-break:break-all
 }
+
+.post-content a:hover{
+    color:#ff930d;
+    word-break:break-all
+}
 .post-content blockquote{
     margin:2em 0;
     border-left:4px solid #0d79ff;
