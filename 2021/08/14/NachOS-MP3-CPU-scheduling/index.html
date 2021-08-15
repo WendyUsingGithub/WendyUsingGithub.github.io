@@ -1,5 +1,151 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> NachOS MP3 - CPU scheduling · Wendy</title><meta name="description" content="NachOS MP3 - CPU scheduling - Wendy"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="../../../../favicon.png"><link rel="stylesheet" href="../../../../css/hermes.css"><link rel="search" type="application/opensearchdescription+xml" href="http://example.com/atom.xml" title="Wendy"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="Wendy" type="application/atom+xml">
-</head><body><div class="wrap"><header><a class="logo-link" href="../../../../index.html"><img src="../../../../favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a class="nav-list-link" href="../../../../index.html" target="_self">BLOG</a></li><li class="nav-list-item"><a class="nav-list-link" href="../../../../https:/github.com/WendyUsingGithub" target="_blank">GITHUB</a></li><li class="nav-list-item"><a class="nav-list-link" href="../../../../archives/" target="_self">ARCHIVE</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">NachOS MP3 - CPU scheduling</h1><div class="post-info">Aug 14, 2021</div><div class="post-content"><h2 id="README"><a href="#README" class="headerlink" title="README"></a>README</h2><p>&#x9019;&#x662F;&#x6E05;&#x5927;&#x5468;&#x5FD7;&#x9060;&#x6559;&#x6388;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x7684;&#x4F5C;&#x696D;&#xFF0C;&#x6211;&#x5728;&#x7DB2;&#x8DEF;&#x4E0A;&#x627E;&#x5230;&#x9019;&#x4EFD;&#x4F5C;&#x696D;&#x7684;&#x76F8;&#x95DC;&#x8CC7;&#x6599;&#xFF0C;&#x6211;&#x4E26;&#x6C92;&#x6709;&#x4E0A;&#x904E;&#x9019;&#x9580;&#x8AB2;&#xFF0C;&#x9019;&#x53EA;&#x662F;&#x6211;&#x7684;&#x81EA;&#x5B78;&#x7DF4;&#x7FD2;&#xFF0C;&#x76EE;&#x524D;&#x6211;&#x9084;&#x6C92;&#x6709;&#x5B8C;&#x6210;&#x9019;&#x4EFD;&#x4F5C;&#x696D;&#x7684;&#x5BE6;&#x4F5C;&#x3002;</p>
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="README&amp;#x9019;&amp;#x662F;&amp;#x6E05;&amp;#x5927;&amp;#x5468;&amp;#x5FD7;&amp;#x9060;&amp;#x6559;&amp;#x6388;&amp;#x4F5C;&amp;#x696D;&amp;#x7CFB;&amp;#x7D71;&amp;#x7684;&amp;#x4F5C;&amp;#x696D;&amp;#xFF0C;&amp;#x6211;&amp;#x5728;&amp;#x7DB2;&amp;#x8DEF;&amp;#x4E0A;&amp;#x627E;&amp;#x5230;&amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NachOS MP3 - CPU scheduling">
+<meta property="og:url" content="http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/index.html">
+<meta property="og:site_name" content="Wendy">
+<meta property="og:description" content="README&amp;#x9019;&amp;#x662F;&amp;#x6E05;&amp;#x5927;&amp;#x5468;&amp;#x5FD7;&amp;#x9060;&amp;#x6559;&amp;#x6388;&amp;#x4F5C;&amp;#x696D;&amp;#x7CFB;&amp;#x7D71;&amp;#x7684;&amp;#x4F5C;&amp;#x696D;&amp;#xFF0C;&amp;#x6211;&amp;#x5728;&amp;#x7DB2;&amp;#x8DEF;&amp;#x4E0A;&amp;#x627E;&amp;#x5230;&amp;#">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-14T14:49:56.000Z">
+<meta property="article:modified_time" content="2021-08-15T05:42:24.373Z">
+<meta property="article:author" content="Wendy">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="../../../../images/cat.png">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="../../../../images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="../../../../images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>NachOS MP3 - CPU scheduling</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="../../../../css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="Wendy" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" "Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="../../../../index.html">Home</a></li>
+         
+          <li><a href="../../../../about/">About</a></li>
+         
+          <li><a href="../../../../archives/">Writing</a></li>
+         
+          <li><a href="../../../../projects_url">Projects</a></li>
+         
+          <li><a href="../../../../categories">categories</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post " href="../../13/%E5%BE%AE%E5%BE%AE%E4%B8%BB%E5%A9%A6%E5%BF%83%E5%BE%97/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top " href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post " href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&text=NachOS MP3 - CPU scheduling"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&title=NachOS MP3 - CPU scheduling"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&is_video=false&description=NachOS MP3 - CPU scheduling"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=NachOS MP3 - CPU scheduling&body=Check out this article: http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&title=NachOS MP3 - CPU scheduling"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&title=NachOS MP3 - CPU scheduling"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&title=NachOS MP3 - CPU scheduling"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&title=NachOS MP3 - CPU scheduling"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&name=NachOS MP3 - CPU scheduling&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&t=NachOS MP3 - CPU scheduling"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#README"><span class="toc-number">1.</span> <span class="toc-text">README</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Trace-code"><span class="toc-number">2.</span> <span class="toc-text">Trace code</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#New-%E2%80%93-gt-Ready"><span class="toc-number">2.1.</span> <span class="toc-text">New –&gt; Ready</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Kernel-ExecAll"><span class="toc-number">2.1.1.</span> <span class="toc-text">1. Kernel::ExecAll()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-int-Kernel-Exec-char-name"><span class="toc-number">2.1.2.</span> <span class="toc-text">2. int Kernel::Exec(char* name)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Thread-Fork-VoidFunctionPtr-void"><span class="toc-number">2.1.3.</span> <span class="toc-text">3. Thread::Fork(VoidFunctionPtr, void*)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-void-Scheduler-ReadyToRun-Thread-thread"><span class="toc-number">2.1.4.</span> <span class="toc-text">5. void Scheduler::ReadyToRun (Thread *thread)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Running-%E2%80%93-gt-Ready"><span class="toc-number">2.2.</span> <span class="toc-text">Running –&gt; Ready</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-void-Machine-Run"><span class="toc-number">2.2.1.</span> <span class="toc-text">1. void Machine::Run()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-void-Interrupt-OneTick"><span class="toc-number">2.2.2.</span> <span class="toc-text">2. void Interrupt::OneTick()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-void-Thread-Yield"><span class="toc-number">2.2.3.</span> <span class="toc-text">3. void Thread::Yield()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Thread-Scheduler-FindNextToRun"><span class="toc-number">2.2.4.</span> <span class="toc-text">4. Thread *Scheduler::FindNextToRun()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-void-Scheduler-ReadyToRun-Thread-thread-1"><span class="toc-number">2.2.5.</span> <span class="toc-text">5. void Scheduler::ReadyToRun(Thread *thread)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-void-Scheduler-Run-Thread-nextThread-bool-finishing"><span class="toc-number">2.2.6.</span> <span class="toc-text">6. void Scheduler::Run (Thread *nextThread, bool finishing)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SWITCH"><span class="toc-number">2.3.</span> <span class="toc-text">SWITCH</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-void-SWITCH-Thread-oldThread-Thread-newThread"><span class="toc-number">2.3.1.</span> <span class="toc-text">1. void SWITCH(Thread *oldThread, Thread *newThread)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-void-ThreadRoot"><span class="toc-number">2.3.2.</span> <span class="toc-text">2. void ThreadRoot();</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-static-void-ThreadBegin"><span class="toc-number">2.3.3.</span> <span class="toc-text">3. static void ThreadBegin()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-void-ForkExecute-Thread-t"><span class="toc-number">2.3.4.</span> <span class="toc-text">4. void ForkExecute(Thread *t)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-static-void-ThreadFinish"><span class="toc-number">2.3.5.</span> <span class="toc-text">5. static void ThreadFinish()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Running-%E2%80%93-gt-Waiting"><span class="toc-number">2.4.</span> <span class="toc-text">Running –&gt; Waiting</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-void-SynchConsoleOutput-PutChar-char-ch"><span class="toc-number">2.4.1.</span> <span class="toc-text">1. void SynchConsoleOutput::PutChar(char ch)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-ConsoleOutput-PutChar"><span class="toc-number">2.4.2.</span> <span class="toc-text">2. ConsoleOutput::PutChar()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-void-Semaphore-P"><span class="toc-number">2.4.3.</span> <span class="toc-text">3. void Semaphore::P()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-void-List-Append-T-item"><span class="toc-number">2.4.4.</span> <span class="toc-text">4. void List::Append(T item)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Thread-Sleep-bool"><span class="toc-number">2.4.5.</span> <span class="toc-text">5. Thread::Sleep(bool)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Thread-Scheduler-FindNextToRun"><span class="toc-number">2.4.6.</span> <span class="toc-text">6. Thread *Scheduler::FindNextToRun()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-void-Scheduler-Run-Thread-nextThread-bool-finishing"><span class="toc-number">2.4.7.</span> <span class="toc-text">7. void Scheduler::Run (Thread *nextThread, bool finishing)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Waiting-%E2%80%93-gt-Ready"><span class="toc-number">2.5.</span> <span class="toc-text">Waiting –&gt; Ready</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-void-Machine-Run-1"><span class="toc-number">2.5.1.</span> <span class="toc-text">1. void Machine::Run()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Interrupt-OneTick"><span class="toc-number">2.5.2.</span> <span class="toc-text">2. Interrupt::OneTick()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Interrupt-CheckIfDue"><span class="toc-number">2.5.3.</span> <span class="toc-text">3. Interrupt::CheckIfDue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-void-ConsoleOutput-CallBack"><span class="toc-number">2.5.4.</span> <span class="toc-text">4. void ConsoleOutput::CallBack()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-SynchConsoleOutput-CallBack"><span class="toc-number">2.5.5.</span> <span class="toc-text">5. SynchConsoleOutput::CallBack()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Scheduler-ReadyToRun-Thread"><span class="toc-number">2.5.6.</span> <span class="toc-text">6. Scheduler::ReadyToRun(Thread*)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Running-%E2%80%93-gt-Terminated"><span class="toc-number">2.6.</span> <span class="toc-text">Running –&gt; Terminated</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-void-ExceptionHandler-ExceptionType-which"><span class="toc-number">2.6.1.</span> <span class="toc-text">1. void ExceptionHandler(ExceptionType which)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-void-Thread-Finish"><span class="toc-number">2.6.2.</span> <span class="toc-text">2. void Thread::Finish()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Thread-Sleep-bool"><span class="toc-number">2.6.3.</span> <span class="toc-text">3. Thread::Sleep(bool)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Thread-Scheduler-FindNextToRun-1"><span class="toc-number">2.6.4.</span> <span class="toc-text">4. Thread *Scheduler::FindNextToRun()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-void-Scheduler-Run-Thread-nextThread-bool-finishing"><span class="toc-number">2.6.5.</span> <span class="toc-text">5. void Scheduler::Run (Thread *nextThread, bool finishing)</span></a></li></ol></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        NachOS MP3 - CPU scheduling
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Wendy</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-08-14T14:49:56.000Z" itemprop="datePublished">2021-08-14</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="README"><a href="#README" class="headerlink" title="README"></a>README</h2><p>&#x9019;&#x662F;&#x6E05;&#x5927;&#x5468;&#x5FD7;&#x9060;&#x6559;&#x6388;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x7684;&#x4F5C;&#x696D;&#xFF0C;&#x6211;&#x5728;&#x7DB2;&#x8DEF;&#x4E0A;&#x627E;&#x5230;&#x9019;&#x4EFD;&#x4F5C;&#x696D;&#x7684;&#x76F8;&#x95DC;&#x8CC7;&#x6599;&#xFF0C;&#x6211;&#x4E26;&#x6C92;&#x6709;&#x4E0A;&#x904E;&#x9019;&#x9580;&#x8AB2;&#xFF0C;&#x9019;&#x53EA;&#x662F;&#x6211;&#x7684;&#x81EA;&#x5B78;&#x7DF4;&#x7FD2;&#xFF0C;&#x76EE;&#x524D;&#x6211;&#x9084;&#x6C92;&#x6709;&#x5B8C;&#x6210;&#x9019;&#x4EFD;&#x4F5C;&#x696D;&#x7684;&#x5BE6;&#x4F5C;&#x3002;</p>
 <h2 id="Trace-code"><a href="#Trace-code" class="headerlink" title="Trace code"></a>Trace code</h2><h3 id="New-&#x2013;-gt-Ready"><a href="#New-&#x2013;-gt-Ready" class="headerlink" title="New &#x2013;&gt; Ready"></a>New &#x2013;&gt; Ready</h3><h4 id="1-Kernel-ExecAll"><a href="#1-Kernel-ExecAll" class="headerlink" title="1. Kernel::ExecAll()"></a>1. Kernel::ExecAll()</h4><p><strong>threads/kernel.cc&#x200B;</strong></p>
 <p>&#x628A;&#x6240;&#x6709;&#x53EF;&#x57F7;&#x884C;&#x6A94;&#x4E1F;&#x9032; Exec &#x57F7;&#x884C;&#x3002;</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Kernel::ExecAll</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= execfileNum; i++) {</span><br><span class="line">        <span class="keyword">int</span> a = <span class="built_in">Exec</span>(execfile[i]);</span><br><span class="line">    }</span><br><span class="line">    currentThread-&gt;<span class="built_in">Finish</span>();</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
@@ -338,4 +484,146 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (finishing) {	</span><br><span class="line">    <span class="comment">/* mark that we need to delete old thread */</span></span><br><span class="line">    toBeDestroyed = oldThread;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Scheduler::CheckToBeDestroyed</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">if</span> (toBeDestroyed != <span class="literal">NULL</span>) {</span><br><span class="line">        <span class="keyword">delete</span> toBeDestroyed;</span><br><span class="line">        toBeDestroyed = <span class="literal">NULL</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
-</div></article></div></main><footer><div class="paginator"><a class="next" href="../../13/%E5%BE%AE%E5%BE%AE%E4%B8%BB%E5%A9%A6%E5%BF%83%E5%BE%97/">NEXT</a></div><div class="copyright"><p>© 2019 - 2021 <a href="http://example.com">Wendy</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/claymcleod/hexo-theme-hermes" target="_blank">hexo-theme-hermes</a>. </p><p>Logo made by <a target="_blank" rel="noopener" href="https://www.flaticon.com/authors/freepik">Freepik</a> from <a target="_blank" rel="noopener" href="https://flaticon.com">www.flaticon.com</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script></body></html>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="../../../../index.html">Home</a></li>
+         
+          <li><a href="../../../../about/">About</a></li>
+         
+          <li><a href="../../../../archives/">Writing</a></li>
+         
+          <li><a href="../../../../projects_url">Projects</a></li>
+         
+          <li><a href="../../../../categories">categories</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#README"><span class="toc-number">1.</span> <span class="toc-text">README</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Trace-code"><span class="toc-number">2.</span> <span class="toc-text">Trace code</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#New-%E2%80%93-gt-Ready"><span class="toc-number">2.1.</span> <span class="toc-text">New –&gt; Ready</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Kernel-ExecAll"><span class="toc-number">2.1.1.</span> <span class="toc-text">1. Kernel::ExecAll()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-int-Kernel-Exec-char-name"><span class="toc-number">2.1.2.</span> <span class="toc-text">2. int Kernel::Exec(char* name)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Thread-Fork-VoidFunctionPtr-void"><span class="toc-number">2.1.3.</span> <span class="toc-text">3. Thread::Fork(VoidFunctionPtr, void*)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-void-Scheduler-ReadyToRun-Thread-thread"><span class="toc-number">2.1.4.</span> <span class="toc-text">5. void Scheduler::ReadyToRun (Thread *thread)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Running-%E2%80%93-gt-Ready"><span class="toc-number">2.2.</span> <span class="toc-text">Running –&gt; Ready</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-void-Machine-Run"><span class="toc-number">2.2.1.</span> <span class="toc-text">1. void Machine::Run()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-void-Interrupt-OneTick"><span class="toc-number">2.2.2.</span> <span class="toc-text">2. void Interrupt::OneTick()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-void-Thread-Yield"><span class="toc-number">2.2.3.</span> <span class="toc-text">3. void Thread::Yield()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Thread-Scheduler-FindNextToRun"><span class="toc-number">2.2.4.</span> <span class="toc-text">4. Thread *Scheduler::FindNextToRun()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-void-Scheduler-ReadyToRun-Thread-thread-1"><span class="toc-number">2.2.5.</span> <span class="toc-text">5. void Scheduler::ReadyToRun(Thread *thread)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-void-Scheduler-Run-Thread-nextThread-bool-finishing"><span class="toc-number">2.2.6.</span> <span class="toc-text">6. void Scheduler::Run (Thread *nextThread, bool finishing)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SWITCH"><span class="toc-number">2.3.</span> <span class="toc-text">SWITCH</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-void-SWITCH-Thread-oldThread-Thread-newThread"><span class="toc-number">2.3.1.</span> <span class="toc-text">1. void SWITCH(Thread *oldThread, Thread *newThread)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-void-ThreadRoot"><span class="toc-number">2.3.2.</span> <span class="toc-text">2. void ThreadRoot();</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-static-void-ThreadBegin"><span class="toc-number">2.3.3.</span> <span class="toc-text">3. static void ThreadBegin()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-void-ForkExecute-Thread-t"><span class="toc-number">2.3.4.</span> <span class="toc-text">4. void ForkExecute(Thread *t)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-static-void-ThreadFinish"><span class="toc-number">2.3.5.</span> <span class="toc-text">5. static void ThreadFinish()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Running-%E2%80%93-gt-Waiting"><span class="toc-number">2.4.</span> <span class="toc-text">Running –&gt; Waiting</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-void-SynchConsoleOutput-PutChar-char-ch"><span class="toc-number">2.4.1.</span> <span class="toc-text">1. void SynchConsoleOutput::PutChar(char ch)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-ConsoleOutput-PutChar"><span class="toc-number">2.4.2.</span> <span class="toc-text">2. ConsoleOutput::PutChar()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-void-Semaphore-P"><span class="toc-number">2.4.3.</span> <span class="toc-text">3. void Semaphore::P()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-void-List-Append-T-item"><span class="toc-number">2.4.4.</span> <span class="toc-text">4. void List::Append(T item)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Thread-Sleep-bool"><span class="toc-number">2.4.5.</span> <span class="toc-text">5. Thread::Sleep(bool)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Thread-Scheduler-FindNextToRun"><span class="toc-number">2.4.6.</span> <span class="toc-text">6. Thread *Scheduler::FindNextToRun()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-void-Scheduler-Run-Thread-nextThread-bool-finishing"><span class="toc-number">2.4.7.</span> <span class="toc-text">7. void Scheduler::Run (Thread *nextThread, bool finishing)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Waiting-%E2%80%93-gt-Ready"><span class="toc-number">2.5.</span> <span class="toc-text">Waiting –&gt; Ready</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-void-Machine-Run-1"><span class="toc-number">2.5.1.</span> <span class="toc-text">1. void Machine::Run()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Interrupt-OneTick"><span class="toc-number">2.5.2.</span> <span class="toc-text">2. Interrupt::OneTick()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Interrupt-CheckIfDue"><span class="toc-number">2.5.3.</span> <span class="toc-text">3. Interrupt::CheckIfDue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-void-ConsoleOutput-CallBack"><span class="toc-number">2.5.4.</span> <span class="toc-text">4. void ConsoleOutput::CallBack()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-SynchConsoleOutput-CallBack"><span class="toc-number">2.5.5.</span> <span class="toc-text">5. SynchConsoleOutput::CallBack()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Scheduler-ReadyToRun-Thread"><span class="toc-number">2.5.6.</span> <span class="toc-text">6. Scheduler::ReadyToRun(Thread*)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Running-%E2%80%93-gt-Terminated"><span class="toc-number">2.6.</span> <span class="toc-text">Running –&gt; Terminated</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-void-ExceptionHandler-ExceptionType-which"><span class="toc-number">2.6.1.</span> <span class="toc-text">1. void ExceptionHandler(ExceptionType which)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-void-Thread-Finish"><span class="toc-number">2.6.2.</span> <span class="toc-text">2. void Thread::Finish()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Thread-Sleep-bool"><span class="toc-number">2.6.3.</span> <span class="toc-text">3. Thread::Sleep(bool)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Thread-Scheduler-FindNextToRun-1"><span class="toc-number">2.6.4.</span> <span class="toc-text">4. Thread *Scheduler::FindNextToRun()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-void-Scheduler-Run-Thread-nextThread-bool-finishing"><span class="toc-number">2.6.5.</span> <span class="toc-text">5. void Scheduler::Run (Thread *nextThread, bool finishing)</span></a></li></ol></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&text=NachOS MP3 - CPU scheduling"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&title=NachOS MP3 - CPU scheduling"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&is_video=false&description=NachOS MP3 - CPU scheduling"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=NachOS MP3 - CPU scheduling&body=Check out this article: http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&title=NachOS MP3 - CPU scheduling"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&title=NachOS MP3 - CPU scheduling"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&title=NachOS MP3 - CPU scheduling"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&title=NachOS MP3 - CPU scheduling"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&name=NachOS MP3 - CPU scheduling&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=http://example.com/2021/08/14/NachOS-MP3-CPU-scheduling/&t=NachOS MP3 - CPU scheduling"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2021
+    Wendy
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="../../../../index.html">Home</a></li>
+         
+          <li><a href="../../../../about/">About</a></li>
+         
+          <li><a href="../../../../archives/">Writing</a></li>
+         
+          <li><a href="../../../../projects_url">Projects</a></li>
+         
+          <li><a href="../../../../categories">categories</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="../../../../js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
