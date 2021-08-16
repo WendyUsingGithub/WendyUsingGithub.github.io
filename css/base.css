@@ -202,7 +202,7 @@ a:hover {
 .avatar img {
   height: 100px;
   width: 100px;
-  border-radius: 50%;
+  /* border-radius: 50%; */
 }
 
 .avatar .nickname {
@@ -406,9 +406,9 @@ a:hover {
 
 .post-details .post-title {
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 25px;
   font-weight: 600;
-  color: var(--color-text-a);
+  color: var(--color-text-md-title);
   padding-bottom: 10px;
 }
 
