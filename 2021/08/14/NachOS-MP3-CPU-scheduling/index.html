@@ -87,6 +87,16 @@
 
     <!-- Google Analytics -->
     
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158078787-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-158078787-1');
+</script>
+
 
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="Wendy" type="application/atom+xml">
@@ -101,7 +111,7 @@
     <div class="container pl-0 pr-0">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
-            <a class="navbar-brand text-white p-1 pl-3" href="../../../../index.html">Wendy</a>
+            <a class="navbar-brand text-white p-1 pl-3" href="../../../../index.html">LuSkywalker</a>
         </div>
         <div class="navbar-nav float-right">
             <button class="btn btn-link search-btn navbar-item" data-toggle="modal" data-target="#searchModal">
@@ -146,6 +156,10 @@
         2021-08-14
     
     <!-- word count and read count -->
+    
+        <span class="post-meta-split">&nbsp;|&nbsp;</span>
+        <i class="far fa-file-word fa-fw"></i>
+        5.3k
     
 
     
@@ -220,7 +234,8 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread</span> {</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">/* <span class="doctag">NOTE:</span> DO NOT CHANGE the order of these first two members.</span></span><br><span class="line"><span class="comment">     * THEY MUST be in this position for SWITCH to work. */</span></span><br><span class="line">    <span class="keyword">int</span> *stackTop;	 <span class="comment">/* the current stack pointer */</span></span><br><span class="line">    <span class="keyword">void</span> *machineState[MachineStateSize]; <span class="comment">/* all registers except for </span></span><br><span class="line"><span class="comment">                                           * stackTop */</span></span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* threads/switch.h */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> x86</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* the offsets of the registers from the beginning of the thread object</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _ESP     0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _EAX     4</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _EBX     8</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _ECX     12</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _EDX     16</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _EBP     20</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _ESI     24</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _EDI     28</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PC      32</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* These definitions are used in Thread::AllocateStack(). */</span></span><br><span class="line"><span class="comment">/* Translate from offset to machineState index */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PCState         (_PC/4-1)  <span class="comment">/* 7 */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FPState         (_EBP/4-1) <span class="comment">/* 1 */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> InitialPCState  (_ESI/4-1) <span class="comment">/* 5 */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> InitialArgState (_EDX/4-1) <span class="comment">/* 3 */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WhenDonePCState (_EDI/4-1) <span class="comment">/* 6 */</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> StartupPCState  (_ECX/4-1) <span class="comment">/* 2 */</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> InitialPC       %esi</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> InitialArg      %edx</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WhenDonePC      %edi</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> StartupPC       %ecx</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// x86</span></span></span><br></pre></td></tr></table></figure>
 <p>class Thread &#x7684;&#x8A3B;&#x89E3;&#x8981;&#x6C42;&#x6211;&#x5011;&#x4E0D;&#x80FD;&#x66F4;&#x52D5; stackTop &#x548C; machineState &#x7684;&#x9806;&#x5E8F;&#xFF0C;&#x76EE;&#x524D; Thread &#x7269;&#x4EF6;&#x7684;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#x548C; stackTop &#x7684; offset &#x70BA; 0&#xFF0C;&#x548C; machineState &#x7684;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E; offset &#x70BA; 4&#xFF0C;&#x5982;&#x679C; offset &#x6709;&#x6240;&#x8B8A;&#x52D5;&#xFF0C;SWITCH() &#x7684;&#x5BE6;&#x505A;&#x5FC5;&#x9808;&#x6709;&#x76F8;&#x5C0D;&#x61C9;&#x7684;&#x8B8A;&#x52D5;&#x3002;&#x547C;&#x53EB; StackAllocate() &#x662F;&#x5C0D; Thread &#x7269;&#x4EF6;&#x9032;&#x884C;&#x521D;&#x59CB;&#x8A2D;&#x5B9A;&#xFF0C;&#x82E5;&#x6307;&#x5411; Thread &#x7269;&#x4EF6;&#x7684;&#x6307;&#x6A19;&#x70BA; t&#xFF0C;&#x4E0B;&#x5716;&#x662F;&#x547C;&#x53EB; StackAllocate() &#x5F8C; Thread &#x7269;&#x4EF6;&#x7684;&#x72C0;&#x614B;&#x3002;</p>
-<table>
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
 <thead>
 <tr>
 <th>address</th>
@@ -275,9 +290,10 @@
 <td>ThreadRoot</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>x86 &#x7684; compiler &#x6703;&#x5C07; c &#x8A9E;&#x8A00;&#x5C0D; SWITCH() &#x7684; function call &#x7DE8;&#x8B6F;&#x6210;&#x5148; push argument &#x548C; return address&#xFF0C;&#x518D;&#x8DF3;&#x5230; assembly &#x88E1; SWITCH &#x7684; label&#xFF0C;&#x6B64;&#x6642; stack &#x7684;&#x5167;&#x5BB9;&#x5982;&#x4E0B;&#x3002;</p>
-<table>
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
 <thead>
 <tr>
 <th>address</th>
@@ -298,7 +314,7 @@
 <td>return address</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>&#x6211;&#x5011;&#x547C;&#x53EB; SWITCH() &#x662F;&#x70BA;&#x4E86;&#x9032;&#x884C; context switch&#xFF0C;SWITCH() &#x7684;&#x5BE6;&#x505A;&#x662F;&#x4FDD;&#x5B58;&#x7576;&#x4E0B; host register &#x5167;&#x5BB9;&#xFF0C;&#x4E26;&#x8F09;&#x5165;&#x4E0B;&#x4E00;&#x500B;&#x8981;&#x57F7;&#x884C;&#x7684; thread &#x7684; host register&#x3002;&#x6211;&#x5011;&#x5C07;&#x7576;&#x4E0B;&#x7684; host register &#x5167;&#x5BB9;&#x4FDD;&#x5B58;&#x5728;&#x7269;&#x4EF6; thread &#x88E1;&#x7684; stackTop &#x548C; machineState&#xFF0C;&#x5C07;&#x4E0B;&#x4E00;&#x500B;&#x8981;&#x57F7;&#x884C;&#x7684; thread&#x7269;&#x4EF6;&#x7684; stackTop &#x548C; machineState &#x8F09;&#x5165; register&#x3002;&#x89C0;&#x5BDF; SWITCH &#x7D44;&#x8A9E;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6211;&#x5011;&#x6709; 8 &#x500B; register &#x9700;&#x8981;&#x88AB;&#x4FDD;&#x5B58;&#xFF0C;&#x9664;&#x4E86;&#x9019; 8 &#x500B; register &#x4E4B;&#x5916;&#xFF0C;&#x9084;&#x8981;&#x4FDD;&#x5B58; return address&#xFF0C;return address &#x653E;&#x5728;&#x4F4D;&#x5740; (%esp)&#xFF0C;&#x4E0D;&#x662F;&#x653E;&#x5728; register esp&#xFF0C;&#x662F;&#x653E;&#x5728;&#x8A18;&#x61B6;&#x9AD4;&#x4F4D;&#x5740; (%esp)&#xFF0C;&#x56E0;&#x70BA; register esp &#x653E;&#x7684;&#x662F; stack pointer&#xFF0C;&#x800C; return address &#x662F;&#x653E;&#x5728; stack &#x88E1;&#x3002;</p>
 <p>&#x5FC5;&#x9808;&#x7279;&#x5225;&#x8AAA;&#x660E;&#x7684;&#x662F;&#xFF0C;SWITCH() &#x6240;&#x64CD;&#x4F5C;&#x7684; machineState &#x662F; host register&#xFF0C;&#x81F3;&#x65BC;&#x70BA;&#x4EC0;&#x9EBC; context switch &#x9700;&#x8981;&#x5207;&#x63DB; host register&#xFF0C;&#x6211;&#x4E0D;&#x77E5;&#x9053;&#xFF0C;&#x56E0;&#x70BA;&#x6211;&#x500B;&#x4EBA;&#x7406;&#x89E3;&#x61C9;&#x8A72;&#x53EA;&#x8981;&#x5207;&#x63DB; userRegister &#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;&#x6211;&#x539F;&#x672C;&#x7684;&#x731C;&#x6E2C;&#xFF0C;&#x5982;&#x679C; NachOS &#x6703;&#x5728; guest instruction &#x57F7;&#x884C;&#x5230;&#x4E00;&#x534A;&#x7684;&#x6642;&#x5019;&#x9032;&#x884C; context switch&#xFF0C;&#x78BA;&#x5BE6;&#x6703;&#x9700;&#x8981;&#x628A; host &#x7684;&#x72C0;&#x614B;&#x4E5F;&#x4FDD;&#x7559;&#x4E0B;&#x4F86;&#xFF0C;&#x4F46;&#x6211;&#x76EE;&#x524D; trace code &#x7684;&#x7D50;&#x679C;&#xFF0C;context switch &#x90FD;&#x6703;&#x5728;&#x4E00;&#x500B;&#x6307;&#x4EE4;&#x5B8C;&#x6574;&#x5B8C;&#x6210;&#x4E4B;&#x5F8C;&#x624D;&#x6703;&#x9032;&#x884C;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x771F;&#x7684;&#x60F3;&#x4E0D;&#x5230;&#x6709;&#x4EC0;&#x9EBC;&#x539F;&#x56E0;&#x9808;&#x8981;&#x5207;&#x63DB; host register&#x3002;</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">    .comm   _eax_save,4 # _eax_save is a 4 byte data </span><br><span class="line">    </span><br><span class="line">    .globl  SWITCH</span><br><span class="line">    .globl  _SWITCH</span><br><span class="line">_SWITCH:		</span><br><span class="line">SWITCH:</span><br><span class="line">        movl    %eax,_eax_save   # save the value of eax to _eax_save</span><br><span class="line">        movl    4(%esp),%eax     # move pointer to t1 into eax</span><br><span class="line">        movl    %ebx,_EBX(%eax)  # save ebx to machineState[1] of t1</span><br><span class="line">        movl    %ecx,_ECX(%eax)  # save ecx to machineState[2] of t1</span><br><span class="line">        movl    %edx,_EDX(%eax)  # save edx to machineState[3] of t1</span><br><span class="line">        movl    %esi,_ESI(%eax)  # save esi to machineState[5] of t1</span><br><span class="line">        movl    %edi,_EDI(%eax)  # save edi to machineState[6] of t1</span><br><span class="line">        movl    %ebp,_EBP(%eax)  # save ebp to machineState[4] of t1</span><br><span class="line">        movl    %esp,_ESP(%eax)  # save esp to stackTop of t1</span><br><span class="line">        movl    _eax_save,%ebx   # save the value of _eax_save to ebx</span><br><span class="line">        movl    %ebx,_EAX(%eax)  # save ebx to machineState[0] of t1</span><br><span class="line">        movl    0(%esp),%ebx     # get return address from stack into ebx</span><br><span class="line">        movl    %ebx,_PC(%eax)   # save return address to machineState[7]</span><br><span class="line">                                 # of t1</span><br><span class="line"></span><br><span class="line">        movl    8(%esp),%eax     # move pointer to t2 into eax</span><br><span class="line">        movl    _EAX(%eax),%ebx  # restore machineState[0] of t2 to ebx</span><br><span class="line">        movl    %ebx,_eax_save   # save the value of ebx to _eax_save</span><br><span class="line">        movl    _EBX(%eax),%ebx  # restore machineState[1] of t2 to ebx</span><br><span class="line">        movl    _ECX(%eax),%ecx  # restore machineState[2] of t2 to ecx</span><br><span class="line">        movl    _EDX(%eax),%edx  # restore machineState[3] of t2 to edx</span><br><span class="line">        movl    _ESI(%eax),%esi  # restore machineState[5] of t2 to esi</span><br><span class="line">        movl    _EDI(%eax),%edi  # restore machineState[6] of t2 to edi</span><br><span class="line">        movl    _EBP(%eax),%ebp  # restore machineState[4] of t2 to ebp</span><br><span class="line">        movl    _ESP(%eax),%esp  # restore stackTop of t2 to esp</span><br><span class="line">        movl    _PC(%eax),%eax   # restore return address into eax</span><br><span class="line">        movl    %eax,4(%esp)     # copy over the ret address on the stack</span><br><span class="line">        movl    _eax_save,%eax   # save the value of _eax_save to eax</span><br><span class="line"></span><br><span class="line">        ret</span><br></pre></td></tr></table></figure>
@@ -309,7 +325,8 @@
 <h4 id="2-ThreadRoot">2. ThreadRoot</h4>
 <p><strong>threads/switch.S</strong></p>
 <p>&#x7576;&#x4E00;&#x500B; thread &#x7B2C;&#x4E00;&#x6B21;&#x53D6;&#x5F97;&#x63A7;&#x5236;&#x6B0A;&#xFF0C;&#x4ED6;&#x4E4B;&#x524D;&#x6C92;&#x6709;&#x57F7;&#x884C;&#x904E;&#x4EFB;&#x4F55;&#x6771;&#x897F;&#xFF0C;&#x90A3;&#x4ED6;&#x61C9;&#x8A72;&#x8981; return &#x56DE;&#x54EA;&#x88E1;&#x5462;&#xFF0C;&#x5728;&#x547C;&#x53EB; StackAllocate() &#x6642;&#x6240;&#x505A;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5DF2;&#x7D93;&#x6307;&#x5B9A;&#x7576;&#x4E00;&#x500B; thread &#x7B2C;&#x4E00;&#x6B21;&#x53D6;&#x5F97;&#x63A7;&#x5236;&#x6B0A;&#x6642;&#xFF0C;&#x4ED6;&#x6703; return &#x5230; ThreadRoot&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4ED6;&#x6703;&#x53BB;&#x57F7;&#x884C; ThreadRoot&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x5011;&#x63A5;&#x4E0B;&#x4F86;&#x8981;&#x770B;&#xFF0C;ThreadRoot &#x6703;&#x505A;&#x54EA;&#x4E9B;&#x4E8B;&#x60C5;&#x3002;</p>
-<table>
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
 <thead>
 <tr>
 <th>register</th>
@@ -350,7 +367,7 @@
 <td>ThreadRoot</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* threads/thread.cc */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* func - &amp;ForkExecute */</span></span><br><span class="line"><span class="comment">/* arg - (void*)t[threadNum] */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Thread::StackAllocate</span> <span class="params">(VoidFunctionPtr func, <span class="keyword">void</span> *arg)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">     ...     </span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <p>ThreadRoot &#x5148;&#x628A; arg push &#x9032; stack&#xFF0C;&#x63A5;&#x8457;&#x547C;&#x53EB; ThreadBegin()&#xFF0C;&#x547C;&#x53EB; ForkExecute()&#xFF0C;&#x547C;&#x53EB; ThreadFinish()&#x3002;</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#define InitialPC       %esi</span><br><span class="line">#define InitialArg      %edx</span><br><span class="line">#define WhenDonePC      %edi</span><br><span class="line">#define StartupPC       %ecx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    .globl  ThreadRoot</span><br><span class="line">    .globl  _ThreadRoot	</span><br><span class="line"></span><br><span class="line">_ThreadRoot:	</span><br><span class="line">ThreadRoot:</span><br><span class="line">        pushl   %ebp         # push value of %ebp to stack</span><br><span class="line">        movl    %esp,%ebp    # move %esp to %ebp </span><br><span class="line">        pushl   InitialArg   # push value of %edx to stack</span><br><span class="line">        call    *StartupPC   # push return address to stack, then set CPU</span><br><span class="line">                               program counter %ecx</span><br><span class="line">        call    *InitialPC   # push return address to stack, then set CPU</span><br><span class="line">                             # program counter %esi</span><br><span class="line">        call    *WhenDonePC  # push return address to stack, then set CPU</span><br><span class="line">                             # program counter %edi</span><br><span class="line"></span><br><span class="line">        # NOT REACHED</span><br><span class="line">        movl    %ebp,%esp</span><br><span class="line">        popl    %ebp</span><br><span class="line">        ret</span><br></pre></td></tr></table></figure>
@@ -488,6 +505,28 @@
             
                 <!-- Comments -->
                 
+    
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    
+    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+        <div id="gitalk-container"></div>
+    </div>
+
+    <script>
+        let gitalk = new Gitalk({
+            clientID: '97c34b7bba491c6a5007',
+            clientSecret: '6140d208bae6bbbc69c65e3e332a46d090094fc8',
+            repo: 'HackTech',
+            owner: 'luswdev',
+            admin: "luswdev",
+            id: '2021-08-14 22:49:56',
+            title: 'NachOS MP3 - CPU scheduling',
+            distractionFreeMode: false  // Facebook-like distraction free mode
+        });
+        gitalk.render('gitalk-container');
+    </script>
+
 
                 
 
@@ -557,9 +596,36 @@
                     
 
                     
-
+                        <li class="list-inline-item">
+                            <a rel="external" href="https://github.com/luswdev" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
                     
 
+                    
+                        <li class="list-inline-item">
+                            <a rel="external" href="https://www.linkedin.com/in/callum-lu" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li class="list-inline-item">
+                            <a rel="external" href="mailto:info@lusw.dev" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
                     
 
                     
@@ -627,8 +693,8 @@
                     
                 </ul>
                 <p class="copyright footer-author">
-                    &copy; -2021 
-                    <a rel="external" class="copyright-link" href="" target="_blank">Wendy</a><br/>
+                    &copy; 2018-2021 
+                    <a rel="external" class="copyright-link" href="https://github.com/luswdev" target="_blank">Wendy</a><br/>
                     Powered by <a rel="external" class="copyright-link" href="https://hexo.io/" target="_blank">Hexo</a>  
                     <span class="copyright-split">&nbsp;|&nbsp;&nbsp;</span>
                     Theme <a rel="external" class="copyright-link" href="https://github.com/luswdev/hexo-theme-clean.git" target="_blank">Clean</a>

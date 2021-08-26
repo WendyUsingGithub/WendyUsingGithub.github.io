@@ -91,6 +91,16 @@ TSP
 
     <!-- Google Analytics -->
     
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158078787-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-158078787-1');
+</script>
+
 
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="Wendy" type="application/atom+xml">
@@ -105,7 +115,7 @@ TSP
     <div class="container pl-0 pr-0">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
-            <a class="navbar-brand text-white p-1 pl-3" href="../../../../index.html">Wendy</a>
+            <a class="navbar-brand text-white p-1 pl-3" href="../../../../index.html">LuSkywalker</a>
         </div>
         <div class="navbar-nav float-right">
             <button class="btn btn-link search-btn navbar-item" data-toggle="modal" data-target="#searchModal">
@@ -151,6 +161,10 @@ TSP
     
     <!-- word count and read count -->
     
+        <span class="post-meta-split">&nbsp;|&nbsp;</span>
+        <i class="far fa-file-word fa-fw"></i>
+        2.1k
+    
 
     
 
@@ -168,7 +182,8 @@ TSP
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1 , 2 , 7 , 6 , 5 , 4 , 3 , 8 , 9 , 10] </span><br></pre></td></tr></table></figure>
 <h3 id="2-opt-parallel">2-opt parallel</h3>
 <p>&#x6211;&#x4F7F;&#x7528;&#x8CAA;&#x5A6A;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x6211;&#x6703;&#x628A;&#x4E00;&#x500B;&#x89E3;&#x7684;&#x6240;&#x6709;&#x9130;&#x5C45;&#x90FD;&#x627E;&#x51FA;&#x4F86;&#xFF0C;&#x4E26;&#x4E14;&#x9078;&#x64C7;&#x9577;&#x5EA6;&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#x70BA;&#x65B0;&#x7684;&#x89E3;&#xFF0C;&#x56E0;&#x70BA;&#x627E;&#x9130;&#x5C45;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x9078;&#x5169;&#x500B;&#x57CE;&#x5E02;&#x4E26;&#x4E14;&#x7FFB;&#x8F49;&#xFF0C;&#x6240;&#x4EE5;&#x5C0D;&#x65BC;&#x4E00;&#x689D;&#x8DEF;&#x5F91;&#x800C;&#x8A00;&#xFF0C;&#x6709; n * ( n - 1 ) / 2 &#x7A2E;&#x9130;&#x5C45;&#x8DEF;&#x5F91;&#xFF0C;&#x4EE5;&#x4E00;&#x500B; 5 &#x500B;&#x57CE;&#x5E02;&#x7684; tsp &#x554F;&#x984C;&#x8209;&#x4F8B;&#xFF0C;&#x4E0B;&#x5716;&#x662F;&#x4ED6;&#x7684;&#x6240;&#x6709;&#x9130;&#x5C45;&#x3002;&#x6240;&#x6709;&#x9130;&#x5C45;&#x7684;&#x8DEF;&#x5F91;&#x9577;&#x5EA6;&#x662F;&#x53EF;&#x4EE5;&#x55AE;&#x7368;&#x8A08;&#x7B97;&#x7684;&#xFF0C;&#x56E0;&#x70BA;&#x6C92;&#x6709;&#x8A08;&#x7B97;&#x4E0A;&#x7684;&#x76F8;&#x4F9D;&#x6027;&#xFF0C;&#x6240;&#x4EE5;&#x5F88;&#x9069;&#x5408;&#x505A;&#x5E73;&#x884C;&#x3002;</p>
-<table>
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
 <thead>
 <tr>
 <th>thread 0</th>
@@ -203,7 +218,7 @@ TSP
 <td>(3 , 4)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>&#x5728;&#x8A2D;&#x8A08;&#x5E73;&#x884C;&#x7A0B;&#x5F0F;&#x7684;&#x6642;&#x5019;&#x6211;&#x5011;&#x9700;&#x8981;&#x5206;&#x914D;&#x6BCF;&#x500B; thread / child process &#x8981;&#x505A;&#x4EC0;&#x9EBC;&#xFF0C;&#x56E0;&#x70BA;&#x5728;&#x6240;&#x6709;thread / child process &#x90FD;&#x5B8C;&#x6210;&#x81EA;&#x5DF1;&#x7684;&#x5DE5;&#x4F5C;&#x4E4B;&#x5F8C;&#xFF0C;&#x624D;&#x80FD;&#x958B;&#x59CB;&#x9032;&#x884C;&#x4E0B;&#x4E00;&#x8F2A;&#x7684;&#x8A08;&#x7B97;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x5E73;&#x5747;&#x7684;&#x5206;&#x914D;&#x5DE5;&#x4F5C;&#x91CF;&#x3002;&#x4EE5; 2 &#x500B; thread / child process &#x70BA;&#x4F8B;&#xFF0C;&#x6211;&#x4F7F;&#x7528;&#x4E0A;&#x5716;&#x7684;&#x65B9;&#x6CD5;&#x5206;&#x914D;&#x5DE5;&#x4F5C;&#xFF0C;(x,y) &#x6307;&#x7684;&#x662F;&#x7FFB;&#x8F49;&#x57CE;&#x5E02; x &#x5230;&#x57CE;&#x5E02; y &#x7684;&#x8DEF;&#x5F91;&#xFF0C;&#x7FFB;&#x8F49;&#x6642;&#x9078;&#x64C7;&#x7684;&#x7B2C;&#x4E00;&#x500B;&#x57CE;&#x5E02;&#x662F; city 0 &#x7684;&#x5C31;&#x8B93; thread 0 / child process 0 &#x8CA0;&#x8CAC;&#xFF0C;&#x6240;&#x6709;&#x7FFB;&#x8F49;&#x6642;&#x9078;&#x64C7;&#x7684;&#x7B2C;&#x4E00;&#x500B;&#x57CE;&#x5E02;&#x662F; city 1 &#x7684;&#x5C31;&#x8B93; thread 1 / child process 1 &#x8CA0;&#x8CAC;&#xFF0C;&#x4EE5;&#x6B64;&#x985E;&#x63A8;&#xFF0C;&#x4EE5;&#x6B64;&#x8868;&#x683C;&#x8209;&#x4F8B;&#xFF0C;&#x7B2C;&#x4E00;&#x6B04;&#x548C;&#x7B2C;&#x4E09;&#x6B04;&#x90E8;&#x4EFD;&#x7531; thread 0 / child process 0 &#x8CA0;&#x8CAC;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B04;&#x548C;&#x7B2C;&#x56DB;&#x6B04;&#x7531; thread 1 / child process 1 &#x8CA0;&#x8CAC;&#x3002;</p>
 <h2 id="Implementation">Implementation</h2>
 <h3 id="Algorithm">Algorithm</h3>
@@ -226,7 +241,8 @@ TSP
 <h2 id="Experimental-Result">Experimental Result</h2>
 <p>&#x56E0;&#x70BA;&#x6211;&#x4F7F;&#x7528;&#x8CAA;&#x5A6A;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x8AD6;&#x662F; sequential / pthread / fork&#xFF0C;&#x627E;&#x8DEF;&#x5F91;&#x7684;&#x904E;&#x7A0B;&#x90FD;&#x662F;&#x4E00;&#x6A21;&#x4E00;&#x6A23;&#x7684;&#xFF0C;&#x6700;&#x5F8C;&#x627E;&#x5230;&#x7684;&#x7D50;&#x679C;&#x4E5F;&#x662F;&#x4E00;&#x6A21;&#x4E00;&#x6A23;&#x7684;&#x3002;&#x6211;&#x5F9E; tsplib &#x53D6;&#x5F97;&#x6E2C;&#x8CC7;&#xFF0C;tsplib&#x63D0;&#x4F9B;&#x591A;&#x500B; tsp &#x6E2C;&#x8CC7;&#x4EE5;&#x53CA;&#x8DDD;&#x96E2;&#x6700;&#x4F73;&#x89E3;&#xFF0C;&#x6211;&#x9078;&#x64C7;&#x4E86;&#x4E09;&#x500B;&#x5927;&#x5C0F;&#x7684;&#x6E2C;&#x8CC7;&#xFF0C;&#x5206;&#x5225;&#x662F; 1002 / 3795 / 7397 &#x500B;&#x57CE;&#x5E02;&#xFF0C;&#x62EC;&#x865F;&#x5167;&#x662F;&#x8A72;&#x6E2C;&#x8CC7;&#x7684;&#x6700;&#x4F73;&#x89E3;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x6E2C;&#x8A66;&#x7D50;&#x679C;&#x90FD;&#x662F; 5 &#x6B21;&#x6E2C;&#x8A66;&#x7684;&#x5E73;&#x5747;&#xFF0C;&#x5728; pthread &#x548C; fork &#x7684;&#x6E2C;&#x8A66;&#xFF0C;&#x6211;&#x4F7F;&#x7528;&#x4E86; 2 &#x500B; thread &#x548C; 2 &#x500B; child process&#x3002;</p>
 <h3 id="pr1002">pr1002</h3>
-<table>
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
 <thead>
 <tr>
 <th>pr1002</th>
@@ -259,9 +275,10 @@ TSP
 <td>1.45</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="fl3795">fl3795</h3>
-<table>
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
 <thead>
 <tr>
 <th>fl3795</th>
@@ -294,9 +311,10 @@ TSP
 <td>1.84</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="pla7397">pla7397</h3>
-<table>
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
 <thead>
 <tr>
 <th>pla7397</th>
@@ -329,13 +347,13 @@ TSP
 <td>1.69</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="Speed-Up">Speed Up</h3>
-<p><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image1.svg" alt></p>
+<p><div class="img-item" data-src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image1.svg" data-sub-html=".caption"><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image1.svg" alt></div></p>
 <h3 id="Route">Route</h3>
 <p>&#x4E0B;&#x5716;&#x662F;&#x6E2C;&#x8CC7; pr1002 &#x521D;&#x59CB;&#x5316;&#x6642;&#x7684;&#x8DEF;&#x5F91;&#x5716;&#xFF0C;&#x4EE5;&#x53CA;&#x5B8C;&#x6210;&#x6700;&#x4F73;&#x5316;&#x4E4B;&#x5F8C;&#x7684;&#x8DEF;&#x5F91;&#x5716;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x7D93;&#x904E;&#x6700;&#x4F73;&#x5316;&#x7684;&#x8DEF;&#x5F91;&#xFF0C;&#x78BA;&#x5BE6;&#x5F97;&#x5230;&#x66F4;&#x597D;&#x7684;&#x8DEF;&#x5F91;&#x3002;</p>
-<p><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image2.svg" alt></p>
-<p><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image3.svg" alt></p>
+<p><div class="img-item" data-src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image2.svg" data-sub-html=".caption"><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image2.svg" alt></div></p>
+<p><div class="img-item" data-src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image3.svg" data-sub-html=".caption"><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image3.svg" alt></div></p>
 <h2 id="Conclusion">Conclusion</h2>
 <p>&#x5EFA;&#x7ACB;&#x4E00;&#x500B;&#x65B0;&#x7684; process &#x6240;&#x9700;&#x8981;&#x7684;&#x8CC7;&#x6E90;&#x548C;&#x6642;&#x9593;&#x90FD;&#x8F03;&#x591A;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x9810;&#x671F; fork &#x7684;&#x6548;&#x80FD;&#x6703;&#x6BD4;&#x8F03;&#x5DEE;&#xFF0C;&#x5BE6;&#x9A57;&#x7D50;&#x679C;&#x4E5F;&#x5448;&#x73FE; pthread &#x6709;&#x8F03;&#x597D;&#x7684;&#x6548;&#x80FD;&#x3002;&#x7576;&#x6E2C;&#x8CC7;&#x592A;&#x5C0F;&#x6642;&#x5EFA;&#x7ACB;&#x5E73;&#x884C;&#x7684; overhead &#x6703;&#x4F7F;&#x5F97;&#x5E73;&#x884C;&#x7684;&#x6548;&#x80FD;&#x964D;&#x4F4E;&#xFF0C;&#x6700;&#x5C0F;&#x7684;&#x6E2C;&#x8CC7; pr1002 &#x78BA;&#x5BE6;&#x6548;&#x80FD;&#x4E0D;&#x4F73;&#xFF0C;&#x4E2D;&#x6E2C;&#x8CC7; fl3795 &#x6548;&#x80FD;&#x660E;&#x986F;&#x8F03;&#x4F73;&#x3002;</p>
 <p>&#x5927;&#x6E2C;&#x8CC7; pla7394 &#x5728; pthread &#x7684; speedup &#x8D85;&#x904E; 2&#xFF0C;&#x7406;&#x8AD6;&#x4E0A; speedup &#x4E0D;&#x61C9;&#x8A72;&#x8D85;&#x904E; 2&#xFF0C;&#x56E0;&#x70BA;&#x6C92;&#x6709;&#x5DEE;&#x5F88;&#x591A;&#xFF0C;&#x6211;&#x5224;&#x65B7;&#x9019;&#x662F;&#x7D71;&#x8A08;&#x4E0A;&#x7684;&#x8AA4;&#x5DEE;&#x3002;</p>
@@ -375,6 +393,28 @@ TSP
             
                 <!-- Comments -->
                 
+    
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    
+    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+        <div id="gitalk-container"></div>
+    </div>
+
+    <script>
+        let gitalk = new Gitalk({
+            clientID: '97c34b7bba491c6a5007',
+            clientSecret: '6140d208bae6bbbc69c65e3e332a46d090094fc8',
+            repo: 'HackTech',
+            owner: 'luswdev',
+            admin: "luswdev",
+            id: '2021-08-10 00:54:06',
+            title: 'Parallel TSP using pthread and fork',
+            distractionFreeMode: false  // Facebook-like distraction free mode
+        });
+        gitalk.render('gitalk-container');
+    </script>
+
 
                 
 
@@ -444,9 +484,36 @@ TSP
                     
 
                     
-
+                        <li class="list-inline-item">
+                            <a rel="external" href="https://github.com/luswdev" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
                     
 
+                    
+                        <li class="list-inline-item">
+                            <a rel="external" href="https://www.linkedin.com/in/callum-lu" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li class="list-inline-item">
+                            <a rel="external" href="mailto:info@lusw.dev" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
                     
 
                     
@@ -514,8 +581,8 @@ TSP
                     
                 </ul>
                 <p class="copyright footer-author">
-                    &copy; -2021 
-                    <a rel="external" class="copyright-link" href="" target="_blank">Wendy</a><br/>
+                    &copy; 2018-2021 
+                    <a rel="external" class="copyright-link" href="https://github.com/luswdev" target="_blank">Wendy</a><br/>
                     Powered by <a rel="external" class="copyright-link" href="https://hexo.io/" target="_blank">Hexo</a>  
                     <span class="copyright-split">&nbsp;|&nbsp;&nbsp;</span>
                     Theme <a rel="external" class="copyright-link" href="https://github.com/luswdev/hexo-theme-clean.git" target="_blank">Clean</a>
