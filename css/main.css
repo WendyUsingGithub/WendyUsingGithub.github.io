@@ -901,34 +901,5 @@ details.alert {
 }
 /* Response Layer
  * -------------------------------------------------- */
-@media screen and (max-width: 768px) {
-  .intro-header .site-heading {
-    padding: 75px 0 75px;
-  }
-  .intro-header .site-heading h1 {
-    font-size: 50px;
-  }
-  .intro-header .post-heading {
-    padding: 100px 0 50px;
-  }
-  .intro-header .post-heading h1 {
-    font-size: 35px;
-  }
-  .intro-header .post-heading .subheading {
-    font-size: 24px;
-  }
-  .post-preview > a > .post-title {
-    font-size: 30px;
-  }
-  .table-responsive table.table {
-    width: 100% !important;
-  }
-  .archives-filter-group {
-    width: 100%;
-  }
-  .archives-filter-all {
-    margin-top: 1rem;
-  }
-}
 /* Custom Layer
  * -------------------------------------------------- */
