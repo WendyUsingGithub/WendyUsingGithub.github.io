@@ -903,7 +903,7 @@ details.alert {
  * -------------------------------------------------- */
 @media screen and (max-width: 768px) {
   .intro-header .site-heading {
-    padding: 100px 0 100px;
+    padding: 75px 0 75px;
   }
   .intro-header .site-heading h1 {
     font-size: 50px;
