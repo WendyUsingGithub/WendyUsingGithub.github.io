@@ -1,131 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- Head tag -->
 <head>
+
     <meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<!--Description-->
+    <!--Description-->
 
+    
 
-
-    <meta name="description" content="Introduction
+    
+        <meta name="description" content="Introduction
 TSP
 &amp;#x65C5;&amp;#x884C;&amp;#x5546;&amp;#x554F;&amp;#x984C;&amp;#x662F;&amp;#x9019;&amp;#x6A23;&amp;#x4E00;&amp;#x500B;&amp;#x554F;&amp;#x984C; : &amp;#x7D66;&amp;#x5B9A;&amp;#x4E00;&amp;#x7CFB;&amp;#"/>
+    
 
+    <!--Author-->
+    
+        <meta name="author" content="Wendy"/>
+    
 
-<!--Author-->
+    <!--Open Graph Title-->
+    
+        <meta property="og:title" content="Parallel TSP using pthread and fork"/>
+    
 
-    <meta name="author" content="Wendy"/>
-
-
-<!--Open Graph Title-->
-
-    <meta property="og:title" content="Parallel TSP using pthread and fork"/>
-
-
-<!--Open Graph Description-->
-
-    <meta property="og:description" content="Introduction
+    <!--Open Graph Description-->
+    
+        <meta property="og:description" content="Introduction
 TSP
 &amp;#x65C5;&amp;#x884C;&amp;#x5546;&amp;#x554F;&amp;#x984C;&amp;#x662F;&amp;#x9019;&amp;#x6A23;&amp;#x4E00;&amp;#x500B;&amp;#x554F;&amp;#x984C; : &amp;#x7D66;&amp;#x5B9A;&amp;#x4E00;&amp;#x7CFB;&amp;#"/>
+    
+
+    <!--Open Graph Site Name-->
+        <meta property="og:site_name" content="Wendy"/>
+
+    <!--Type page-->
+    
+        <meta property="og:type" content="article"/>
+    
+
+    <!--Page Cover-->
+    
+    
+        <meta property="og:image" content="http://example.comimg/home-bg.jpg"/>
+    
+
+        <meta name="twitter:card" content="summary_large_image"/>
+
+    
+
+    
+        <meta name="twitter:image" content="http://example.comimg/home-bg.jpg"/>
+    
+
+    <!-- Title -->
+    
+    <title>Parallel TSP using pthread and fork - Wendy</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Custom CSS -->
+    
+<link rel="stylesheet" href="../../../../css/style.css">
 
 
-<!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Wendy"/>
+    <!-- Custom Fonts -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
 
-<!--Type page-->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-    <meta property="og:type" content="article"/>
-
-
-<!--Page Cover-->
-
-
-    <meta property="og:image" content="http://example.com/img/home-bg.jpg"/>
-
-
-<meta name="twitter:card" content="summary_large_image"/>
-
-
-
-
-    <meta name="twitter:image" content="http://example.com/img/home-bg.jpg"/>
-
-
-<!-- Title -->
-
-<title>Parallel TSP using pthread and fork | Wendy</title>
-
-<!-- Bootstrap Core CSS -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
-
-<!-- Custom CSS -->
-
-<link rel="stylesheet" href="../../../../css/main.css">
-
-
-<!-- Custom Fonts -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css" />
-<link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css" />
-<link href="//fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-
-<!-- Gallery -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/featherlight@1.4.0/src/featherlight.css" integrity="sha256-30DV/STftlyQ6v8yaOWlabammvCYtRJERLj/m0b3zno=" crossorigin="anonymous">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/css/lightgallery.min.css">
-
-<!-- favicon -->
-
-<link rel="icon" href="../../../../img/favicon.png"/>
-
-
+    <!-- Gallery -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
 
     <!-- Google Analytics -->
     
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158078787-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-158078787-1');
-</script>
 
 
+    <!-- favicon -->
+    
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="Wendy" type="application/atom+xml">
 </head>
-<!-- Head tag -->
+
 
 <body>
 
     <!-- Menu -->
     <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top bg-transparent position-absolute w-100 p-0" id="nav">
-    <div class="container pl-0 pr-0">
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
-            <a class="navbar-brand text-white p-1 pl-3" href="../../../../index.html">Wendy</a>
-        </div>
-        <div class="navbar-nav float-right">
-            <button class="btn btn-link search-btn navbar-item" data-toggle="modal" data-target="#searchModal">
-                <i class="fas fa-search"></i>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
+            <a class="navbar-brand" href="/">Configurable Title</a>
         </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                
+                    <li>
+                        <a href="../../../../index.html">
+                            
+                                Home
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="../../../../archives">
+                            
+                                Archives
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="../../../../tags">
+                            
+                                Tags
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="../../../../categories">
+                            
+                                Categories
+                            
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="../../../../https:/github.com/klugjo/hexo-theme-clean-blog">
+                            
+                                <i class="fa fa-github fa-stack-2x"></i>
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
 </nav>
-
 
     <!-- Main Content -->
     <!-- Page Header -->
@@ -134,10 +170,17 @@ TSP
 <header class="intro-header" style="background-image: url('../../../../img/home-bg.jpg')">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12 col-md-12 text-center">
-                <div class="post-heading text-white">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
                     <h1>Parallel TSP using pthread and fork</h1>
                     
+                    <span class="meta">
+                        <!-- Date and Author -->
+                        
+                        
+                            2021-08-10
+                        
+                    </span>
                 </div>
             </div>
         </div>
@@ -148,30 +191,15 @@ TSP
 <article>
     <div class="container">
         <div class="row">
+
+            <!-- Tags and categories -->
+           
+
+            <!-- Gallery -->
+            
+
             <!-- Post Main Content -->
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                
-                    <span class="meta d-inline-block">
-    
-    
-    <!-- Date -->
-    
-        <span class="post-meta-split">&nbsp;|&nbsp;</span>
-        <i class="far fa-calendar-check fa-fw"></i>
-        2021-08-10
-    
-    <!-- word count and read count -->
-    
-        <span class="post-meta-split">&nbsp;|&nbsp;</span>
-        <i class="far fa-file-word fa-fw"></i>
-        2.1k
-    
-
-    
-
-    
-</span>  
-                
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <h2 id="Introduction">Introduction</h2>
 <h3 id="TSP">TSP</h3>
 <p>&#x65C5;&#x884C;&#x5546;&#x554F;&#x984C;&#x662F;&#x9019;&#x6A23;&#x4E00;&#x500B;&#x554F;&#x984C; : &#x7D66;&#x5B9A;&#x4E00;&#x7CFB;&#x5217;&#x57CE;&#x5E02;&#x548C;&#x6BCF;&#x5C0D;&#x57CE;&#x5E02;&#x4E4B;&#x9593;&#x7684;&#x8DDD;&#x96E2;&#xFF0C;&#x6C42;&#x89E3;&#x9020;&#x8A2A;&#x6BCF;&#x4E00;&#x5EA7;&#x57CE;&#x5E02;&#x4E00;&#x6B21;&#x4E26;&#x56DE;&#x5230;&#x8D77;&#x59CB;&#x57CE;&#x5E02;&#x7684;&#x6700;&#x77ED;&#x8FF4;&#x8DEF;&#x3002;</p>
@@ -183,8 +211,7 @@ TSP
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1 , 2 , 7 , 6 , 5 , 4 , 3 , 8 , 9 , 10] </span><br></pre></td></tr></table></figure>
 <h3 id="2-opt-parallel">2-opt parallel</h3>
 <p>&#x6211;&#x4F7F;&#x7528;&#x8CAA;&#x5A6A;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x6211;&#x6703;&#x628A;&#x4E00;&#x500B;&#x89E3;&#x7684;&#x6240;&#x6709;&#x9130;&#x5C45;&#x90FD;&#x627E;&#x51FA;&#x4F86;&#xFF0C;&#x4E26;&#x4E14;&#x9078;&#x64C7;&#x9577;&#x5EA6;&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#x70BA;&#x65B0;&#x7684;&#x89E3;&#xFF0C;&#x56E0;&#x70BA;&#x627E;&#x9130;&#x5C45;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x9078;&#x5169;&#x500B;&#x57CE;&#x5E02;&#x4E26;&#x4E14;&#x7FFB;&#x8F49;&#xFF0C;&#x6240;&#x4EE5;&#x5C0D;&#x65BC;&#x4E00;&#x689D;&#x8DEF;&#x5F91;&#x800C;&#x8A00;&#xFF0C;&#x6709; n * ( n - 1 ) / 2 &#x7A2E;&#x9130;&#x5C45;&#x8DEF;&#x5F91;&#xFF0C;&#x4EE5;&#x4E00;&#x500B; 5 &#x500B;&#x57CE;&#x5E02;&#x7684; tsp &#x554F;&#x984C;&#x8209;&#x4F8B;&#xFF0C;&#x4E0B;&#x5716;&#x662F;&#x4ED6;&#x7684;&#x6240;&#x6709;&#x9130;&#x5C45;&#x3002;&#x6240;&#x6709;&#x9130;&#x5C45;&#x7684;&#x8DEF;&#x5F91;&#x9577;&#x5EA6;&#x662F;&#x53EF;&#x4EE5;&#x55AE;&#x7368;&#x8A08;&#x7B97;&#x7684;&#xFF0C;&#x56E0;&#x70BA;&#x6C92;&#x6709;&#x8A08;&#x7B97;&#x4E0A;&#x7684;&#x76F8;&#x4F9D;&#x6027;&#xFF0C;&#x6240;&#x4EE5;&#x5F88;&#x9069;&#x5408;&#x505A;&#x5E73;&#x884C;&#x3002;</p>
-<div class="table-responsive">
-<table class="table table-bordered table-striped">
+<table>
 <thead>
 <tr>
 <th>thread 0</th>
@@ -219,7 +246,7 @@ TSP
 <td>(3 , 4)</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p>&#x5728;&#x8A2D;&#x8A08;&#x5E73;&#x884C;&#x7A0B;&#x5F0F;&#x7684;&#x6642;&#x5019;&#x6211;&#x5011;&#x9700;&#x8981;&#x5206;&#x914D;&#x6BCF;&#x500B; thread / child process &#x8981;&#x505A;&#x4EC0;&#x9EBC;&#xFF0C;&#x56E0;&#x70BA;&#x5728;&#x6240;&#x6709;thread / child process &#x90FD;&#x5B8C;&#x6210;&#x81EA;&#x5DF1;&#x7684;&#x5DE5;&#x4F5C;&#x4E4B;&#x5F8C;&#xFF0C;&#x624D;&#x80FD;&#x958B;&#x59CB;&#x9032;&#x884C;&#x4E0B;&#x4E00;&#x8F2A;&#x7684;&#x8A08;&#x7B97;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x5E73;&#x5747;&#x7684;&#x5206;&#x914D;&#x5DE5;&#x4F5C;&#x91CF;&#x3002;&#x4EE5; 2 &#x500B; thread / child process &#x70BA;&#x4F8B;&#xFF0C;&#x6211;&#x4F7F;&#x7528;&#x4E0A;&#x5716;&#x7684;&#x65B9;&#x6CD5;&#x5206;&#x914D;&#x5DE5;&#x4F5C;&#xFF0C;(x,y) &#x6307;&#x7684;&#x662F;&#x7FFB;&#x8F49;&#x57CE;&#x5E02; x &#x5230;&#x57CE;&#x5E02; y &#x7684;&#x8DEF;&#x5F91;&#xFF0C;&#x7FFB;&#x8F49;&#x6642;&#x9078;&#x64C7;&#x7684;&#x7B2C;&#x4E00;&#x500B;&#x57CE;&#x5E02;&#x662F; city 0 &#x7684;&#x5C31;&#x8B93; thread 0 / child process 0 &#x8CA0;&#x8CAC;&#xFF0C;&#x6240;&#x6709;&#x7FFB;&#x8F49;&#x6642;&#x9078;&#x64C7;&#x7684;&#x7B2C;&#x4E00;&#x500B;&#x57CE;&#x5E02;&#x662F; city 1 &#x7684;&#x5C31;&#x8B93; thread 1 / child process 1 &#x8CA0;&#x8CAC;&#xFF0C;&#x4EE5;&#x6B64;&#x985E;&#x63A8;&#xFF0C;&#x4EE5;&#x6B64;&#x8868;&#x683C;&#x8209;&#x4F8B;&#xFF0C;&#x7B2C;&#x4E00;&#x6B04;&#x548C;&#x7B2C;&#x4E09;&#x6B04;&#x90E8;&#x4EFD;&#x7531; thread 0 / child process 0 &#x8CA0;&#x8CAC;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B04;&#x548C;&#x7B2C;&#x56DB;&#x6B04;&#x7531; thread 1 / child process 1 &#x8CA0;&#x8CAC;&#x3002;</p>
 <h2 id="Implementation">Implementation</h2>
 <h3 id="Algorithm">Algorithm</h3>
@@ -242,8 +269,7 @@ TSP
 <h2 id="Experimental-Result">Experimental Result</h2>
 <p>&#x56E0;&#x70BA;&#x6211;&#x4F7F;&#x7528;&#x8CAA;&#x5A6A;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x8AD6;&#x662F; sequential / pthread / fork&#xFF0C;&#x627E;&#x8DEF;&#x5F91;&#x7684;&#x904E;&#x7A0B;&#x90FD;&#x662F;&#x4E00;&#x6A21;&#x4E00;&#x6A23;&#x7684;&#xFF0C;&#x6700;&#x5F8C;&#x627E;&#x5230;&#x7684;&#x7D50;&#x679C;&#x4E5F;&#x662F;&#x4E00;&#x6A21;&#x4E00;&#x6A23;&#x7684;&#x3002;&#x6211;&#x5F9E; tsplib &#x53D6;&#x5F97;&#x6E2C;&#x8CC7;&#xFF0C;tsplib&#x63D0;&#x4F9B;&#x591A;&#x500B; tsp &#x6E2C;&#x8CC7;&#x4EE5;&#x53CA;&#x8DDD;&#x96E2;&#x6700;&#x4F73;&#x89E3;&#xFF0C;&#x6211;&#x9078;&#x64C7;&#x4E86;&#x4E09;&#x500B;&#x5927;&#x5C0F;&#x7684;&#x6E2C;&#x8CC7;&#xFF0C;&#x5206;&#x5225;&#x662F; 1002 / 3795 / 7397 &#x500B;&#x57CE;&#x5E02;&#xFF0C;&#x62EC;&#x865F;&#x5167;&#x662F;&#x8A72;&#x6E2C;&#x8CC7;&#x7684;&#x6700;&#x4F73;&#x89E3;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x6E2C;&#x8A66;&#x7D50;&#x679C;&#x90FD;&#x662F; 5 &#x6B21;&#x6E2C;&#x8A66;&#x7684;&#x5E73;&#x5747;&#xFF0C;&#x5728; pthread &#x548C; fork &#x7684;&#x6E2C;&#x8A66;&#xFF0C;&#x6211;&#x4F7F;&#x7528;&#x4E86; 2 &#x500B; thread &#x548C; 2 &#x500B; child process&#x3002;</p>
 <h3 id="pr1002">pr1002</h3>
-<div class="table-responsive">
-<table class="table table-bordered table-striped">
+<table>
 <thead>
 <tr>
 <th>pr1002</th>
@@ -276,10 +302,9 @@ TSP
 <td>1.45</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <h3 id="fl3795">fl3795</h3>
-<div class="table-responsive">
-<table class="table table-bordered table-striped">
+<table>
 <thead>
 <tr>
 <th>fl3795</th>
@@ -312,10 +337,9 @@ TSP
 <td>1.84</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <h3 id="pla7397">pla7397</h3>
-<div class="table-responsive">
-<table class="table table-bordered table-striped">
+<table>
 <thead>
 <tr>
 <th>pla7397</th>
@@ -348,13 +372,13 @@ TSP
 <td>1.69</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <h3 id="Speed-Up">Speed Up</h3>
-<p><div class="img-item" data-src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image1.svg" data-sub-html=".caption"><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image1.svg" alt></div></p>
+<p><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image1.svg" alt></p>
 <h3 id="Route">Route</h3>
 <p>&#x4E0B;&#x5716;&#x662F;&#x6E2C;&#x8CC7; pr1002 &#x521D;&#x59CB;&#x5316;&#x6642;&#x7684;&#x8DEF;&#x5F91;&#x5716;&#xFF0C;&#x4EE5;&#x53CA;&#x5B8C;&#x6210;&#x6700;&#x4F73;&#x5316;&#x4E4B;&#x5F8C;&#x7684;&#x8DEF;&#x5F91;&#x5716;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x7D93;&#x904E;&#x6700;&#x4F73;&#x5316;&#x7684;&#x8DEF;&#x5F91;&#xFF0C;&#x78BA;&#x5BE6;&#x5F97;&#x5230;&#x66F4;&#x597D;&#x7684;&#x8DEF;&#x5F91;&#x3002;</p>
-<p><div class="img-item" data-src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image2.svg" data-sub-html=".caption"><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image2.svg" alt></div></p>
-<p><div class="img-item" data-src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image3.svg" data-sub-html=".caption"><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image3.svg" alt></div></p>
+<p><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image2.svg" alt></p>
+<p><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image3.svg" alt></p>
 <h2 id="Conclusion">Conclusion</h2>
 <p>&#x5EFA;&#x7ACB;&#x4E00;&#x500B;&#x65B0;&#x7684; process &#x6240;&#x9700;&#x8981;&#x7684;&#x8CC7;&#x6E90;&#x548C;&#x6642;&#x9593;&#x90FD;&#x8F03;&#x591A;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x9810;&#x671F; fork &#x7684;&#x6548;&#x80FD;&#x6703;&#x6BD4;&#x8F03;&#x5DEE;&#xFF0C;&#x5BE6;&#x9A57;&#x7D50;&#x679C;&#x4E5F;&#x5448;&#x73FE; pthread &#x6709;&#x8F03;&#x597D;&#x7684;&#x6548;&#x80FD;&#x3002;&#x7576;&#x6E2C;&#x8CC7;&#x592A;&#x5C0F;&#x6642;&#x5EFA;&#x7ACB;&#x5E73;&#x884C;&#x7684; overhead &#x6703;&#x4F7F;&#x5F97;&#x5E73;&#x884C;&#x7684;&#x6548;&#x80FD;&#x964D;&#x4F4E;&#xFF0C;&#x6700;&#x5C0F;&#x7684;&#x6E2C;&#x8CC7; pr1002 &#x78BA;&#x5BE6;&#x6548;&#x80FD;&#x4E0D;&#x4F73;&#xFF0C;&#x4E2D;&#x6E2C;&#x8CC7; fl3795 &#x6548;&#x80FD;&#x660E;&#x986F;&#x8F03;&#x4F73;&#x3002;</p>
 <p>&#x5927;&#x6E2C;&#x8CC7; pla7394 &#x5728; pthread &#x7684; speedup &#x8D85;&#x904E; 2&#xFF0C;&#x7406;&#x8AD6;&#x4E0A; speedup &#x4E0D;&#x61C9;&#x8A72;&#x8D85;&#x904E; 2&#xFF0C;&#x56E0;&#x70BA;&#x6C92;&#x6709;&#x5DEE;&#x5F88;&#x591A;&#xFF0C;&#x6211;&#x5224;&#x65B7;&#x9019;&#x662F;&#x7D71;&#x8A08;&#x4E0A;&#x7684;&#x8AA4;&#x5DEE;&#x3002;</p>
@@ -374,222 +398,55 @@ TSP
 [4] TSPLIB<br>
 <a target="_blank" rel="noopener" href="http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/">http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/</a></p>
 
+
+                
             </div>
 
-            <!-- Post information -->
+            <!-- Comments -->
             
-            
-    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-        <ul class="pagination d-block text-center">
-            
-                <li class="previous page-item d-inline"><a href="../../13/%E5%BE%AE%E5%BE%AE%E4%B8%BB%E5%A9%A6%E5%BF%83%E5%BE%97/" class="page-link float-left">&larr;  Newer</a></li>
-            
-            
-                <li class="next page-item d-inline"><a href="../../../07/31/%E5%8C%97%E7%A7%91%E8%B3%87%E5%B7%A5%E4%BF%AE%E8%AA%B2%E7%B4%80%E9%8C%84-%E7%A2%A9%E4%B8%80%E4%B8%8B/" class="page-link float-right">Older  &rarr;</a></li>
-            
-        </ul>
-    </div>
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    
 
 
-            
-                <!-- Comments -->
-                
-    
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    
-    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-        <div id="gitalk-container"></div>
-    </div>
-
-    <script>
-        let gitalk = new Gitalk({
-            clientID: '97c34b7bba491c6a5007',
-            clientSecret: '6140d208bae6bbbc69c65e3e332a46d090094fc8',
-            repo: 'HackTech',
-            owner: 'luswdev',
-            admin: "luswdev",
-            id: '2021-08-10 00:54:06',
-            title: 'Parallel TSP using pthread and fork',
-            distractionFreeMode: false  // Facebook-like distraction free mode
-        });
-        gitalk.render('gitalk-container');
-    </script>
-
-
-                
-
-            
-
-        </div>
-    </div>
-</article> 
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
-    <style>
-        #toc-content .toc-link::before {
-            background-color: transparent;
-            max-height: 25px;
-        }
-
-        #toc-content .toc-link.is-active-link::before {
-            background-color: #404040;
-        }
-    </style>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
-    <div class="ui-toc dropup scrollspy-body pull-right" style="right: 3%;">
-        <button type="button" class="toc-btn btn btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-            <i class="fas fa-list"></i>
-        </button>
-        <div class="dropdown-menu dropdown-menu-right p-2"  aria-labelledby="tocLabel">
-            <div class="toc-widget">
-                <div id="toc-content" class="text-truncate">
                 </div>
-            </div>
-            <div class="toc-menu pt-3 pl-4">
-                <a class="expand-toggle d-block py-1" href="#"><span class="expand-text">Expand all</span><span class="close-text" style="display: none;">Collapse all</span></a>
-                <a class="back-to-top d-block py-1" href="#">Back to top</a>
-                <a class="go-to-bottom d-block py-1" href="#">Go to bottom</a>
-            </div>
+            
         </div>
     </div>
-    <script>
-        tocbot.init({
-            // Where to render the table of contents.
-            tocSelector: '#toc-content',
-            // Where to grab the headings to build the table of contents.
-            contentSelector: 'article',
-            // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h1, h2, h3',
-            // For headings inside relative or absolute positioned containers within content.
-            hasInnerContainers: true,
-        });
-    </script>
-
-
-    
-
+</article>
 
     <!-- Footer -->
     <hr />
 
 <!-- Footer -->
-<footer id="footer">
+<footer>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 text-center">
-                <ul class="list-inline">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
                     
 
                     
 
                     
-                        <li class="list-inline-item">
-                            <a rel="external" href="https://github.com/luswdev" target="_blank">
+                        <li>
+                            <a href="https://github.com/klugjo/hexo-theme-clean-blog" target="_blank">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
                                 </span>
                             </a>
                         </li>
                     
 
                     
-                        <li class="list-inline-item">
-                            <a rel="external" href="https://www.linkedin.com/in/callum-lu" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
 
-                    
-                        <li class="list-inline-item">
-                            <a rel="external" href="mailto:info@lusw.dev" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
                     
 
                     
                 </ul>
-                <ul class="copyright footer-menu list-inline">
-                    
-                    
-                        <li class="list-inline-item">
-                            
-                            
-                            <a href="../../../../index.html">
-                                
-                                    Home
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="../../../../archives">
-                                
-                                    Archives
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="../../../../tags">
-                                
-                                    Tags
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="../../../../categories">
-                                
-                                    Categories
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="../../../../about">
-                                
-                                    About
-                                
-                            </a>
-                        </li>
-                    
-                </ul>
-                <p class="copyright footer-author">
-                    &copy; 2018-2021 
-                    <a rel="external" class="copyright-link" href="https://github.com/luswdev" target="_blank">Wendy</a><br/>
-                    Powered by <a rel="external" class="copyright-link" href="https://hexo.io/" target="_blank">Hexo</a>  
-                    <span class="copyright-split">&nbsp;|&nbsp;&nbsp;</span>
-                    Theme <a rel="external" class="copyright-link" href="https://github.com/luswdev/hexo-theme-clean.git" target="_blank">Clean</a>
-                    
-                    
-                </p>
+                <p class="copyright text-muted">&copy; 2021 Wendy<br></p>
+                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
+                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
             </div>
         </div>
     </div>
@@ -597,55 +454,20 @@ TSP
 
 
     <!-- After footer scripts -->
-    <!-- jQuery -->
-<script src="//cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js"></script>
-
-<!-- For drop down -->
-<script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 
 <!-- Bootstrap -->
-<script src="//cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 <!-- Gallery -->
-<script src="//cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/js/lightgallery-all.min.js"></script>
-<!-- Busuanzi -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 
+<!-- Disqus Comments -->
 
-<!-- Search script -->
-
-<script src="../../../../js/search.js"></script>
-
-<script type="text/javascript">
-    $(function () {
-        searchFunc( '../../../../search.xml' , 'searchInput', 'searchResult');
-    });
-</script>
-
-
-
-<script src="../../../../js/main.js"></script>
-
-
-
-    <!-- Search Modal -->
-    <!-- Modal -->
-<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-        <div class="modal-content overflow-auto">
-            <div class="modal-header">
-                <input type="text" class="form-control" placeholder="Searching Keywords..." id="searchInput">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body">
-                <div id="searchResult">
-                    <div class="search-empty text-center text-muted p-5">
-                        <i class="far fa-meh"></i>
-                    </div>
-                </div>
-            </div> 
-        </div>
-    </div>
-</div>
 
 
 </body>
+
 </html>
