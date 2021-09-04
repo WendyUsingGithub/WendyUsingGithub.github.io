@@ -1,178 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<html lang="en" color-mode="light">
 
-<!--Description-->
-
-
-
-    <meta name="description" content="Introduction
-TSP
-&amp;#x65C5;&amp;#x884C;&amp;#x5546;&amp;#x554F;&amp;#x984C;&amp;#x662F;&amp;#x9019;&amp;#x6A23;&amp;#x4E00;&amp;#x500B;&amp;#x554F;&amp;#x984C; : &amp;#x7D66;&amp;#x5B9A;&amp;#x4E00;&amp;#x7CFB;&amp;#"/>
-
-
-<!--Author-->
-
-    <meta name="author" content="Wendy"/>
-
-
-<!--Open Graph Title-->
-
-    <meta property="og:title" content="Parallel TSP using pthread and fork"/>
-
-
-<!--Open Graph Description-->
-
-    <meta property="og:description" content="Introduction
-TSP
-&amp;#x65C5;&amp;#x884C;&amp;#x5546;&amp;#x554F;&amp;#x984C;&amp;#x662F;&amp;#x9019;&amp;#x6A23;&amp;#x4E00;&amp;#x500B;&amp;#x554F;&amp;#x984C; : &amp;#x7D66;&amp;#x5B9A;&amp;#x4E00;&amp;#x7CFB;&amp;#"/>
-
-
-<!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Wendy"/>
-
-<!--Type page-->
-
-    <meta property="og:type" content="article"/>
-
-
-<!--Page Cover-->
-
-
-    <meta property="og:image" content="http://example.com/img/home-bg.jpg"/>
-
-
-<meta name="twitter:card" content="summary_large_image"/>
-
-
-
-
-    <meta name="twitter:image" content="http://example.com/img/home-bg.jpg"/>
-
-
-<!-- Title -->
-
-<title>Parallel TSP using pthread and fork | Wendy</title>
-
-<!-- Bootstrap Core CSS -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
-
-<!-- Custom CSS -->
-
-<link rel="stylesheet" href="../../../../css/main.css">
-
-
-<!-- Custom Fonts -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css" />
-<link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css" />
-<link href="//fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-
-<!-- Gallery -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/featherlight@1.4.0/src/featherlight.css" integrity="sha256-30DV/STftlyQ6v8yaOWlabammvCYtRJERLj/m0b3zno=" crossorigin="anonymous">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/css/lightgallery.min.css">
-
-<!-- favicon -->
-
-<link rel="icon" href="../../../../img/favicon.png"/>
-
-
-
-    <!-- Google Analytics -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Wendy" />
+  <meta name="description" content="" />
+  
+  
+  <title>
     
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158078787-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      Parallel TSP using pthread and fork 
+      
+      
+      |
+    
+     Wendy
+  </title>
 
-    gtag('config', 'UA-158078787-1');
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="../../../../css/color-scheme.css">
+<link rel="stylesheet" href="../../../../css/base.css">
+<link rel="stylesheet" href="../../../../iconfont/iconfont.css">
+<link rel="stylesheet" href="../../../../css/github-markdown.css">
+<link rel="stylesheet" href="../../../../css/highlight.css">
+<link rel="stylesheet" href="../../../../css/comments.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="../../../../js/fancybox.js"></script>
+
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="Wendy" type="application/atom+xml">
+</head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Oranges</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">Friends</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="../../../../js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
 </script>
 
 
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="Wendy" type="application/atom+xml">
-</head>
-<!-- Head tag -->
+  
 
-<body>
+  
 
-    <!-- Menu -->
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top bg-transparent position-absolute w-100 p-0" id="nav">
-    <div class="container pl-0 pr-0">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <a class="navbar-brand text-white p-1 pl-3" href="../../../../index.html">Wendy</a>
-        </div>
-        <div class="navbar-nav float-right">
-            <button class="btn btn-link search-btn navbar-item" data-toggle="modal" data-target="#searchModal">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-    </div>
-    <!-- /.container -->
-</nav>
+  
 
-
-    <!-- Main Content -->
-    <!-- Page Header -->
-<!-- Set your background image for this header in your post front-matter: cover -->
-
-<header class="intro-header" style="background-image: url('../../../../img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 text-center">
-                <div class="post-heading text-white">
-                    <h1>Parallel TSP using pthread and fork</h1>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <!-- Post Main Content -->
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                
-                    <span class="meta d-inline-block">
-    
-    
-    <!-- Date -->
-    
-        <span class="post-meta-split">&nbsp;|&nbsp;</span>
-        <i class="far fa-calendar-check fa-fw"></i>
-        2021-08-10
-    
-    <!-- word count and read count -->
-    
-        <span class="post-meta-split">&nbsp;|&nbsp;</span>
-        <i class="far fa-file-word fa-fw"></i>
-        2.1k
-    
-
-    
-
-    
-</span>  
-                
-                <h2 id="Introduction">Introduction</h2>
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">Parallel TSP using pthread and fork</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2021-08-10 00:54:06
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <h2 id="Introduction">Introduction</h2>
 <h3 id="TSP">TSP</h3>
 <p>&#x65C5;&#x884C;&#x5546;&#x554F;&#x984C;&#x662F;&#x9019;&#x6A23;&#x4E00;&#x500B;&#x554F;&#x984C; : &#x7D66;&#x5B9A;&#x4E00;&#x7CFB;&#x5217;&#x57CE;&#x5E02;&#x548C;&#x6BCF;&#x5C0D;&#x57CE;&#x5E02;&#x4E4B;&#x9593;&#x7684;&#x8DDD;&#x96E2;&#xFF0C;&#x6C42;&#x89E3;&#x9020;&#x8A2A;&#x6BCF;&#x4E00;&#x5EA7;&#x57CE;&#x5E02;&#x4E00;&#x6B21;&#x4E26;&#x56DE;&#x5230;&#x8D77;&#x59CB;&#x57CE;&#x5E02;&#x7684;&#x6700;&#x77ED;&#x8FF4;&#x8DEF;&#x3002;</p>
 <h3 id="2-opt">2-opt</h3>
@@ -183,8 +154,7 @@ TSP
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1 , 2 , 7 , 6 , 5 , 4 , 3 , 8 , 9 , 10] </span><br></pre></td></tr></table></figure>
 <h3 id="2-opt-parallel">2-opt parallel</h3>
 <p>&#x6211;&#x4F7F;&#x7528;&#x8CAA;&#x5A6A;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x6211;&#x6703;&#x628A;&#x4E00;&#x500B;&#x89E3;&#x7684;&#x6240;&#x6709;&#x9130;&#x5C45;&#x90FD;&#x627E;&#x51FA;&#x4F86;&#xFF0C;&#x4E26;&#x4E14;&#x9078;&#x64C7;&#x9577;&#x5EA6;&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#x70BA;&#x65B0;&#x7684;&#x89E3;&#xFF0C;&#x56E0;&#x70BA;&#x627E;&#x9130;&#x5C45;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x9078;&#x5169;&#x500B;&#x57CE;&#x5E02;&#x4E26;&#x4E14;&#x7FFB;&#x8F49;&#xFF0C;&#x6240;&#x4EE5;&#x5C0D;&#x65BC;&#x4E00;&#x689D;&#x8DEF;&#x5F91;&#x800C;&#x8A00;&#xFF0C;&#x6709; n * ( n - 1 ) / 2 &#x7A2E;&#x9130;&#x5C45;&#x8DEF;&#x5F91;&#xFF0C;&#x4EE5;&#x4E00;&#x500B; 5 &#x500B;&#x57CE;&#x5E02;&#x7684; tsp &#x554F;&#x984C;&#x8209;&#x4F8B;&#xFF0C;&#x4E0B;&#x5716;&#x662F;&#x4ED6;&#x7684;&#x6240;&#x6709;&#x9130;&#x5C45;&#x3002;&#x6240;&#x6709;&#x9130;&#x5C45;&#x7684;&#x8DEF;&#x5F91;&#x9577;&#x5EA6;&#x662F;&#x53EF;&#x4EE5;&#x55AE;&#x7368;&#x8A08;&#x7B97;&#x7684;&#xFF0C;&#x56E0;&#x70BA;&#x6C92;&#x6709;&#x8A08;&#x7B97;&#x4E0A;&#x7684;&#x76F8;&#x4F9D;&#x6027;&#xFF0C;&#x6240;&#x4EE5;&#x5F88;&#x9069;&#x5408;&#x505A;&#x5E73;&#x884C;&#x3002;</p>
-<div class="table-responsive">
-<table class="table table-bordered table-striped">
+<table>
 <thead>
 <tr>
 <th>thread 0</th>
@@ -219,7 +189,7 @@ TSP
 <td>(3 , 4)</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <p>&#x5728;&#x8A2D;&#x8A08;&#x5E73;&#x884C;&#x7A0B;&#x5F0F;&#x7684;&#x6642;&#x5019;&#x6211;&#x5011;&#x9700;&#x8981;&#x5206;&#x914D;&#x6BCF;&#x500B; thread / child process &#x8981;&#x505A;&#x4EC0;&#x9EBC;&#xFF0C;&#x56E0;&#x70BA;&#x5728;&#x6240;&#x6709;thread / child process &#x90FD;&#x5B8C;&#x6210;&#x81EA;&#x5DF1;&#x7684;&#x5DE5;&#x4F5C;&#x4E4B;&#x5F8C;&#xFF0C;&#x624D;&#x80FD;&#x958B;&#x59CB;&#x9032;&#x884C;&#x4E0B;&#x4E00;&#x8F2A;&#x7684;&#x8A08;&#x7B97;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x5E73;&#x5747;&#x7684;&#x5206;&#x914D;&#x5DE5;&#x4F5C;&#x91CF;&#x3002;&#x4EE5; 2 &#x500B; thread / child process &#x70BA;&#x4F8B;&#xFF0C;&#x6211;&#x4F7F;&#x7528;&#x4E0A;&#x5716;&#x7684;&#x65B9;&#x6CD5;&#x5206;&#x914D;&#x5DE5;&#x4F5C;&#xFF0C;(x,y) &#x6307;&#x7684;&#x662F;&#x7FFB;&#x8F49;&#x57CE;&#x5E02; x &#x5230;&#x57CE;&#x5E02; y &#x7684;&#x8DEF;&#x5F91;&#xFF0C;&#x7FFB;&#x8F49;&#x6642;&#x9078;&#x64C7;&#x7684;&#x7B2C;&#x4E00;&#x500B;&#x57CE;&#x5E02;&#x662F; city 0 &#x7684;&#x5C31;&#x8B93; thread 0 / child process 0 &#x8CA0;&#x8CAC;&#xFF0C;&#x6240;&#x6709;&#x7FFB;&#x8F49;&#x6642;&#x9078;&#x64C7;&#x7684;&#x7B2C;&#x4E00;&#x500B;&#x57CE;&#x5E02;&#x662F; city 1 &#x7684;&#x5C31;&#x8B93; thread 1 / child process 1 &#x8CA0;&#x8CAC;&#xFF0C;&#x4EE5;&#x6B64;&#x985E;&#x63A8;&#xFF0C;&#x4EE5;&#x6B64;&#x8868;&#x683C;&#x8209;&#x4F8B;&#xFF0C;&#x7B2C;&#x4E00;&#x6B04;&#x548C;&#x7B2C;&#x4E09;&#x6B04;&#x90E8;&#x4EFD;&#x7531; thread 0 / child process 0 &#x8CA0;&#x8CAC;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B04;&#x548C;&#x7B2C;&#x56DB;&#x6B04;&#x7531; thread 1 / child process 1 &#x8CA0;&#x8CAC;&#x3002;</p>
 <h2 id="Implementation">Implementation</h2>
 <h3 id="Algorithm">Algorithm</h3>
@@ -242,8 +212,7 @@ TSP
 <h2 id="Experimental-Result">Experimental Result</h2>
 <p>&#x56E0;&#x70BA;&#x6211;&#x4F7F;&#x7528;&#x8CAA;&#x5A6A;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x8AD6;&#x662F; sequential / pthread / fork&#xFF0C;&#x627E;&#x8DEF;&#x5F91;&#x7684;&#x904E;&#x7A0B;&#x90FD;&#x662F;&#x4E00;&#x6A21;&#x4E00;&#x6A23;&#x7684;&#xFF0C;&#x6700;&#x5F8C;&#x627E;&#x5230;&#x7684;&#x7D50;&#x679C;&#x4E5F;&#x662F;&#x4E00;&#x6A21;&#x4E00;&#x6A23;&#x7684;&#x3002;&#x6211;&#x5F9E; tsplib &#x53D6;&#x5F97;&#x6E2C;&#x8CC7;&#xFF0C;tsplib&#x63D0;&#x4F9B;&#x591A;&#x500B; tsp &#x6E2C;&#x8CC7;&#x4EE5;&#x53CA;&#x8DDD;&#x96E2;&#x6700;&#x4F73;&#x89E3;&#xFF0C;&#x6211;&#x9078;&#x64C7;&#x4E86;&#x4E09;&#x500B;&#x5927;&#x5C0F;&#x7684;&#x6E2C;&#x8CC7;&#xFF0C;&#x5206;&#x5225;&#x662F; 1002 / 3795 / 7397 &#x500B;&#x57CE;&#x5E02;&#xFF0C;&#x62EC;&#x865F;&#x5167;&#x662F;&#x8A72;&#x6E2C;&#x8CC7;&#x7684;&#x6700;&#x4F73;&#x89E3;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x6E2C;&#x8A66;&#x7D50;&#x679C;&#x90FD;&#x662F; 5 &#x6B21;&#x6E2C;&#x8A66;&#x7684;&#x5E73;&#x5747;&#xFF0C;&#x5728; pthread &#x548C; fork &#x7684;&#x6E2C;&#x8A66;&#xFF0C;&#x6211;&#x4F7F;&#x7528;&#x4E86; 2 &#x500B; thread &#x548C; 2 &#x500B; child process&#x3002;</p>
 <h3 id="pr1002">pr1002</h3>
-<div class="table-responsive">
-<table class="table table-bordered table-striped">
+<table>
 <thead>
 <tr>
 <th>pr1002</th>
@@ -276,10 +245,9 @@ TSP
 <td>1.45</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <h3 id="fl3795">fl3795</h3>
-<div class="table-responsive">
-<table class="table table-bordered table-striped">
+<table>
 <thead>
 <tr>
 <th>fl3795</th>
@@ -312,10 +280,9 @@ TSP
 <td>1.84</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <h3 id="pla7397">pla7397</h3>
-<div class="table-responsive">
-<table class="table table-bordered table-striped">
+<table>
 <thead>
 <tr>
 <th>pla7397</th>
@@ -348,13 +315,13 @@ TSP
 <td>1.69</td>
 </tr>
 </tbody>
-</table></div>
+</table>
 <h3 id="Speed-Up">Speed Up</h3>
-<p><div class="img-item" data-src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image1.svg" data-sub-html=".caption"><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image1.svg" alt></div></p>
+<p><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image1.svg" alt></p>
 <h3 id="Route">Route</h3>
 <p>&#x4E0B;&#x5716;&#x662F;&#x6E2C;&#x8CC7; pr1002 &#x521D;&#x59CB;&#x5316;&#x6642;&#x7684;&#x8DEF;&#x5F91;&#x5716;&#xFF0C;&#x4EE5;&#x53CA;&#x5B8C;&#x6210;&#x6700;&#x4F73;&#x5316;&#x4E4B;&#x5F8C;&#x7684;&#x8DEF;&#x5F91;&#x5716;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x7D93;&#x904E;&#x6700;&#x4F73;&#x5316;&#x7684;&#x8DEF;&#x5F91;&#xFF0C;&#x78BA;&#x5BE6;&#x5F97;&#x5230;&#x66F4;&#x597D;&#x7684;&#x8DEF;&#x5F91;&#x3002;</p>
-<p><div class="img-item" data-src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image2.svg" data-sub-html=".caption"><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image2.svg" alt></div></p>
-<p><div class="img-item" data-src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image3.svg" data-sub-html=".caption"><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image3.svg" alt></div></p>
+<p><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image2.svg" alt></p>
+<p><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image3.svg" alt></p>
 <h2 id="Conclusion">Conclusion</h2>
 <p>&#x5EFA;&#x7ACB;&#x4E00;&#x500B;&#x65B0;&#x7684; process &#x6240;&#x9700;&#x8981;&#x7684;&#x8CC7;&#x6E90;&#x548C;&#x6642;&#x9593;&#x90FD;&#x8F03;&#x591A;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x9810;&#x671F; fork &#x7684;&#x6548;&#x80FD;&#x6703;&#x6BD4;&#x8F03;&#x5DEE;&#xFF0C;&#x5BE6;&#x9A57;&#x7D50;&#x679C;&#x4E5F;&#x5448;&#x73FE; pthread &#x6709;&#x8F03;&#x597D;&#x7684;&#x6548;&#x80FD;&#x3002;&#x7576;&#x6E2C;&#x8CC7;&#x592A;&#x5C0F;&#x6642;&#x5EFA;&#x7ACB;&#x5E73;&#x884C;&#x7684; overhead &#x6703;&#x4F7F;&#x5F97;&#x5E73;&#x884C;&#x7684;&#x6548;&#x80FD;&#x964D;&#x4F4E;&#xFF0C;&#x6700;&#x5C0F;&#x7684;&#x6E2C;&#x8CC7; pr1002 &#x78BA;&#x5BE6;&#x6548;&#x80FD;&#x4E0D;&#x4F73;&#xFF0C;&#x4E2D;&#x6E2C;&#x8CC7; fl3795 &#x6548;&#x80FD;&#x660E;&#x986F;&#x8F03;&#x4F73;&#x3002;</p>
 <p>&#x5927;&#x6E2C;&#x8CC7; pla7394 &#x5728; pthread &#x7684; speedup &#x8D85;&#x904E; 2&#xFF0C;&#x7406;&#x8AD6;&#x4E0A; speedup &#x4E0D;&#x61C9;&#x8A72;&#x8D85;&#x904E; 2&#xFF0C;&#x56E0;&#x70BA;&#x6C92;&#x6709;&#x5DEE;&#x5F88;&#x591A;&#xFF0C;&#x6211;&#x5224;&#x65B7;&#x9019;&#x662F;&#x7D71;&#x8A08;&#x4E0A;&#x7684;&#x8AA4;&#x5DEE;&#x3002;</p>
@@ -374,278 +341,375 @@ TSP
 [4] TSPLIB<br>
 <a target="_blank" rel="noopener" href="http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/">http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/</a></p>
 
-            </div>
-
-            <!-- Post information -->
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
             
+              <a href="../../../07/31/%E5%8C%97%E7%A7%91%E8%B3%87%E5%B7%A5%E4%BF%AE%E8%AA%B2%E7%B4%80%E9%8C%84-%E7%A2%A9%E4%B8%80%E4%B8%8B/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
             
-    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-        <ul class="pagination d-block text-center">
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-08-10 00:54:06
+            </span>
             
-                <li class="previous page-item d-inline"><a href="../../13/%E5%BE%AE%E5%BE%AE%E4%B8%BB%E5%A9%A6%E5%BF%83%E5%BE%97/" class="page-link float-left">&larr;  Newer</a></li>
+          </div>
+          <div class="post-foot-prev">
             
+              <a href="../../13/%E5%BE%AE%E5%BE%AE%E4%B8%BB%E5%A9%A6%E5%BF%83%E5%BE%97/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
             
-                <li class="next page-item d-inline"><a href="../../../07/31/%E5%8C%97%E7%A7%91%E8%B3%87%E5%B7%A5%E4%BF%AE%E8%AA%B2%E7%B4%80%E9%8C%84-%E7%A2%A9%E4%B8%80%E4%B8%8B/" class="page-link float-right">Older  &rarr;</a></li>
-            
-        </ul>
-    </div>
-
-
-            
-                <!-- Comments -->
-                
-    
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    
-    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-        <div id="gitalk-container"></div>
-    </div>
-
-    <script>
-        let gitalk = new Gitalk({
-            clientID: '97c34b7bba491c6a5007',
-            clientSecret: '6140d208bae6bbbc69c65e3e332a46d090094fc8',
-            repo: 'HackTech',
-            owner: 'luswdev',
-            admin: "luswdev",
-            id: '2021-08-10 00:54:06',
-            title: 'Parallel TSP using pthread and fork',
-            distractionFreeMode: false  // Facebook-like distraction free mode
-        });
-        gitalk.render('gitalk-container');
-    </script>
-
-
-                
-
-            
-
+          </div>
         </div>
+      
     </div>
-</article> 
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
-    <style>
-        #toc-content .toc-link::before {
-            background-color: transparent;
-            max-height: 25px;
-        }
-
-        #toc-content .toc-link.is-active-link::before {
-            background-color: #404040;
-        }
-    </style>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
-    <div class="ui-toc dropup scrollspy-body pull-right" style="right: 3%;">
-        <button type="button" class="toc-btn btn btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-            <i class="fas fa-list"></i>
-        </button>
-        <div class="dropdown-menu dropdown-menu-right p-2"  aria-labelledby="tocLabel">
-            <div class="toc-widget">
-                <div id="toc-content" class="text-truncate">
-                </div>
-            </div>
-            <div class="toc-menu pt-3 pl-4">
-                <a class="expand-toggle d-block py-1" href="#"><span class="expand-text">Expand all</span><span class="close-text" style="display: none;">Collapse all</span></a>
-                <a class="back-to-top d-block py-1" href="#">Back to top</a>
-                <a class="go-to-bottom d-block py-1" href="#">Go to bottom</a>
-            </div>
-        </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Introduction"><span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#TSP"><span class="toc-text">TSP</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-opt"><span class="toc-text">2-opt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-opt-parallel"><span class="toc-text">2-opt parallel</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implementation"><span class="toc-text">Implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Algorithm"><span class="toc-text">Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fork"><span class="toc-text">Fork</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Parent-Process"><span class="toc-text">Parent Process</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Child-Process"><span class="toc-text">Child Process</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Experimental-Result"><span class="toc-text">Experimental Result</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#pr1002"><span class="toc-text">pr1002</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fl3795"><span class="toc-text">fl3795</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pla7397"><span class="toc-text">pla7397</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Speed-Up"><span class="toc-text">Speed Up</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Route"><span class="toc-text">Route</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Command"><span class="toc-text">Command</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Compile"><span class="toc-text">Compile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Execute"><span class="toc-text">Execute</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
     </div>
-    <script>
-        tocbot.init({
-            // Where to render the table of contents.
-            tocSelector: '#toc-content',
-            // Where to grab the headings to build the table of contents.
-            contentSelector: 'article',
-            // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h1, h2, h3',
-            // For headings inside relative or absolute positioned containers within content.
-            hasInnerContainers: true,
-        });
-    </script>
+  </div>
+
+  
+<script src="../../../../js/catalog.js"></script>
+
+
 
 
     
+      <div class="comments-container">
+        
 
 
-    <!-- Footer -->
-    <hr />
 
-<!-- Footer -->
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 text-center">
-                <ul class="list-inline">
-                    
 
-                    
 
-                    
-                        <li class="list-inline-item">
-                            <a rel="external" href="https://github.com/luswdev" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
+      </div>
+    
+  </div>
 
-                    
-                        <li class="list-inline-item">
-                            <a rel="external" href="https://www.linkedin.com/in/callum-lu" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
 
-                    
-                        <li class="list-inline-item">
-                            <a rel="external" href="mailto:info@lusw.dev" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
-
-                    
-                </ul>
-                <ul class="copyright footer-menu list-inline">
-                    
-                    
-                        <li class="list-inline-item">
-                            
-                            
-                            <a href="../../../../index.html">
-                                
-                                    Home
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="../../../../archives">
-                                
-                                    Archives
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="../../../../tags">
-                                
-                                    Tags
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="../../../../categories">
-                                
-                                    Categories
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="../../../../about">
-                                
-                                    About
-                                
-                            </a>
-                        </li>
-                    
-                </ul>
-                <p class="copyright footer-author">
-                    &copy; 2018-2021 
-                    <a rel="external" class="copyright-link" href="https://github.com/luswdev" target="_blank">Wendy</a><br/>
-                    Powered by <a rel="external" class="copyright-link" href="https://hexo.io/" target="_blank">Hexo</a>  
-                    <span class="copyright-split">&nbsp;|&nbsp;&nbsp;</span>
-                    Theme <a rel="external" class="copyright-link" href="https://github.com/luswdev/hexo-theme-clean.git" target="_blank">Clean</a>
-                    
-                    
-                </p>
-            </div>
-        </div>
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="email" href="">
+            <i class="iconfont icon-envelope"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" href="">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="twitter" href="">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="wechat" href="">
+            <i class="iconfont icon-wechat"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="weibo" href="">
+            <i class="iconfont icon-weibo"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
     </div>
-</footer>
-
-
-    <!-- After footer scripts -->
-    <!-- jQuery -->
-<script src="//cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js"></script>
-
-<!-- For drop down -->
-<script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-
-<!-- Bootstrap -->
-<script src="//cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
-<!-- Gallery -->
-<script src="//cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/js/lightgallery-all.min.js"></script>
-<!-- Busuanzi -->
-
-
-<!-- Search script -->
-
-<script src="../../../../js/search.js"></script>
-
-<script type="text/javascript">
-    $(function () {
-        searchFunc( '../../../../search.xml' , 'searchInput', 'searchResult');
-    });
-</script>
-
-
-
-<script src="../../../../js/main.js"></script>
-
-
-
-    <!-- Search Modal -->
-    <!-- Modal -->
-<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-        <div class="modal-content overflow-auto">
-            <div class="modal-header">
-                <input type="text" class="form-control" placeholder="Searching Keywords..." id="searchInput">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body">
-                <div id="searchResult">
-                    <div class="search-empty text-center text-muted p-5">
-                        <i class="far fa-meh"></i>
-                    </div>
-                </div>
-            </div> 
-        </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
     </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
 </div>
 
 
-</body>
+<script src="../../../../js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="../../../../js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + Parallel%20TSP%20using%20pthread%20and%20fork + '&url=' + http%3A%2F%2Fexample.com%2F2021%2F08%2F10%2FParallel-TSP-using-pthread-and-fork%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2021/08/10/Parallel-TSP-using-pthread-and-fork/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="../../../../js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
 </html>

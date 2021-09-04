@@ -1,174 +1,149 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<html lang="en" color-mode="light">
 
-<!--Description-->
-
-
-
-    <meta name="description" content="&amp;#x9019;&amp;#x662F;&amp;#x6E05;&amp;#x5927;&amp;#x5468;&amp;#x5FD7;&amp;#x9060;&amp;#x6559;&amp;#x6388;&amp;#x4F5C;&amp;#x696D;&amp;#x7CFB;&amp;#x7D71;&amp;#x7684;&amp;#x4F5C;&amp;#x696D;&amp;#xFF0C;&amp;#x6211;&amp;#x572"/>
-
-
-<!--Author-->
-
-    <meta name="author" content="Wendy"/>
-
-
-<!--Open Graph Title-->
-
-    <meta property="og:title" content="NachOS MP1 - System Call"/>
-
-
-<!--Open Graph Description-->
-
-    <meta property="og:description" content="&amp;#x9019;&amp;#x662F;&amp;#x6E05;&amp;#x5927;&amp;#x5468;&amp;#x5FD7;&amp;#x9060;&amp;#x6559;&amp;#x6388;&amp;#x4F5C;&amp;#x696D;&amp;#x7CFB;&amp;#x7D71;&amp;#x7684;&amp;#x4F5C;&amp;#x696D;&amp;#xFF0C;&amp;#x6211;&amp;#x572"/>
-
-
-<!--Open Graph Site Name-->
-    <meta property="og:site_name" content="Wendy"/>
-
-<!--Type page-->
-
-    <meta property="og:type" content="article"/>
-
-
-<!--Page Cover-->
-
-
-    <meta property="og:image" content="http://example.com/img/home-bg.jpg"/>
-
-
-<meta name="twitter:card" content="summary_large_image"/>
-
-
-
-
-    <meta name="twitter:image" content="http://example.com/img/home-bg.jpg"/>
-
-
-<!-- Title -->
-
-<title>NachOS MP1 - System Call | Wendy</title>
-
-<!-- Bootstrap Core CSS -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
-
-<!-- Custom CSS -->
-
-<link rel="stylesheet" href="../../../../css/main.css">
-
-
-<!-- Custom Fonts -->
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css" />
-<link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css" />
-<link href="//fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-<script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-<script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
-
-<!-- Gallery -->
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/featherlight@1.4.0/src/featherlight.css" integrity="sha256-30DV/STftlyQ6v8yaOWlabammvCYtRJERLj/m0b3zno=" crossorigin="anonymous">
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/css/lightgallery.min.css">
-
-<!-- favicon -->
-
-<link rel="icon" href="../../../../img/favicon.png"/>
-
-
-
-    <!-- Google Analytics -->
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Wendy" />
+  <meta name="description" content="" />
+  
+  
+  <title>
     
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158078787-1"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+      NachOS MP1 - System Call 
+      
+      
+      |
+    
+     Wendy
+  </title>
 
-    gtag('config', 'UA-158078787-1');
+  
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
+  
+
+  <!-- Raleway-Font -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+
+  <!-- hexo site css -->
+  
+<link rel="stylesheet" href="../../../../css/color-scheme.css">
+<link rel="stylesheet" href="../../../../css/base.css">
+<link rel="stylesheet" href="../../../../iconfont/iconfont.css">
+<link rel="stylesheet" href="../../../../css/github-markdown.css">
+<link rel="stylesheet" href="../../../../css/highlight.css">
+<link rel="stylesheet" href="../../../../css/comments.css">
+
+
+  <!-- jquery3.3.1 -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- fancybox -->
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <script async src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+  
+<script src="../../../../js/fancybox.js"></script>
+
+
+  
+
+  <script>
+    var html = document.documentElement
+    const colorMode = localStorage.getItem('color-mode')
+    if (colorMode) {
+      document.documentElement.setAttribute('color-mode', colorMode)
+    }
+  </script>
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="Wendy" type="application/atom+xml">
+</head>
+
+
+  <body>
+    <div id="app">
+      <div class="header">
+  <div class="avatar">
+    <a href="/">
+      <!-- 头像取消懒加载，添加no-lazy -->
+      
+        <img src="/images/avatar.png" alt="">
+      
+    </a>
+    <div class="nickname"><a href="/">Oranges</a></div>
+  </div>
+  <div class="navbar">
+    <ul>
+      
+        <li class="nav-item" data-path="/">
+          <a href="/">Home</a>
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          <a href="/archives/">Archives</a>
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          <a href="/tags/">Tags</a>
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          <a href="/friends/">Friends</a>
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          <a href="/about/">About</a>
+        </li>
+      
+    </ul>
+  </div>
+</div>
+
+
+<script src="../../../../js/activeNav.js"></script>
+
+
+
+      <div class="flex-container">
+        <!-- 文章详情页，展示文章具体内容，url形式：https://yoursite/文章标题/ -->
+<!-- 同时为「标签tag」，「朋友friend」，「分类categories」，「关于about」页面的承载页面，具体展示取决于page.type -->
+
+<!-- LaTex Display -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
 </script>
 
 
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="Wendy" type="application/atom+xml">
-</head>
-<!-- Head tag -->
+  
 
-<body>
+  
 
-    <!-- Menu -->
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top bg-transparent position-absolute w-100 p-0" id="nav">
-    <div class="container pl-0 pr-0">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <a class="navbar-brand text-white p-1 pl-3" href="../../../../index.html">Wendy</a>
-        </div>
-        <div class="navbar-nav float-right">
-            <button class="btn btn-link search-btn navbar-item" data-toggle="modal" data-target="#searchModal">
-                <i class="fas fa-search"></i>
-            </button>
-        </div>
-    </div>
-    <!-- /.container -->
-</nav>
+  
 
-
-    <!-- Main Content -->
-    <!-- Page Header -->
-<!-- Set your background image for this header in your post front-matter: cover -->
-
-<header class="intro-header" style="background-image: url('../../../../img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-md-12 text-center">
-                <div class="post-heading text-white">
-                    <h1>NachOS MP1 - System Call</h1>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <!-- Post Main Content -->
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-                
-                    <span class="meta d-inline-block">
-    
-    
-    <!-- Date -->
-    
-        <span class="post-meta-split">&nbsp;|&nbsp;</span>
-        <i class="far fa-calendar-check fa-fw"></i>
-        2021-07-14
-    
-    <!-- word count and read count -->
-    
-        <span class="post-meta-split">&nbsp;|&nbsp;</span>
-        <i class="far fa-file-word fa-fw"></i>
-        3.7k
-    
-
-    
-
-    
-</span>  
-                
-                <p>&#x9019;&#x662F;&#x6E05;&#x5927;&#x5468;&#x5FD7;&#x9060;&#x6559;&#x6388;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x7684;&#x4F5C;&#x696D;&#xFF0C;&#x6211;&#x5728;&#x7DB2;&#x8DEF;&#x4E0A;&#x627E;&#x5230;&#x9019;&#x4EFD;&#x4F5C;&#x696D;&#x7684;&#x76F8;&#x95DC;&#x8CC7;&#x6599;&#xFF0C;&#x6211;&#x4E26;&#x6C92;&#x6709;&#x4E0A;&#x904E;&#x9019;&#x9580;&#x8AB2;&#xFF0C;&#x9019;&#x53EA;&#x662F;&#x6211;&#x7684;&#x81EA;&#x5B78;&#x7DF4;&#x7FD2;&#xFF0C;&#x6211;&#x7121;&#x6CD5;&#x80AF;&#x5B9A;&#x6211;&#x7684;&#x5831;&#x544A;&#x548C;&#x5BE6;&#x4F5C;&#x7684;&#x6B63;&#x78BA;&#x6027;&#xFF0C;&#x6211;&#x7684;&#x5BE6;&#x4F5C;&#x5728;<a target="_blank" rel="noopener" href="https://github.com/WendyUsingGithub/NTHU_OS_NachOS/tree/main/NachOS-4.0_MP1">&#x9019;&#x88E1;</a>&#xFF0C;&#x6211;&#x7684; shell script &#x5728;<a target="_blank" rel="noopener" href="https://github.com/WendyUsingGithub/NTHU_OS_NachOS/blob/main/NachOS-4.0_MP1/code/test/sh.sh">&#x9019;&#x88E1;</a>&#x3002;</p>
+  
+  <!-- 文章内容页 url形式：https://yoursite/文章标题/ -->
+  <div class="container post-details" id="post-details">
+    <div class="post-content">
+      <div class="post-title">NachOS MP1 - System Call</div>
+      <div class="post-attach">
+        <span class="post-pubtime">
+          <i class="iconfont icon-updatetime" title="Update time"></i>
+          2021-07-14 00:57:48
+        </span>
+        
+      </div>
+      <div class="markdown-body">
+        <p>&#x9019;&#x662F;&#x6E05;&#x5927;&#x5468;&#x5FD7;&#x9060;&#x6559;&#x6388;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x7684;&#x4F5C;&#x696D;&#xFF0C;&#x6211;&#x5728;&#x7DB2;&#x8DEF;&#x4E0A;&#x627E;&#x5230;&#x9019;&#x4EFD;&#x4F5C;&#x696D;&#x7684;&#x76F8;&#x95DC;&#x8CC7;&#x6599;&#xFF0C;&#x6211;&#x4E26;&#x6C92;&#x6709;&#x4E0A;&#x904E;&#x9019;&#x9580;&#x8AB2;&#xFF0C;&#x9019;&#x53EA;&#x662F;&#x6211;&#x7684;&#x81EA;&#x5B78;&#x7DF4;&#x7FD2;&#xFF0C;&#x6211;&#x7121;&#x6CD5;&#x80AF;&#x5B9A;&#x6211;&#x7684;&#x5831;&#x544A;&#x548C;&#x5BE6;&#x4F5C;&#x7684;&#x6B63;&#x78BA;&#x6027;&#xFF0C;&#x6211;&#x7684;&#x5BE6;&#x4F5C;&#x5728;<a target="_blank" rel="noopener" href="https://github.com/WendyUsingGithub/NTHU_OS_NachOS/tree/main/NachOS-4.0_MP1">&#x9019;&#x88E1;</a>&#xFF0C;&#x6211;&#x7684; shell script &#x5728;<a target="_blank" rel="noopener" href="https://github.com/WendyUsingGithub/NTHU_OS_NachOS/blob/main/NachOS-4.0_MP1/code/test/sh.sh">&#x9019;&#x88E1;</a>&#x3002;</p>
 <h2 id="Code-Study">Code Study</h2>
 <h3 id="SC-Halt">SC_Halt</h3>
 <p>Trace the SC_Halt system call to understand the implementation of a system call. (Sample code : halt.c)</p>
@@ -384,278 +359,375 @@
 <p>[1] shawn2000100/10810CS_342301_OperatingSystem<br>
 <a target="_blank" rel="noopener" href="https://github.com/shawn2000100/10810CS_342301_OperatingSystem">https://github.com/shawn2000100/10810CS_342301_OperatingSystem</a></p>
 
-            </div>
-
-            <!-- Post information -->
+      </div>
+      
+        <div class="prev-or-next">
+          <div class="post-foot-next">
             
+              <a href="../../../06/25/%E5%AD%B8%E6%9C%9F%E7%B5%90%E6%9D%9F%E4%BA%86/" target="_self">
+                <i class="iconfont icon-chevronleft"></i>
+                <span>Prev</span>
+              </a>
             
-    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-        <ul class="pagination d-block text-center">
+          </div>
+          <div class="post-attach">
+            <span class="post-pubtime">
+              <i class="iconfont icon-updatetime" title="Update time"></i>
+              2021-07-14 00:57:48
+            </span>
             
-                <li class="previous page-item d-inline"><a href="../../18/NachOS-MP2/" class="page-link float-left">&larr;  Newer</a></li>
+          </div>
+          <div class="post-foot-prev">
             
+              <a href="../../18/NachOS-MP2/" target="_self">
+                <span>Next</span>
+                <i class="iconfont icon-chevronright"></i>
+              </a>
             
-                <li class="next page-item d-inline"><a href="../../../06/25/%E5%AD%B8%E6%9C%9F%E7%B5%90%E6%9D%9F%E4%BA%86/" class="page-link float-right">Older  &rarr;</a></li>
-            
-        </ul>
-    </div>
-
-
-            
-                <!-- Comments -->
-                
-    
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    
-    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-        <div id="gitalk-container"></div>
-    </div>
-
-    <script>
-        let gitalk = new Gitalk({
-            clientID: '97c34b7bba491c6a5007',
-            clientSecret: '6140d208bae6bbbc69c65e3e332a46d090094fc8',
-            repo: 'HackTech',
-            owner: 'luswdev',
-            admin: "luswdev",
-            id: '2021-07-14 00:57:48',
-            title: 'NachOS MP1 - System Call',
-            distractionFreeMode: false  // Facebook-like distraction free mode
-        });
-        gitalk.render('gitalk-container');
-    </script>
-
-
-                
-
-            
-
+          </div>
         </div>
+      
     </div>
-</article> 
-
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
-    <style>
-        #toc-content .toc-link::before {
-            background-color: transparent;
-            max-height: 25px;
-        }
-
-        #toc-content .toc-link.is-active-link::before {
-            background-color: #404040;
-        }
-    </style>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
-    <div class="ui-toc dropup scrollspy-body pull-right" style="right: 3%;">
-        <button type="button" class="toc-btn btn btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-            <i class="fas fa-list"></i>
-        </button>
-        <div class="dropdown-menu dropdown-menu-right p-2"  aria-labelledby="tocLabel">
-            <div class="toc-widget">
-                <div id="toc-content" class="text-truncate">
-                </div>
-            </div>
-            <div class="toc-menu pt-3 pl-4">
-                <a class="expand-toggle d-block py-1" href="#"><span class="expand-text">Expand all</span><span class="close-text" style="display: none;">Collapse all</span></a>
-                <a class="back-to-top d-block py-1" href="#">Back to top</a>
-                <a class="go-to-bottom d-block py-1" href="#">Go to bottom</a>
-            </div>
-        </div>
+    
+  <div id="btn-catalog" class="btn-catalog">
+    <i class="iconfont icon-catalog"></i>
+  </div>
+  <div class="post-catalog hidden" id="catalog">
+    <div class="title">Contents</div>
+    <div class="catalog-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Code-Study"><span class="toc-text">Code Study</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SC-Halt"><span class="toc-text">SC_Halt</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Halt"><span class="toc-text">Halt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Machine-Run"><span class="toc-text">1. Machine::Run</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Machine-OneInstruction"><span class="toc-text">2. Machine::OneInstruction</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Machine-RaiseException"><span class="toc-text">3. Machine::RaiseException</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-ExceptionHandler"><span class="toc-text">4. ExceptionHandler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-SysHalt"><span class="toc-text">5. SysHalt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Interrupt-Halt"><span class="toc-text">6. Interrupt::Halt</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SC-Create"><span class="toc-text">SC_Create</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Create"><span class="toc-text">Create</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Machine-OneInstruction"><span class="toc-text">1. Machine::OneInstruction</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Machine-RaiseException"><span class="toc-text">2. Machine::RaiseException</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-ExceptionHandler"><span class="toc-text">3. ExceptionHandler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-SysCreate"><span class="toc-text">4. SysCreate</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Interrupt-CreateFile"><span class="toc-text">5. Interrupt::CreateFile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Filesystem-Create"><span class="toc-text">6.Filesystem::Create</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-OpenForWrite"><span class="toc-text">7. OpenForWrite</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PrintInt"><span class="toc-text">PrintInt</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#PrintInt-2"><span class="toc-text">PrintInt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Machine-OneInstruction-2"><span class="toc-text">1. Machine::OneInstruction</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Machine-RaiseException-2"><span class="toc-text">2. Machine::RaiseException</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-ExceptionHandler-2"><span class="toc-text">3. ExceptionHandler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-SysPrintInt"><span class="toc-text">4. SysPrintInt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-SynchConsoleOutput-PutInt"><span class="toc-text">5. SynchConsoleOutput::PutInt</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-ConsoleOutput-PutChar"><span class="toc-text">6. ConsoleOutput::PutChar</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-Semaphore-P"><span class="toc-text">7. Semaphore::P</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Interrupt-Schedule"><span class="toc-text">8. Interrupt::Schedule</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-Machine-Run"><span class="toc-text">9. Machine::Run</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-Interrupt-OneTick"><span class="toc-text">10. Interrupt::OneTick</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#11-Interrupt-CheckIfDue"><span class="toc-text">11. Interrupt::CheckIfDue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#12-ConsoleOutput-CallBack"><span class="toc-text">12. ConsoleOutput::CallBack</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#13-SynchConsoleOutput-CallBack"><span class="toc-text">13. SynchConsoleOutput::CallBack</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Implementation"><span class="toc-text">Implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Write"><span class="toc-text">Write</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Machine-OneInstruction-3"><span class="toc-text">1. Machine::OneInstruction</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Machine-RaiseException-3"><span class="toc-text">2. Machine::RaiseException</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-ExceptionHandler-3"><span class="toc-text">3. ExceptionHandler</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-SysWrite"><span class="toc-text">4. SysWrite</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Kernel-WriteFile"><span class="toc-text">5. Kernel::WriteFile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Filesystem-WriteF"><span class="toc-text">6. Filesystem::WriteF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-1-WriteFile"><span class="toc-text">7_1.  WriteFile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-2-OpenForReadWrite"><span class="toc-text">7_2. OpenForReadWrite</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-3-Read"><span class="toc-text">7_3. Read</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-4-Close"><span class="toc-text">7_4. Close</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Command"><span class="toc-text">Command</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Compile-Rebuild-NachOS"><span class="toc-text">Compile &#x2F; Rebuild NachOS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Test-NachOS"><span class="toc-text">Test NachOS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
     </div>
-    <script>
-        tocbot.init({
-            // Where to render the table of contents.
-            tocSelector: '#toc-content',
-            // Where to grab the headings to build the table of contents.
-            contentSelector: 'article',
-            // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h1, h2, h3',
-            // For headings inside relative or absolute positioned containers within content.
-            hasInnerContainers: true,
-        });
-    </script>
+  </div>
+
+  
+<script src="../../../../js/catalog.js"></script>
+
+
 
 
     
+      <div class="comments-container">
+        
 
 
-    <!-- Footer -->
-    <hr />
 
-<!-- Footer -->
-<footer id="footer">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 text-center">
-                <ul class="list-inline">
-                    
 
-                    
 
-                    
-                        <li class="list-inline-item">
-                            <a rel="external" href="https://github.com/luswdev" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
+      </div>
+    
+  </div>
 
-                    
-                        <li class="list-inline-item">
-                            <a rel="external" href="https://www.linkedin.com/in/callum-lu" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
 
-                    
-                        <li class="list-inline-item">
-                            <a rel="external" href="mailto:info@lusw.dev" target="_blank">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                    
-
-                    
-                </ul>
-                <ul class="copyright footer-menu list-inline">
-                    
-                    
-                        <li class="list-inline-item">
-                            
-                            
-                            <a href="../../../../index.html">
-                                
-                                    Home
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="../../../../archives">
-                                
-                                    Archives
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="../../../../tags">
-                                
-                                    Tags
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="../../../../categories">
-                                
-                                    Categories
-                                
-                            </a>
-                        </li>
-                    
-                        <li class="list-inline-item">
-                            
-                                <span class="copyright-split">&nbsp;|&nbsp;</span>
-                            
-                            
-                            <a href="../../../../about">
-                                
-                                    About
-                                
-                            </a>
-                        </li>
-                    
-                </ul>
-                <p class="copyright footer-author">
-                    &copy; 2018-2021 
-                    <a rel="external" class="copyright-link" href="https://github.com/luswdev" target="_blank">Wendy</a><br/>
-                    Powered by <a rel="external" class="copyright-link" href="https://hexo.io/" target="_blank">Hexo</a>  
-                    <span class="copyright-split">&nbsp;|&nbsp;&nbsp;</span>
-                    Theme <a rel="external" class="copyright-link" href="https://github.com/luswdev/hexo-theme-clean.git" target="_blank">Clean</a>
-                    
-                    
-                </p>
-            </div>
-        </div>
+        <div class="footer">
+  <div class="social">
+    <ul>
+      
+        <li>
+          <a title="github" target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">
+            <i class="iconfont icon-github"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="email" href="">
+            <i class="iconfont icon-envelope"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="facebook" href="">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="twitter" href="">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="wechat" href="">
+            <i class="iconfont icon-wechat"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="weibo" href="">
+            <i class="iconfont icon-weibo"></i>
+          </a>
+        </li>
+      
+        <li>
+          <a title="rss" href="/atom.xml">
+            <i class="iconfont icon-rss"></i>
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Copyright © Oranges 2021</a>
+        
     </div>
-</footer>
-
-
-    <!-- After footer scripts -->
-    <!-- jQuery -->
-<script src="//cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js"></script>
-
-<!-- For drop down -->
-<script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-
-<!-- Bootstrap -->
-<script src="//cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
-<!-- Gallery -->
-<script src="//cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/js/lightgallery-all.min.js"></script>
-<!-- Busuanzi -->
-
-
-<!-- Search script -->
-
-<script src="../../../../js/search.js"></script>
-
-<script type="text/javascript">
-    $(function () {
-        searchFunc( '../../../../search.xml' , 'searchInput', 'searchResult');
-    });
-</script>
-
-
-
-<script src="../../../../js/main.js"></script>
-
-
-
-    <!-- Search Modal -->
-    <!-- Modal -->
-<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-        <div class="modal-content overflow-auto">
-            <div class="modal-header">
-                <input type="text" class="form-control" placeholder="Searching Keywords..." id="searchInput">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body">
-                <div id="searchResult">
-                    <div class="search-empty text-center text-muted p-5">
-                        <i class="far fa-meh"></i>
-                    </div>
-                </div>
-            </div> 
-        </div>
+  
+    <div class="footer-more">
+      
+        <a target="_blank" rel="noopener" href="https://github.com/zchengsite/hexo-theme-oranges">Theme by Oranges | Powered by Hexo</a>
+        
     </div>
+  
+</div>
+
+      </div>
+
+      <div class="tools-bar">
+        <div class="back-to-top tools-bar-item hidden">
+  <a href="javascript: void(0)">
+    <i class="iconfont icon-chevronup"></i>
+  </a>
 </div>
 
 
-</body>
+<script src="../../../../js/backtotop.js"></script>
+
+
+
+        
+  <div class="search-icon tools-bar-item" id="search-icon">
+    <a href="javascript: void(0)">
+      <i class="iconfont icon-search"></i>
+    </a>
+  </div>
+
+  <div class="search-overlay hidden">
+    <div class="search-content" tabindex="0">
+      <div class="search-title">
+        <span class="search-icon-input">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-search"></i>
+          </a>
+        </span>
+        
+          <input type="text" class="search-input" id="search-input" placeholder="Search...">
+        
+        <span class="search-close-icon" id="search-close-icon">
+          <a href="javascript: void(0)">
+            <i class="iconfont icon-close"></i>
+          </a>
+        </span>
+      </div>
+      <div class="search-result" id="search-result"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var inputArea = document.querySelector("#search-input")
+    var searchOverlayArea = document.querySelector(".search-overlay")
+
+    inputArea.onclick = function() {
+      getSearchFile()
+      this.onclick = null
+    }
+
+    inputArea.onkeydown = function() {
+      if(event.keyCode == 13)
+        return false
+    }
+
+    function openOrHideSearchContent() {
+      let isHidden = searchOverlayArea.classList.contains('hidden')
+      if (isHidden) {
+        searchOverlayArea.classList.remove('hidden')
+        document.body.classList.add('hidden')
+        // inputArea.focus()
+      } else {
+        searchOverlayArea.classList.add('hidden')
+        document.body.classList.remove('hidden')
+      }
+    }
+
+    function blurSearchContent(e) {
+      if (e.target === searchOverlayArea) {
+        openOrHideSearchContent()
+      }
+    }
+
+    document.querySelector("#search-icon").addEventListener("click", openOrHideSearchContent, false)
+    document.querySelector("#search-close-icon").addEventListener("click", openOrHideSearchContent, false)
+    searchOverlayArea.addEventListener("click", blurSearchContent, false)
+
+    var searchFunc = function (path, search_id, content_id) {
+      'use strict';
+      var $input = document.getElementById(search_id);
+      var $resultContent = document.getElementById(content_id);
+      $resultContent.innerHTML = "<ul><span class='local-search-empty'>First search, index file loading, please wait...<span></ul>";
+      $.ajax({
+        // 0x01. load xml file
+        url: path,
+        dataType: "xml",
+        success: function (xmlResponse) {
+          // 0x02. parse xml file
+          var datas = $("entry", xmlResponse).map(function () {
+            return {
+              title: $("title", this).text(),
+              content: $("content", this).text(),
+              url: $("url", this).text()
+            };
+          }).get();
+          $resultContent.innerHTML = "";
+
+          $input.addEventListener('input', function () {
+            // 0x03. parse query to keywords list
+            var str = '<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length <= 0) {
+              return;
+            }
+            // 0x04. perform local searching
+            datas.forEach(function (data) {
+              var isMatch = true;
+              var content_index = [];
+              if (!data.title || data.title.trim() === '') {
+                data.title = "Untitled";
+              }
+              var orig_data_title = data.title.trim();
+              var data_title = orig_data_title.toLowerCase();
+              var orig_data_content = data.content.trim().replace(/<[^>]+>/g, "");
+              var data_content = orig_data_content.toLowerCase();
+              var data_url = data.url;
+              var index_title = -1;
+              var index_content = -1;
+              var first_occur = -1;
+              // only match artiles with not empty contents
+              if (data_content !== '') {
+                keywords.forEach(function (keyword, i) {
+                  index_title = data_title.indexOf(keyword);
+                  index_content = data_content.indexOf(keyword);
+
+                  if (index_title < 0 && index_content < 0) {
+                    isMatch = false;
+                  } else {
+                    if (index_content < 0) {
+                      index_content = 0;
+                    }
+                    if (i == 0) {
+                      first_occur = index_content;
+                    }
+                    // content_index.push({index_content:index_content, keyword_len:keyword_len});
+                  }
+                });
+              } else {
+                isMatch = false;
+              }
+              // 0x05. show search results
+              if (isMatch) {
+                str += "<li><a href='" + data_url + "' class='search-result-title'>" + orig_data_title + "</a>";
+                var content = orig_data_content;
+                if (first_occur >= 0) {
+                  // cut out 100 characters
+                  var start = first_occur - 20;
+                  var end = first_occur + 80;
+
+                  if (start < 0) {
+                    start = 0;
+                  }
+
+                  if (start == 0) {
+                    end = 100;
+                  }
+
+                  if (end > content.length) {
+                    end = content.length;
+                  }
+
+                  var match_content = content.substr(start, end);
+
+                  // highlight all keywords
+                  keywords.forEach(function (keyword) {
+                    var regS = new RegExp(keyword, "gi");
+                    match_content = match_content.replace(regS, "<span class=\"search-keyword\">" + keyword + "</span>");
+                  });
+
+                  str += "<p class=\"search-result-abstract\">" + match_content + "...</p>"
+                }
+                str += "</li>";
+              }
+            });
+            str += "</ul>";
+            if (str.indexOf('<li>') === -1) {
+              return $resultContent.innerHTML = "<ul><span class='local-search-empty'>No result<span></ul>";
+            }
+            $resultContent.innerHTML = str;
+          });
+        },
+        error: function(xhr, status, error) {
+          $resultContent.innerHTML = ""
+          if (xhr.status === 404) {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The search.xml file was not found, please refer to：<a href='https://github.com/zchengsite/hexo-theme-oranges#configuration' target='_black'>configuration</a><span></ul>";
+          } else {
+            $resultContent.innerHTML = "<ul><span class='local-search-empty'>The request failed, Try to refresh the page or try again later.<span></ul>";
+          }
+        }
+      });
+      $(document).on('click', '#search-close-icon', function() {
+        $('#search-input').val('');
+        $('#search-result').html('');
+      });
+    }
+
+    var getSearchFile = function() {
+        var path = "/search.xml";
+        searchFunc(path, 'search-input', 'search-result');
+    }
+  </script>
+
+
+
+
+        
+  <div class="tools-bar-item theme-icon" id="switch-color-scheme">
+    <a href="javascript: void(0)">
+      <i id="theme-icon" class="iconfont icon-moon"></i>
+    </a>
+  </div>
+
+  
+<script src="../../../../js/colorscheme.js"></script>
+
+
+
+
+
+        
+  
+    <div class="share-icon tools-bar-item">
+      <a href="javascript: void(0)" id="share-icon">
+        <i class="iconfont iconshare"></i>
+      </a>
+      <div class="share-content hidden">
+        
+          <a class="share-item" href="https://twitter.com/intent/tweet?text=' + NachOS%20MP1%20-%20System%20Call + '&url=' + http%3A%2F%2Fexample.com%2F2021%2F07%2F14%2FNachOS-MP1%2F + '" target="_blank" title="Twitter">
+            <i class="iconfont icon-twitter"></i>
+          </a>
+        
+        
+          <a class="share-item" href="https://www.facebook.com/sharer.php?u=http://example.com/2021/07/14/NachOS-MP1/" target="_blank" title="Facebook">
+            <i class="iconfont icon-facebooksquare"></i>
+          </a>
+        
+      </div>
+    </div>
+  
+  
+<script src="../../../../js/shares.js"></script>
+
+
+
+      </div>
+    </div>
+  </body>
 </html>
