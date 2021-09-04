@@ -1,418 +1,530 @@
 <!DOCTYPE html>
-<html>
-  <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  <meta name="description" content="yanm1ng&#39;s blog">
-  <meta name="keyword" content="hexo-theme, vuejs">
-  
-    <link rel="shortcut icon" href="css/images/logo.png">
-  
-  <title>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<!--Description-->
+
+
+
+
+<!--Author-->
+
+    <meta name="author" content="Wendy"/>
+
+
+<!--Open Graph Title-->
+
+    <meta property="og:title" content="Wendy"/>
+
+
+<!--Open Graph Description-->
+
+
+<!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Wendy"/>
+
+<!--Type page-->
+
+    <meta property="og:type" content="website"/>
+
+
+<!--Page Cover-->
+
+
+    <meta property="og:image" content="http://example.com/img/home-bg.jpg"/>
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+
+
+
+
+    <meta name="twitter:image" content="http://example.com/img/home-bg.jpg"/>
+
+
+<!-- Title -->
+
+<title>Wendy</title>
+
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+
+<!-- Custom CSS -->
+
+<link rel="stylesheet" href="css/main.css">
+
+
+<!-- Custom Fonts -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css" />
+<link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css" />
+<link href="//fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- Gallery -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/featherlight@1.4.0/src/featherlight.css" integrity="sha256-30DV/STftlyQ6v8yaOWlabammvCYtRJERLj/m0b3zno=" crossorigin="anonymous">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/css/lightgallery.min.css">
+
+<!-- favicon -->
+
+<link rel="icon" href="/img/favicon.png"/>
+
+
+
+    <!-- Google Analytics -->
     
-      Wendy
-    
-  </title>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
-  
-<link rel="stylesheet" href="css/style.css">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158078787-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
-  
-    
-<script src="js/qrious.js"></script>
+    gtag('config', 'UA-158078787-1');
+</script>
 
-  
-  
-  
-  
-    <!-- MathJax support START -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- MathJax support END -->
-  
-
-
-  
-  
-    
-<script src="js/local-search.js"></script>
 
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="Wendy" type="application/atom+xml">
 </head>
-<div class="wechat-share">
-  <img src="/css/images/logo.png" />
-</div>
-  <body>
-    <header class="header fixed-header">
-  <div class="header-container">
-    <a class="home-link" href="index.html">
-      <div class="logo"></div>
-      <span>Wendy</span>
-    </a>
-    <ul class="right-list">
-      
-        <li class="list-item">
-          
-            <a href="index.html" class="item-link">Home</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/series/" class="item-link">Series</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/tags/" class="item-link">Tags</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/archives/" class="item-link">Archives</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/project/" class="item-link">Projects</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="/about/" class="item-link">About</a>
-          
-        </li>
-      
-      
-        <li class="menu-item menu-item-search right-list">
-    <a role="button" class="popup-trigger">
-        <i class="fa fa-search fa-fw"></i>
-    </a>
-</li>
-      
-    </ul>
-    <div class="menu">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </div>
-    <div class="menu-mask">
-      <ul class="menu-list">
-        
-          <li class="menu-item">
-            
-              <a href="index.html" class="menu-link">Home</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/series/" class="menu-link">Series</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/tags/" class="menu-link">Tags</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/archives/" class="menu-link">Archives</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/project/" class="menu-link">Projects</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="/about/" class="menu-link">About</a>
-            
-          </li>
-        
-      </ul>
-    </div>
-    
-      <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-            <span class="search-icon">
-                <i class="fa fa-search"></i>
-            </span>
-            <div class="search-input-container">
-                <input autocomplete="off" autocapitalize="off"
-                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
-                    type="search" class="search-input">
-            </div>
-            <span class="popup-btn-close">
-                <i class="fa fa-times-circle"></i>
-            </span>
+<!-- Head tag -->
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top bg-transparent position-absolute w-100 p-0" id="nav">
+    <div class="container pl-0 pr-0">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <a class="navbar-brand text-white p-1 pl-3" href="index.html">Wendy</a>
         </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+        <div class="navbar-nav float-right">
+            <button class="btn btn-link search-btn navbar-item" data-toggle="modal" data-target="#searchModal">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in the theme's configuration: index_cover -->
+<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-md-2 col-md-10 offset-md-1">
+                <div class="site-heading text-center text-white">
+                    <h1>Wendy</h1>
+                    <hr class="small">
+                    <span class="subheading d-block"></span>
+                </div>
             </div>
         </div>
     </div>
-</div>
-    
-  </div>
 </header>
 
-    <main class="app-body">
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="2021/08/28/OSDI-Lab0-Environment-Setup/">OSDI Lab0 - Environment Setup</a>
-      </h2>
-      <p class="article-date">August 28, 2021</p>
-      
-      <div class="article-summary">
+<!-- Main Content -->
+<div class="container page-index">
+    <div class="row">
+        <div class="col-lg-8 offset-md-2 col-md-10 offset-md-1">
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+        </div>
+        <div class="col-lg-8 offset-md-2 col-md-10 offset-md-1 post-all">    
+            
+                
+                    <div class="post-preview post-preview-index">
+    <a href="2021/08/28/OSDI-Lab0-Environment-Setup/">
+        <h2 class="post-title">
+            OSDI Lab0 - Environment Setup
+        </h2>
         
-          Cross-platform development
-Cross compiler
-&#x7576;&#x7DE8;&#x8B6F;&#x5DE5;&#x5177;&#x4F7F;&#x7528;&#x7684;&#x6307;&#x4EE4;&#x96C6;&#x548C;&#x7DE8; ...
+    </a>
+    <p class="post-meta">
+        <!-- Date and Author -->
         
-      </div>
-      <a class="more" href="2021/08/28/OSDI-Lab0-Environment-Setup/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="2021/08/14/NachOS-MP3-CPU-scheduling/">NachOS MP3 - CPU Scheduling</a>
-      </h2>
-      <p class="article-date">August 14, 2021</p>
-      
-      <div class="article-summary">
-        
-          &#x9019;&#x662F;&#x6E05;&#x5927;&#x5468;&#x5FD7;&#x9060;&#x6559;&#x6388;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x7684;&#x4F5C;&#x696D;&#xFF0C;&#x6211;&# ...
-        
-      </div>
-      <a class="more" href="2021/08/14/NachOS-MP3-CPU-scheduling/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="2021/08/13/%E5%BE%AE%E5%BE%AE%E4%B8%BB%E5%A9%A6%E5%BF%83%E5%BE%97/">微微主婦心得</a>
-      </h2>
-      <p class="article-date">August 13, 2021</p>
-      
-        
-  <a href="/tags#生活" >
-    <span class="tag-code">生活</span>
-  </a>
-
-      
-      <div class="article-summary">
-        
-          &#x6691;&#x5047;&#x525B;&#x958B;&#x59CB;&#x7684;&#x6642;&#x5019;&#x5C0D;&#x75AB;&#x60C5;&#x9084;&#x6709;&#x9EDE;&#x671F;&#x5F85;&#xFF0C;&#x60F3;&# ...
-        
-      </div>
-      <a class="more" href="2021/08/13/%E5%BE%AE%E5%BE%AE%E4%B8%BB%E5%A9%A6%E5%BF%83%E5%BE%97/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="2021/08/10/Parallel-TSP-using-pthread-and-fork/">Parallel TSP using pthread and fork</a>
-      </h2>
-      <p class="article-date">August 10, 2021</p>
-      
-      <div class="article-summary">
-        
-          Introduction
-TSP
-&#x65C5;&#x884C;&#x5546;&#x554F;&#x984C;&#x662F;&#x9019;&#x6A23;&#x4E00;&#x500B;&#x554F;&#x984C; : &#x7D66;&#x5B9A;&#x4E00;&#x7CF ...
-        
-      </div>
-      <a class="more" href="2021/08/10/Parallel-TSP-using-pthread-and-fork/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="2021/07/31/%E5%8C%97%E7%A7%91%E8%B3%87%E5%B7%A5%E4%BF%AE%E8%AA%B2%E7%B4%80%E9%8C%84-%E7%A2%A9%E4%B8%80%E4%B8%8B/">北科資工修課紀錄 - 碩一下</a>
-      </h2>
-      <p class="article-date">July 31, 2021</p>
-      
-      <div class="article-summary">
-        
-          &#x78A9;&#x4E00;&#x4E0B;
-&#x56E0;&#x70BA;&#x7533;&#x8ACB;&#x63D0;&#x65E9;&#x5165;&#x5B78;&#xFF0C;&#x6240;&#x4EE5;&#x4E8C;&#x6708;&#x5C31;&#x5165;& ...
-        
-      </div>
-      <a class="more" href="2021/07/31/%E5%8C%97%E7%A7%91%E8%B3%87%E5%B7%A5%E4%BF%AE%E8%AA%B2%E7%B4%80%E9%8C%84-%E7%A2%A9%E4%B8%80%E4%B8%8B/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="2021/07/18/NachOS-MP2/">NachOS MP2 - Multi Programming</a>
-      </h2>
-      <p class="article-date">July 18, 2021</p>
-      
-      <div class="article-summary">
-        
-          &#x9019;&#x662F;&#x6E05;&#x5927;&#x5468;&#x5FD7;&#x9060;&#x6559;&#x6388;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x7684;&#x4F5C;&#x696D;&#xFF0C;&#x6211;&# ...
-        
-      </div>
-      <a class="more" href="2021/07/18/NachOS-MP2/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="2021/07/14/NachOS-MP1/">NachOS MP1 - System Call</a>
-      </h2>
-      <p class="article-date">July 14, 2021</p>
-      
-      <div class="article-summary">
-        
-          &#x9019;&#x662F;&#x6E05;&#x5927;&#x5468;&#x5FD7;&#x9060;&#x6559;&#x6388;&#x4F5C;&#x696D;&#x7CFB;&#x7D71;&#x7684;&#x4F5C;&#x696D;&#xFF0C;&#x6211;&# ...
-        
-      </div>
-      <a class="more" href="2021/07/14/NachOS-MP1/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="2021/06/25/%E5%AD%B8%E6%9C%9F%E7%B5%90%E6%9D%9F%E4%BA%86/">學期結束了</a>
-      </h2>
-      <p class="article-date">June 25, 2021</p>
-      
-      <div class="article-summary">
-        
-          &#x5927;&#x6982;&#x516D;&#x500B;&#x5C0F;&#x6642;&#x4E4B;&#x524D;&#x5B8C;&#x6210;&#x4E86;&#x9019;&#x5B78;&#x671F;&#x7684;&#x6700;&#x5F8C;&#x4E00;&# ...
-        
-      </div>
-      <a class="more" href="2021/06/25/%E5%AD%B8%E6%9C%9F%E7%B5%90%E6%9D%9F%E4%BA%86/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="2020/12/04/%E8%B7%A8%E7%B3%BB%E6%8E%A8%E7%94%84%E5%8C%97%E7%A7%91%E8%B3%87%E5%B7%A5%E6%89%80/">跨系推甄北科資工所</a>
-      </h2>
-      <p class="article-date">December 4, 2020</p>
-      
-      <div class="article-summary">
-        
-          &#x63A8;&#x7504;&#x8CC7;&#x5DE5;&#x6240;
-&#x78A9;&#x4E8C;&#x4E0A;&#x539F;&#x672C;&#x662F;&#x61C9;&#x8A72;&#x52A0;&#x5FEB;&#x8AD6;&#x6587;&#x9032;& ...
-        
-      </div>
-      <a class="more" href="2020/12/04/%E8%B7%A8%E7%B3%BB%E6%8E%A8%E7%94%84%E5%8C%97%E7%A7%91%E8%B3%87%E5%B7%A5%E6%89%80/">Read more</a>
-    </article>
-  
-    <article class="article-card">
-      <h2 class="article-head">
-        <a href="2020/10/02/%E6%B8%85%E5%A4%A7%E8%B3%87%E5%B7%A5%E4%BF%AE%E8%AA%B2%E7%B4%80%E9%8C%84/">清大資工修課紀錄</a>
-      </h2>
-      <p class="article-date">October 2, 2020</p>
-      
-      <div class="article-summary">
-        
-          &#x7B2C;&#x4E00;&#x6B21;&#x4FEE;&#x8CC7;&#x5DE5;&#x7CFB;&#x7684;&#x8AB2;
-&#x96D6;&#x7136;&#x662F;&#x6A5F;&#x68B0;&#x6240;&#xFF0C;&#x4F46;&#x60F3;& ...
-        
-      </div>
-      <a class="more" href="2020/10/02/%E6%B8%85%E5%A4%A7%E8%B3%87%E5%B7%A5%E4%BF%AE%E8%AA%B2%E7%B4%80%E9%8C%84/">Read more</a>
-    </article>
-  
-
-  
-    <div class="guide-pager">
-  
-    <a class="unvisible" href=""><span class="page-arrow">←</span> Prev</a>
-  
-  
-    <a href="page/2/">Next<span class="page-arrow"> →</span></a>
-  
+        2021-08-28
+    </p>
 </div>
-  
-</main>
-
-
-    <div class="scroll-top">
-  <span class="arrow-icon"></span>
+<hr>
+                
+            
+                
+                    <div class="post-preview post-preview-index">
+    <a href="2021/08/14/NachOS-MP3-CPU-scheduling/">
+        <h2 class="post-title">
+            NachOS MP3 - CPU Scheduling
+        </h2>
+        
+    </a>
+    <p class="post-meta">
+        <!-- Date and Author -->
+        
+        2021-08-14
+    </p>
 </div>
-    <footer class="app-footer">
-  <p class="copyright">
-    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
-    <br>
-    Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
-  </p>
+<hr>
+                
+            
+                
+                    <div class="post-preview post-preview-index">
+    <a href="2021/08/13/%E5%BE%AE%E5%BE%AE%E4%B8%BB%E5%A9%A6%E5%BF%83%E5%BE%97/">
+        <h2 class="post-title">
+            微微主婦心得
+        </h2>
+        
+    </a>
+    <p class="post-meta">
+        <!-- Date and Author -->
+        
+        2021-08-13
+    </p>
+</div>
+<hr>
+                
+            
+                
+                    <div class="post-preview post-preview-index">
+    <a href="2021/08/10/Parallel-TSP-using-pthread-and-fork/">
+        <h2 class="post-title">
+            Parallel TSP using pthread and fork
+        </h2>
+        
+    </a>
+    <p class="post-meta">
+        <!-- Date and Author -->
+        
+        2021-08-10
+    </p>
+</div>
+<hr>
+                
+            
+                
+                    <div class="post-preview post-preview-index">
+    <a href="2021/07/31/%E5%8C%97%E7%A7%91%E8%B3%87%E5%B7%A5%E4%BF%AE%E8%AA%B2%E7%B4%80%E9%8C%84-%E7%A2%A9%E4%B8%80%E4%B8%8B/">
+        <h2 class="post-title">
+            北科資工修課紀錄 - 碩一下
+        </h2>
+        
+    </a>
+    <p class="post-meta">
+        <!-- Date and Author -->
+        
+        2021-07-31
+    </p>
+</div>
+<hr>
+                
+            
+                
+                    <div class="post-preview post-preview-index">
+    <a href="2021/07/18/NachOS-MP2/">
+        <h2 class="post-title">
+            NachOS MP2 - Multi Programming
+        </h2>
+        
+    </a>
+    <p class="post-meta">
+        <!-- Date and Author -->
+        
+        2021-07-18
+    </p>
+</div>
+<hr>
+                
+            
+                
+                    <div class="post-preview post-preview-index">
+    <a href="2021/07/14/NachOS-MP1/">
+        <h2 class="post-title">
+            NachOS MP1 - System Call
+        </h2>
+        
+    </a>
+    <p class="post-meta">
+        <!-- Date and Author -->
+        
+        2021-07-14
+    </p>
+</div>
+<hr>
+                
+            
+                
+                    <div class="post-preview post-preview-index">
+    <a href="2021/06/25/%E5%AD%B8%E6%9C%9F%E7%B5%90%E6%9D%9F%E4%BA%86/">
+        <h2 class="post-title">
+            學期結束了
+        </h2>
+        
+    </a>
+    <p class="post-meta">
+        <!-- Date and Author -->
+        
+        2021-06-25
+    </p>
+</div>
+<hr>
+                
+            
+                
+                    <div class="post-preview post-preview-index">
+    <a href="2020/12/04/%E8%B7%A8%E7%B3%BB%E6%8E%A8%E7%94%84%E5%8C%97%E7%A7%91%E8%B3%87%E5%B7%A5%E6%89%80/">
+        <h2 class="post-title">
+            跨系推甄北科資工所
+        </h2>
+        
+    </a>
+    <p class="post-meta">
+        <!-- Date and Author -->
+        
+        2020-12-04
+    </p>
+</div>
+<hr>
+                
+            
+                
+                    <div class="post-preview post-preview-index">
+    <a href="2020/10/02/%E6%B8%85%E5%A4%A7%E8%B3%87%E5%B7%A5%E4%BF%AE%E8%AA%B2%E7%B4%80%E9%8C%84/">
+        <h2 class="post-title">
+            清大資工修課紀錄
+        </h2>
+        
+    </a>
+    <p class="post-meta">
+        <!-- Date and Author -->
+        
+        2020-10-02
+    </p>
+</div>
+<hr>
+                
+            
+        </div>
+        <div class="col-lg-8 offset-md-2 col-md-10 offset-md-1 post-all">    
+            <ul class="pagination d-block text-center">
+    
+    
+        <li class="next page-item d-inline"><a href="/page/2/" class="page-link float-right">Older  &rarr;</a></li>
+    
+</ul>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Footer -->
+    <hr />
+
+<!-- Footer -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 text-center">
+                <ul class="list-inline">
+                    
+
+                    
+
+                    
+                        <li class="list-inline-item">
+                            <a rel="external" href="https://github.com/luswdev" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li class="list-inline-item">
+                            <a rel="external" href="https://www.linkedin.com/in/callum-lu" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                        <li class="list-inline-item">
+                            <a rel="external" href="mailto:info@lusw.dev" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
+
+                    
+                </ul>
+                <ul class="copyright footer-menu list-inline">
+                    
+                    
+                        <li class="list-inline-item">
+                            
+                            
+                            <a href="index.html">
+                                
+                                    Home
+                                
+                            </a>
+                        </li>
+                    
+                        <li class="list-inline-item">
+                            
+                                <span class="copyright-split">&nbsp;|&nbsp;</span>
+                            
+                            
+                            <a href="/archives">
+                                
+                                    Archives
+                                
+                            </a>
+                        </li>
+                    
+                        <li class="list-inline-item">
+                            
+                                <span class="copyright-split">&nbsp;|&nbsp;</span>
+                            
+                            
+                            <a href="/tags">
+                                
+                                    Tags
+                                
+                            </a>
+                        </li>
+                    
+                        <li class="list-inline-item">
+                            
+                                <span class="copyright-split">&nbsp;|&nbsp;</span>
+                            
+                            
+                            <a href="/categories">
+                                
+                                    Categories
+                                
+                            </a>
+                        </li>
+                    
+                        <li class="list-inline-item">
+                            
+                                <span class="copyright-split">&nbsp;|&nbsp;</span>
+                            
+                            
+                            <a href="/about">
+                                
+                                    About
+                                
+                            </a>
+                        </li>
+                    
+                </ul>
+                <p class="copyright footer-author">
+                    &copy; 2018-2021 
+                    <a rel="external" class="copyright-link" href="https://github.com/luswdev" target="_blank">Wendy</a><br/>
+                    Powered by <a rel="external" class="copyright-link" href="https://hexo.io/" target="_blank">Hexo</a>  
+                    <span class="copyright-split">&nbsp;|&nbsp;&nbsp;</span>
+                    Theme <a rel="external" class="copyright-link" href="https://github.com/luswdev/hexo-theme-clean.git" target="_blank">Clean</a>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
 </footer>
 
-<script>
-  function async(u, c) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
-</script>
-<script>
-  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
-    FastClick.attach(document.body);
-  })
-</script>
 
-<script>
-  var hasLine = 'true';
-  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
-    $('figure pre').each(function(i, block) {
-      var figure = $(this).parents('figure');
-      if (hasLine === 'false') {
-        figure.find('.gutter').hide();
-      }
-      hljs.configure({useBR: true});
-      var lang = figure.attr('class').split(' ')[1] || 'code';
-      var codeHtml = $(this).html();
-      var codeTag = document.createElement('code');
-      codeTag.className = lang;
-      codeTag.innerHTML = codeHtml;
-      $(this).attr('class', '').empty().html(codeTag);
-      figure.attr('data-lang', lang.toUpperCase());
-      hljs.highlightBlock(block);
+    <!-- After footer scripts -->
+    <!-- jQuery -->
+<script src="//cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js"></script>
+
+<!-- For drop down -->
+<script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+<!-- Gallery -->
+<script src="//cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/js/lightgallery-all.min.js"></script>
+<!-- Busuanzi -->
+
+
+<!-- Search script -->
+
+<script src="js/search.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        searchFunc( 'search.xml' , 'searchInput', 'searchResult');
     });
-  })
 </script>
-<!-- Baidu Tongji -->
 
 
-<script src="js/script.js"></script>
+
+<script src="js/main.js"></script>
 
 
-  </body>
+
+    <!-- Search Modal -->
+    <!-- Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content overflow-auto">
+            <div class="modal-header">
+                <input type="text" class="form-control" placeholder="Searching Keywords..." id="searchInput">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div id="searchResult">
+                    <div class="search-empty text-center text-muted p-5">
+                        <i class="far fa-meh"></i>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+
+
+</body>
 </html>

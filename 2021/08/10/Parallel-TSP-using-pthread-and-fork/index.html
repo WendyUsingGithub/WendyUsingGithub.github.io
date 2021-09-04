@@ -1,208 +1,178 @@
 <!DOCTYPE html>
-<html>
-  <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-  <meta name="description" content="yanm1ng&#39;s blog">
-  <meta name="keyword" content="hexo-theme, vuejs">
-  
-    <link rel="shortcut icon" href="../../../../css/images/logo.png">
-  
-  <title>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<!--Description-->
+
+
+
+    <meta name="description" content="Introduction
+TSP
+&amp;#x65C5;&amp;#x884C;&amp;#x5546;&amp;#x554F;&amp;#x984C;&amp;#x662F;&amp;#x9019;&amp;#x6A23;&amp;#x4E00;&amp;#x500B;&amp;#x554F;&amp;#x984C; : &amp;#x7D66;&amp;#x5B9A;&amp;#x4E00;&amp;#x7CFB;&amp;#"/>
+
+
+<!--Author-->
+
+    <meta name="author" content="Wendy"/>
+
+
+<!--Open Graph Title-->
+
+    <meta property="og:title" content="Parallel TSP using pthread and fork"/>
+
+
+<!--Open Graph Description-->
+
+    <meta property="og:description" content="Introduction
+TSP
+&amp;#x65C5;&amp;#x884C;&amp;#x5546;&amp;#x554F;&amp;#x984C;&amp;#x662F;&amp;#x9019;&amp;#x6A23;&amp;#x4E00;&amp;#x500B;&amp;#x554F;&amp;#x984C; : &amp;#x7D66;&amp;#x5B9A;&amp;#x4E00;&amp;#x7CFB;&amp;#"/>
+
+
+<!--Open Graph Site Name-->
+    <meta property="og:site_name" content="Wendy"/>
+
+<!--Type page-->
+
+    <meta property="og:type" content="article"/>
+
+
+<!--Page Cover-->
+
+
+    <meta property="og:image" content="http://example.com/img/home-bg.jpg"/>
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+
+
+
+
+    <meta name="twitter:image" content="http://example.com/img/home-bg.jpg"/>
+
+
+<!-- Title -->
+
+<title>Parallel TSP using pthread and fork | Wendy</title>
+
+<!-- Bootstrap Core CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+
+<!-- Custom CSS -->
+
+<link rel="stylesheet" href="../../../../css/main.css">
+
+
+<!-- Custom Fonts -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css" />
+<link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.0/css/all.min.css" />
+<link href="//fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- Gallery -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/featherlight@1.4.0/src/featherlight.css" integrity="sha256-30DV/STftlyQ6v8yaOWlabammvCYtRJERLj/m0b3zno=" crossorigin="anonymous">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/css/lightgallery.min.css">
+
+<!-- favicon -->
+
+<link rel="icon" href="../../../../img/favicon.png"/>
+
+
+
+    <!-- Google Analytics -->
     
-      Parallel TSP using pthread and fork | Wendy
-    
-  </title>
-  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
-  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
-  
-<link rel="stylesheet" href="../../../../css/style.css">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-158078787-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
-  
-    
-<script src="../../../../js/qrious.js"></script>
+    gtag('config', 'UA-158078787-1');
+</script>
 
-  
-  
-  
-  
-    <!-- MathJax support START -->
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- MathJax support END -->
-  
-
-
-  
-  
-    
-<script src="../../../../js/local-search.js"></script>
 
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="atom.xml" title="Wendy" type="application/atom+xml">
 </head>
-<div class="wechat-share">
-  <img src="/css/images/logo.png" />
-</div>
-  <body>
-    <header class="header fixed-header">
-  <div class="header-container">
-    <a class="home-link" href="../../../../index.html">
-      <div class="logo"></div>
-      <span>Wendy</span>
-    </a>
-    <ul class="right-list">
-      
-        <li class="list-item">
-          
-            <a href="../../../../index.html" class="item-link">Home</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="../../../../series/" class="item-link">Series</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="../../../../tags/" class="item-link">Tags</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="../../../../archives/" class="item-link">Archives</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="../../../../project/" class="item-link">Projects</a>
-          
-        </li>
-      
-        <li class="list-item">
-          
-            <a href="../../../../about/" class="item-link">About</a>
-          
-        </li>
-      
-      
-        <li class="menu-item menu-item-search right-list">
-    <a role="button" class="popup-trigger">
-        <i class="fa fa-search fa-fw"></i>
-    </a>
-</li>
-      
-    </ul>
-    <div class="menu">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </div>
-    <div class="menu-mask">
-      <ul class="menu-list">
-        
-          <li class="menu-item">
-            
-              <a href="../../../../index.html" class="menu-link">Home</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="../../../../series/" class="menu-link">Series</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="../../../../tags/" class="menu-link">Tags</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="../../../../archives/" class="menu-link">Archives</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="../../../../project/" class="menu-link">Projects</a>
-            
-          </li>
-        
-          <li class="menu-item">
-            
-              <a href="../../../../about/" class="menu-link">About</a>
-            
-          </li>
-        
-      </ul>
-    </div>
-    
-      <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-            <span class="search-icon">
-                <i class="fa fa-search"></i>
-            </span>
-            <div class="search-input-container">
-                <input autocomplete="off" autocapitalize="off"
-                    placeholder="Please enter your keyword(s) to search." spellcheck="false"
-                    type="search" class="search-input">
-            </div>
-            <span class="popup-btn-close">
-                <i class="fa fa-times-circle"></i>
-            </span>
+<!-- Head tag -->
+
+<body>
+
+    <!-- Menu -->
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top bg-transparent position-absolute w-100 p-0" id="nav">
+    <div class="container pl-0 pr-0">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <a class="navbar-brand text-white p-1 pl-3" href="../../../../index.html">Wendy</a>
         </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+        <div class="navbar-nav float-right">
+            <button class="btn btn-link search-btn navbar-item" data-toggle="modal" data-target="#searchModal">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+    <!-- /.container -->
+</nav>
+
+
+    <!-- Main Content -->
+    <!-- Page Header -->
+<!-- Set your background image for this header in your post front-matter: cover -->
+
+<header class="intro-header" style="background-image: url('../../../../img/home-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 text-center">
+                <div class="post-heading text-white">
+                    <h1>Parallel TSP using pthread and fork</h1>
+                    
+                </div>
             </div>
         </div>
     </div>
-</div>
-    
-  </div>
 </header>
 
-    <div id="article-banner">
-  <h2>Parallel TSP using pthread and fork</h2>
-  <p class="post-date">2021-08-10</p>
-  <div class="arrow-down">
-    <a href="javascript:;"></a>
-  </div>
-</div>
-<main class="app-body flex-box">
-  <!-- Article START -->
-  <article class="post-article">
-    <section class="markdown-content"><h2 id="Introduction">Introduction</h2>
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+            <!-- Post Main Content -->
+            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+                
+                    <span class="meta d-inline-block">
+    
+    
+    <!-- Date -->
+    
+        <span class="post-meta-split">&nbsp;|&nbsp;</span>
+        <i class="far fa-calendar-check fa-fw"></i>
+        2021-08-10
+    
+    <!-- word count and read count -->
+    
+        <span class="post-meta-split">&nbsp;|&nbsp;</span>
+        <i class="far fa-file-word fa-fw"></i>
+        2.1k
+    
+
+    
+
+    
+</span>  
+                
+                <h2 id="Introduction">Introduction</h2>
 <h3 id="TSP">TSP</h3>
 <p>&#x65C5;&#x884C;&#x5546;&#x554F;&#x984C;&#x662F;&#x9019;&#x6A23;&#x4E00;&#x500B;&#x554F;&#x984C; : &#x7D66;&#x5B9A;&#x4E00;&#x7CFB;&#x5217;&#x57CE;&#x5E02;&#x548C;&#x6BCF;&#x5C0D;&#x57CE;&#x5E02;&#x4E4B;&#x9593;&#x7684;&#x8DDD;&#x96E2;&#xFF0C;&#x6C42;&#x89E3;&#x9020;&#x8A2A;&#x6BCF;&#x4E00;&#x5EA7;&#x57CE;&#x5E02;&#x4E00;&#x6B21;&#x4E26;&#x56DE;&#x5230;&#x8D77;&#x59CB;&#x57CE;&#x5E02;&#x7684;&#x6700;&#x77ED;&#x8FF4;&#x8DEF;&#x3002;</p>
 <h3 id="2-opt">2-opt</h3>
@@ -213,7 +183,8 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[1 , 2 , 7 , 6 , 5 , 4 , 3 , 8 , 9 , 10] </span><br></pre></td></tr></table></figure>
 <h3 id="2-opt-parallel">2-opt parallel</h3>
 <p>&#x6211;&#x4F7F;&#x7528;&#x8CAA;&#x5A6A;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x6211;&#x6703;&#x628A;&#x4E00;&#x500B;&#x89E3;&#x7684;&#x6240;&#x6709;&#x9130;&#x5C45;&#x90FD;&#x627E;&#x51FA;&#x4F86;&#xFF0C;&#x4E26;&#x4E14;&#x9078;&#x64C7;&#x9577;&#x5EA6;&#x6700;&#x77ED;&#x8DEF;&#x5F91;&#x70BA;&#x65B0;&#x7684;&#x89E3;&#xFF0C;&#x56E0;&#x70BA;&#x627E;&#x9130;&#x5C45;&#x7684;&#x65B9;&#x6CD5;&#x662F;&#x9078;&#x5169;&#x500B;&#x57CE;&#x5E02;&#x4E26;&#x4E14;&#x7FFB;&#x8F49;&#xFF0C;&#x6240;&#x4EE5;&#x5C0D;&#x65BC;&#x4E00;&#x689D;&#x8DEF;&#x5F91;&#x800C;&#x8A00;&#xFF0C;&#x6709; n * ( n - 1 ) / 2 &#x7A2E;&#x9130;&#x5C45;&#x8DEF;&#x5F91;&#xFF0C;&#x4EE5;&#x4E00;&#x500B; 5 &#x500B;&#x57CE;&#x5E02;&#x7684; tsp &#x554F;&#x984C;&#x8209;&#x4F8B;&#xFF0C;&#x4E0B;&#x5716;&#x662F;&#x4ED6;&#x7684;&#x6240;&#x6709;&#x9130;&#x5C45;&#x3002;&#x6240;&#x6709;&#x9130;&#x5C45;&#x7684;&#x8DEF;&#x5F91;&#x9577;&#x5EA6;&#x662F;&#x53EF;&#x4EE5;&#x55AE;&#x7368;&#x8A08;&#x7B97;&#x7684;&#xFF0C;&#x56E0;&#x70BA;&#x6C92;&#x6709;&#x8A08;&#x7B97;&#x4E0A;&#x7684;&#x76F8;&#x4F9D;&#x6027;&#xFF0C;&#x6240;&#x4EE5;&#x5F88;&#x9069;&#x5408;&#x505A;&#x5E73;&#x884C;&#x3002;</p>
-<table>
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
 <thead>
 <tr>
 <th>thread 0</th>
@@ -248,7 +219,7 @@
 <td>(3 , 4)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <p>&#x5728;&#x8A2D;&#x8A08;&#x5E73;&#x884C;&#x7A0B;&#x5F0F;&#x7684;&#x6642;&#x5019;&#x6211;&#x5011;&#x9700;&#x8981;&#x5206;&#x914D;&#x6BCF;&#x500B; thread / child process &#x8981;&#x505A;&#x4EC0;&#x9EBC;&#xFF0C;&#x56E0;&#x70BA;&#x5728;&#x6240;&#x6709;thread / child process &#x90FD;&#x5B8C;&#x6210;&#x81EA;&#x5DF1;&#x7684;&#x5DE5;&#x4F5C;&#x4E4B;&#x5F8C;&#xFF0C;&#x624D;&#x80FD;&#x958B;&#x59CB;&#x9032;&#x884C;&#x4E0B;&#x4E00;&#x8F2A;&#x7684;&#x8A08;&#x7B97;&#xFF0C;&#x56E0;&#x6B64;&#x9700;&#x8981;&#x5E73;&#x5747;&#x7684;&#x5206;&#x914D;&#x5DE5;&#x4F5C;&#x91CF;&#x3002;&#x4EE5; 2 &#x500B; thread / child process &#x70BA;&#x4F8B;&#xFF0C;&#x6211;&#x4F7F;&#x7528;&#x4E0A;&#x5716;&#x7684;&#x65B9;&#x6CD5;&#x5206;&#x914D;&#x5DE5;&#x4F5C;&#xFF0C;(x,y) &#x6307;&#x7684;&#x662F;&#x7FFB;&#x8F49;&#x57CE;&#x5E02; x &#x5230;&#x57CE;&#x5E02; y &#x7684;&#x8DEF;&#x5F91;&#xFF0C;&#x7FFB;&#x8F49;&#x6642;&#x9078;&#x64C7;&#x7684;&#x7B2C;&#x4E00;&#x500B;&#x57CE;&#x5E02;&#x662F; city 0 &#x7684;&#x5C31;&#x8B93; thread 0 / child process 0 &#x8CA0;&#x8CAC;&#xFF0C;&#x6240;&#x6709;&#x7FFB;&#x8F49;&#x6642;&#x9078;&#x64C7;&#x7684;&#x7B2C;&#x4E00;&#x500B;&#x57CE;&#x5E02;&#x662F; city 1 &#x7684;&#x5C31;&#x8B93; thread 1 / child process 1 &#x8CA0;&#x8CAC;&#xFF0C;&#x4EE5;&#x6B64;&#x985E;&#x63A8;&#xFF0C;&#x4EE5;&#x6B64;&#x8868;&#x683C;&#x8209;&#x4F8B;&#xFF0C;&#x7B2C;&#x4E00;&#x6B04;&#x548C;&#x7B2C;&#x4E09;&#x6B04;&#x90E8;&#x4EFD;&#x7531; thread 0 / child process 0 &#x8CA0;&#x8CAC;&#xFF0C;&#x7B2C;&#x4E8C;&#x6B04;&#x548C;&#x7B2C;&#x56DB;&#x6B04;&#x7531; thread 1 / child process 1 &#x8CA0;&#x8CAC;&#x3002;</p>
 <h2 id="Implementation">Implementation</h2>
 <h3 id="Algorithm">Algorithm</h3>
@@ -271,7 +242,8 @@
 <h2 id="Experimental-Result">Experimental Result</h2>
 <p>&#x56E0;&#x70BA;&#x6211;&#x4F7F;&#x7528;&#x8CAA;&#x5A6A;&#x6F14;&#x7B97;&#x6CD5;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x8AD6;&#x662F; sequential / pthread / fork&#xFF0C;&#x627E;&#x8DEF;&#x5F91;&#x7684;&#x904E;&#x7A0B;&#x90FD;&#x662F;&#x4E00;&#x6A21;&#x4E00;&#x6A23;&#x7684;&#xFF0C;&#x6700;&#x5F8C;&#x627E;&#x5230;&#x7684;&#x7D50;&#x679C;&#x4E5F;&#x662F;&#x4E00;&#x6A21;&#x4E00;&#x6A23;&#x7684;&#x3002;&#x6211;&#x5F9E; tsplib &#x53D6;&#x5F97;&#x6E2C;&#x8CC7;&#xFF0C;tsplib&#x63D0;&#x4F9B;&#x591A;&#x500B; tsp &#x6E2C;&#x8CC7;&#x4EE5;&#x53CA;&#x8DDD;&#x96E2;&#x6700;&#x4F73;&#x89E3;&#xFF0C;&#x6211;&#x9078;&#x64C7;&#x4E86;&#x4E09;&#x500B;&#x5927;&#x5C0F;&#x7684;&#x6E2C;&#x8CC7;&#xFF0C;&#x5206;&#x5225;&#x662F; 1002 / 3795 / 7397 &#x500B;&#x57CE;&#x5E02;&#xFF0C;&#x62EC;&#x865F;&#x5167;&#x662F;&#x8A72;&#x6E2C;&#x8CC7;&#x7684;&#x6700;&#x4F73;&#x89E3;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x6E2C;&#x8A66;&#x7D50;&#x679C;&#x90FD;&#x662F; 5 &#x6B21;&#x6E2C;&#x8A66;&#x7684;&#x5E73;&#x5747;&#xFF0C;&#x5728; pthread &#x548C; fork &#x7684;&#x6E2C;&#x8A66;&#xFF0C;&#x6211;&#x4F7F;&#x7528;&#x4E86; 2 &#x500B; thread &#x548C; 2 &#x500B; child process&#x3002;</p>
 <h3 id="pr1002">pr1002</h3>
-<table>
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
 <thead>
 <tr>
 <th>pr1002</th>
@@ -304,9 +276,10 @@
 <td>1.45</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="fl3795">fl3795</h3>
-<table>
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
 <thead>
 <tr>
 <th>fl3795</th>
@@ -339,9 +312,10 @@
 <td>1.84</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="pla7397">pla7397</h3>
-<table>
+<div class="table-responsive">
+<table class="table table-bordered table-striped">
 <thead>
 <tr>
 <th>pla7397</th>
@@ -374,13 +348,13 @@
 <td>1.69</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <h3 id="Speed-Up">Speed Up</h3>
-<p><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image1.svg" alt></p>
+<p><div class="img-item" data-src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image1.svg" data-sub-html=".caption"><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image1.svg" alt></div></p>
 <h3 id="Route">Route</h3>
 <p>&#x4E0B;&#x5716;&#x662F;&#x6E2C;&#x8CC7; pr1002 &#x521D;&#x59CB;&#x5316;&#x6642;&#x7684;&#x8DEF;&#x5F91;&#x5716;&#xFF0C;&#x4EE5;&#x53CA;&#x5B8C;&#x6210;&#x6700;&#x4F73;&#x5316;&#x4E4B;&#x5F8C;&#x7684;&#x8DEF;&#x5F91;&#x5716;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x7D93;&#x904E;&#x6700;&#x4F73;&#x5316;&#x7684;&#x8DEF;&#x5F91;&#xFF0C;&#x78BA;&#x5BE6;&#x5F97;&#x5230;&#x66F4;&#x597D;&#x7684;&#x8DEF;&#x5F91;&#x3002;</p>
-<p><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image2.svg" alt></p>
-<p><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image3.svg" alt></p>
+<p><div class="img-item" data-src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image2.svg" data-sub-html=".caption"><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image2.svg" alt></div></p>
+<p><div class="img-item" data-src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image3.svg" data-sub-html=".caption"><img src="/2021/08/10/Parallel-TSP-using-pthread-and-fork/image3.svg" alt></div></p>
 <h2 id="Conclusion">Conclusion</h2>
 <p>&#x5EFA;&#x7ACB;&#x4E00;&#x500B;&#x65B0;&#x7684; process &#x6240;&#x9700;&#x8981;&#x7684;&#x8CC7;&#x6E90;&#x548C;&#x6642;&#x9593;&#x90FD;&#x8F03;&#x591A;&#xFF0C;&#x56E0;&#x6B64;&#x6211;&#x9810;&#x671F; fork &#x7684;&#x6548;&#x80FD;&#x6703;&#x6BD4;&#x8F03;&#x5DEE;&#xFF0C;&#x5BE6;&#x9A57;&#x7D50;&#x679C;&#x4E5F;&#x5448;&#x73FE; pthread &#x6709;&#x8F03;&#x597D;&#x7684;&#x6548;&#x80FD;&#x3002;&#x7576;&#x6E2C;&#x8CC7;&#x592A;&#x5C0F;&#x6642;&#x5EFA;&#x7ACB;&#x5E73;&#x884C;&#x7684; overhead &#x6703;&#x4F7F;&#x5F97;&#x5E73;&#x884C;&#x7684;&#x6548;&#x80FD;&#x964D;&#x4F4E;&#xFF0C;&#x6700;&#x5C0F;&#x7684;&#x6E2C;&#x8CC7; pr1002 &#x78BA;&#x5BE6;&#x6548;&#x80FD;&#x4E0D;&#x4F73;&#xFF0C;&#x4E2D;&#x6E2C;&#x8CC7; fl3795 &#x6548;&#x80FD;&#x660E;&#x986F;&#x8F03;&#x4F73;&#x3002;</p>
 <p>&#x5927;&#x6E2C;&#x8CC7; pla7394 &#x5728; pthread &#x7684; speedup &#x8D85;&#x904E; 2&#xFF0C;&#x7406;&#x8AD6;&#x4E0A; speedup &#x4E0D;&#x61C9;&#x8A72;&#x8D85;&#x904E; 2&#xFF0C;&#x56E0;&#x70BA;&#x6C92;&#x6709;&#x5DEE;&#x5F88;&#x591A;&#xFF0C;&#x6211;&#x5224;&#x65B7;&#x9019;&#x662F;&#x7D71;&#x8A08;&#x4E0A;&#x7684;&#x8AA4;&#x5DEE;&#x3002;</p>
@@ -399,203 +373,279 @@
 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/2-opt">https://en.wikipedia.org/wiki/2-opt</a><br>
 [4] TSPLIB<br>
 <a target="_blank" rel="noopener" href="http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/">http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/</a></p>
-</section>
-    <!-- Tags START -->
-    
-    <!-- Tags END -->
-    <!-- NAV START -->
-    
-  <div class="nav-container">
-    <!-- reverse left and right to put prev and next in a more logic postition -->
-    
-      <a class="nav-left" href="../../../07/31/%E5%8C%97%E7%A7%91%E8%B3%87%E5%B7%A5%E4%BF%AE%E8%AA%B2%E7%B4%80%E9%8C%84-%E7%A2%A9%E4%B8%80%E4%B8%8B/">
-        <span class="nav-arrow">← </span>
-        
-          北科資工修課紀錄 - 碩一下
-        
-      </a>
-    
-    
-      <a class="nav-right" href="../../13/%E5%BE%AE%E5%BE%AE%E4%B8%BB%E5%A9%A6%E5%BF%83%E5%BE%97/">
-        
-          微微主婦心得
-        
-        <span class="nav-arrow"> →</span>
-      </a>
-    
-  </div>
 
-    <!-- NAV END -->
-    <!-- 打赏 START -->
+            </div>
+
+            <!-- Post information -->
+            
+            
+    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+        <ul class="pagination d-block text-center">
+            
+                <li class="previous page-item d-inline"><a href="../../13/%E5%BE%AE%E5%BE%AE%E4%B8%BB%E5%A9%A6%E5%BF%83%E5%BE%97/" class="page-link float-left">&larr;  Newer</a></li>
+            
+            
+                <li class="next page-item d-inline"><a href="../../../07/31/%E5%8C%97%E7%A7%91%E8%B3%87%E5%B7%A5%E4%BF%AE%E8%AA%B2%E7%B4%80%E9%8C%84-%E7%A2%A9%E4%B8%80%E4%B8%8B/" class="page-link float-right">Older  &rarr;</a></li>
+            
+        </ul>
+    </div>
+
+
+            
+                <!-- Comments -->
+                
     
-      <div class="money-like">
-        <div class="reward-btn">
-          赏
-          <span class="money-code">
-            <span class="alipay-code">
-              <div class="code-image"></div>
-              <b>使用支付宝打赏</b>
-            </span>
-            <span class="wechat-code">
-              <div class="code-image"></div>
-              <b>使用微信打赏</b>
-            </span>
-          </span>
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    
+    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
+        <div id="gitalk-container"></div>
+    </div>
+
+    <script>
+        let gitalk = new Gitalk({
+            clientID: '97c34b7bba491c6a5007',
+            clientSecret: '6140d208bae6bbbc69c65e3e332a46d090094fc8',
+            repo: 'HackTech',
+            owner: 'luswdev',
+            admin: "luswdev",
+            id: '2021-08-10 00:54:06',
+            title: 'Parallel TSP using pthread and fork',
+            distractionFreeMode: false  // Facebook-like distraction free mode
+        });
+        gitalk.render('gitalk-container');
+    </script>
+
+
+                
+
+            
+
         </div>
-        <p class="notice">若你觉得我的文章对你有帮助，欢迎点击上方按钮对我打赏</p>
-      </div>
+    </div>
+</article> 
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+    <style>
+        #toc-content .toc-link::before {
+            background-color: transparent;
+            max-height: 25px;
+        }
+
+        #toc-content .toc-link.is-active-link::before {
+            background-color: #404040;
+        }
+    </style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+    <div class="ui-toc dropup scrollspy-body pull-right" style="right: 3%;">
+        <button type="button" class="toc-btn btn btn-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+            <i class="fas fa-list"></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right p-2"  aria-labelledby="tocLabel">
+            <div class="toc-widget">
+                <div id="toc-content" class="text-truncate">
+                </div>
+            </div>
+            <div class="toc-menu pt-3 pl-4">
+                <a class="expand-toggle d-block py-1" href="#"><span class="expand-text">Expand all</span><span class="close-text" style="display: none;">Collapse all</span></a>
+                <a class="back-to-top d-block py-1" href="#">Back to top</a>
+                <a class="go-to-bottom d-block py-1" href="#">Go to bottom</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '#toc-content',
+            // Where to grab the headings to build the table of contents.
+            contentSelector: 'article',
+            // Which headings to grab inside of the contentSelector element.
+            headingSelector: 'h1, h2, h3',
+            // For headings inside relative or absolute positioned containers within content.
+            hasInnerContainers: true,
+        });
+    </script>
+
+
     
-    <!-- 打赏 END -->
-    <!-- 二维码 START -->
-    
-      <div class="qrcode">
-        <canvas id="share-qrcode"></canvas>
-        <p class="notice">扫描二维码，分享此文章</p>
-      </div>
-    
-    <!-- 二维码 END -->
-    
-      <!-- Utterances START -->
-      <div id="utterances"></div>
-      <script src="https://utteranc.es/client.js"
-        repo=""
-        issue-term="pathname"
-        theme="github-light"
-        crossorigin="anonymous"
-        async></script>    
-      <!-- Utterances END -->
-    
-  </article>
-  <!-- Article END -->
-  <!-- Catalog START -->
-  
-    <aside class="catalog-container">
-  <div class="toc-main">
-    <strong class="toc-title">Catalog</strong>
-    
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Introduction"><span class="toc-nav-text">Introduction</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#TSP"><span class="toc-nav-text">TSP</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-opt"><span class="toc-nav-text">2-opt</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-opt-parallel"><span class="toc-nav-text">2-opt parallel</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Implementation"><span class="toc-nav-text">Implementation</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Algorithm"><span class="toc-nav-text">Algorithm</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Fork"><span class="toc-nav-text">Fork</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Parent-Process"><span class="toc-nav-text">Parent Process</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Child-Process"><span class="toc-nav-text">Child Process</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Experimental-Result"><span class="toc-nav-text">Experimental Result</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#pr1002"><span class="toc-nav-text">pr1002</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#fl3795"><span class="toc-nav-text">fl3795</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#pla7397"><span class="toc-nav-text">pla7397</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Speed-Up"><span class="toc-nav-text">Speed Up</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Route"><span class="toc-nav-text">Route</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Conclusion"><span class="toc-nav-text">Conclusion</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Command"><span class="toc-nav-text">Command</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Compile"><span class="toc-nav-text">Compile</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Execute"><span class="toc-nav-text">Execute</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Reference"><span class="toc-nav-text">Reference</span></a></li></ol>
-    
-  </div>
-</aside>
-  
-  <!-- Catalog END -->
-</main>
-
-<script>
-  (function () {
-    var url = 'http://example.com/2021/08/10/Parallel-TSP-using-pthread-and-fork/';
-    var banner = ''
-    if (banner !== '' && banner !== 'undefined' && banner !== 'null') {
-      $('#article-banner').css({
-        'background-image': 'url(' + banner + ')'
-      })
-    } else {
-      $('#article-banner').geopattern(url)
-    }
-    $('.header').removeClass('fixed-header')
-
-    // error image
-    $(".markdown-content img").on('error', function() {
-      $(this).attr('src', '/css/images/error_icon.png')
-      $(this).css({
-        'cursor': 'default'
-      })
-    })
-
-    // zoom image
-    $(".markdown-content img").on('click', function() {
-      var src = $(this).attr('src')
-      if (src !== '/css/images/error_icon.png') {
-        var imageW = $(this).width()
-        var imageH = $(this).height()
-
-        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
-        zoom = zoom < 1 ? 1 : zoom
-        zoom = zoom > 2 ? 2 : zoom
-        var transY = (($(window).height() - imageH) / 2).toFixed(2)
-
-        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
-        $('.image-view-wrap').addClass('wrap-active')
-        $('.image-view-wrap img').css({
-          'width': `${imageW}`,
-          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
-        })
-        $('html').css('overflow', 'hidden')
-
-        $('.image-view-wrap').on('click', function() {
-          $(this).remove()
-          $('html').attr('style', '')
-        })
-      }
-    })
-  })();
-</script>
 
 
-  <script>
-    var qr = new QRious({
-      element: document.getElementById('share-qrcode'),
-      value: document.location.href
-    });
-  </script>
+    <!-- Footer -->
+    <hr />
 
+<!-- Footer -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1 text-center">
+                <ul class="list-inline">
+                    
 
+                    
 
+                    
+                        <li class="list-inline-item">
+                            <a rel="external" href="https://github.com/luswdev" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
 
+                    
+                        <li class="list-inline-item">
+                            <a rel="external" href="https://www.linkedin.com/in/callum-lu" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
 
+                    
+                        <li class="list-inline-item">
+                            <a rel="external" href="mailto:info@lusw.dev" target="_blank">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="far fa-envelope fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    
 
-    <div class="scroll-top">
-  <span class="arrow-icon"></span>
-</div>
-    <footer class="app-footer">
-  <p class="copyright">
-    &copy; 2021 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a>
-    <br>
-    Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a>
-  </p>
+                    
+                </ul>
+                <ul class="copyright footer-menu list-inline">
+                    
+                    
+                        <li class="list-inline-item">
+                            
+                            
+                            <a href="../../../../index.html">
+                                
+                                    Home
+                                
+                            </a>
+                        </li>
+                    
+                        <li class="list-inline-item">
+                            
+                                <span class="copyright-split">&nbsp;|&nbsp;</span>
+                            
+                            
+                            <a href="../../../../archives">
+                                
+                                    Archives
+                                
+                            </a>
+                        </li>
+                    
+                        <li class="list-inline-item">
+                            
+                                <span class="copyright-split">&nbsp;|&nbsp;</span>
+                            
+                            
+                            <a href="../../../../tags">
+                                
+                                    Tags
+                                
+                            </a>
+                        </li>
+                    
+                        <li class="list-inline-item">
+                            
+                                <span class="copyright-split">&nbsp;|&nbsp;</span>
+                            
+                            
+                            <a href="../../../../categories">
+                                
+                                    Categories
+                                
+                            </a>
+                        </li>
+                    
+                        <li class="list-inline-item">
+                            
+                                <span class="copyright-split">&nbsp;|&nbsp;</span>
+                            
+                            
+                            <a href="../../../../about">
+                                
+                                    About
+                                
+                            </a>
+                        </li>
+                    
+                </ul>
+                <p class="copyright footer-author">
+                    &copy; 2018-2021 
+                    <a rel="external" class="copyright-link" href="https://github.com/luswdev" target="_blank">Wendy</a><br/>
+                    Powered by <a rel="external" class="copyright-link" href="https://hexo.io/" target="_blank">Hexo</a>  
+                    <span class="copyright-split">&nbsp;|&nbsp;&nbsp;</span>
+                    Theme <a rel="external" class="copyright-link" href="https://github.com/luswdev/hexo-theme-clean.git" target="_blank">Clean</a>
+                    
+                    
+                </p>
+            </div>
+        </div>
+    </div>
 </footer>
 
-<script>
-  function async(u, c) {
-    var d = document, t = 'script',
-      o = d.createElement(t),
-      s = d.getElementsByTagName(t)[0];
-    o.src = u;
-    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-    s.parentNode.insertBefore(o, s);
-  }
-</script>
-<script>
-  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
-    FastClick.attach(document.body);
-  })
-</script>
 
-<script>
-  var hasLine = 'true';
-  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
-    $('figure pre').each(function(i, block) {
-      var figure = $(this).parents('figure');
-      if (hasLine === 'false') {
-        figure.find('.gutter').hide();
-      }
-      hljs.configure({useBR: true});
-      var lang = figure.attr('class').split(' ')[1] || 'code';
-      var codeHtml = $(this).html();
-      var codeTag = document.createElement('code');
-      codeTag.className = lang;
-      codeTag.innerHTML = codeHtml;
-      $(this).attr('class', '').empty().html(codeTag);
-      figure.attr('data-lang', lang.toUpperCase());
-      hljs.highlightBlock(block);
+    <!-- After footer scripts -->
+    <!-- jQuery -->
+<script src="//cdn.jsdelivr.net/npm/jquery@2.1.4/dist/jquery.min.js"></script>
+
+<!-- For drop down -->
+<script src="//cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+
+<!-- Bootstrap -->
+<script src="//cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+<!-- Gallery -->
+<script src="//cdn.jsdelivr.net/npm/lightgallery@1.6.11/dist/js/lightgallery-all.min.js"></script>
+<!-- Busuanzi -->
+
+
+<!-- Search script -->
+
+<script src="../../../../js/search.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        searchFunc( '../../../../search.xml' , 'searchInput', 'searchResult');
     });
-  })
 </script>
-<!-- Baidu Tongji -->
 
 
-<script src="../../../../js/script.js"></script>
+
+<script src="../../../../js/main.js"></script>
 
 
-  </body>
+
+    <!-- Search Modal -->
+    <!-- Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content overflow-auto">
+            <div class="modal-header">
+                <input type="text" class="form-control" placeholder="Searching Keywords..." id="searchInput">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div id="searchResult">
+                    <div class="search-empty text-center text-muted p-5">
+                        <i class="far fa-meh"></i>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+
+
+</body>
 </html>
