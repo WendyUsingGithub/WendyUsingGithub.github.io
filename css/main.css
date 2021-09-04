@@ -749,6 +749,7 @@ details.alert {
   background-color: #fff;
   border-radius: 0;
   color: #404040;
+  text-decoration: none;
 }
 .pagination li > a.page-link:hover,
 .pagination li > a.page-link:focus {
