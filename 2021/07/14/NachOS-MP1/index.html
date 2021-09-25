@@ -377,9 +377,9 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Close</span><span class="params">(<span class="keyword">int</span> fd)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    <span class="keyword">int</span> retVal = close(fd);</span><br><span class="line">    ASSERT(retVal &gt;= <span class="number">0</span>); </span><br><span class="line">    <span class="keyword">return</span> retVal;</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
 <h2 id="Command">Command</h2>
 <h3 id="Compile-Rebuild-NachOS">Compile / Rebuild NachOS</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; cd NachOS-4.0_MP1/code/build.linux</span><br><span class="line">&gt; make clean</span><br><span class="line">&gt; make depend</span><br><span class="line">&gt; make</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/NachOS-4.0_MP1$ cd code/build.linux</span><br><span class="line">~/NachOS-4.0_MP1/code/build.linux$ make clean</span><br><span class="line">~/NachOS-4.0_MP1/code/build.linux$ make depend</span><br><span class="line">~/NachOS-4.0_MP1/code/build.linux$ make</span><br></pre></td></tr></table></figure>
 <h3 id="Test-NachOS">Test NachOS</h3>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; cd NachOS-4.0_MP1/code/test</span><br><span class="line">&gt; make clean</span><br><span class="line">&gt; make halt</span><br><span class="line">&gt; ../build.linux/nachos -e halt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/NachOS-4.0_MP1$ cd code/test</span><br><span class="line">~/NachOS-4.0_MP1/code/test$ make clean</span><br><span class="line">~/NachOS-4.0_MP1/code/test$ make halt</span><br><span class="line">~/NachOS-4.0_MP1/code/test$ ../build.linux/nachos -e halt</span><br></pre></td></tr></table></figure>
 <h2 id="Reference">Reference</h2>
 <p>[1] shawn2000100/10810CS_342301_OperatingSystem<br>
 <a target="_blank" rel="noopener" href="https://github.com/shawn2000100/10810CS_342301_OperatingSystem">https://github.com/shawn2000100/10810CS_342301_OperatingSystem</a></p>
@@ -404,28 +404,6 @@
             
                 <!-- Comments -->
                 
-    
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    
-    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-        <div id="gitalk-container"></div>
-    </div>
-
-    <script>
-        let gitalk = new Gitalk({
-            clientID: '97c34b7bba491c6a5007',
-            clientSecret: '6140d208bae6bbbc69c65e3e332a46d090094fc8',
-            repo: 'HackTech',
-            owner: 'luswdev',
-            admin: "luswdev",
-            id: '2021-07-14 00:57:48',
-            title: 'NachOS MP1 - System Call',
-            distractionFreeMode: false  // Facebook-like distraction free mode
-        });
-        gitalk.render('gitalk-container');
-    </script>
-
 
                 
 

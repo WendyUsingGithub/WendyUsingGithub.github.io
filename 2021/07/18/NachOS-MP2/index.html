@@ -160,7 +160,7 @@
     
         <span class="post-meta-split">&nbsp;|&nbsp;</span>
         <i class="far fa-file-word fa-fw"></i>
-        3.2k
+        3.3k
     
 
     
@@ -300,6 +300,11 @@
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* threads/thread.cc */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Thread::Fork</span><span class="params">(VoidFunctionPtr func, <span class="keyword">void</span> *arg)</span></span></span><br><span class="line"><span class="function"></span>{</span><br><span class="line">    Interrupt *interrupt = kernel-&gt;interrupt;</span><br><span class="line">    Scheduler *scheduler = kernel-&gt;scheduler;</span><br><span class="line">    IntStatus oldLevel;</span><br><span class="line">    </span><br><span class="line">    StackAllocate(func, arg);</span><br><span class="line"></span><br><span class="line">    oldLevel = interrupt-&gt;SetLevel(IntOff);</span><br><span class="line">    scheduler-&gt;ReadyToRun(<span class="keyword">this</span>);</span><br><span class="line">    (<span class="keyword">void</span>) interrupt-&gt;SetLevel(oldLevel);</span><br><span class="line">}   </span><br></pre></td></tr></table></figure>
 <p>&#x7576;&#x4E00;&#x500B; thread &#x5DF2;&#x7D93;&#x5EFA;&#x7ACB;&#x597D;&#x4ED6;&#x7684; stack&#xFF0C;&#x5C07;&#x4ED6;&#x52A0;&#x5165; readyList&#xFF0C;&#x7576; scheduler &#x9700;&#x8981;&#x5B89;&#x6392; thread &#x4F86;&#x57F7;&#x884C;&#x7684;&#x6642;&#x5019;&#xFF0C;&#x5C31;&#x5F9E; readyList dequeue &#x4E00;&#x500B; thread &#x4F86;&#x57F7;&#x884C;&#x3002;</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scheduler-&gt;ReadyToRun(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="Command">Command</h2>
+<h3 id="Compile-Rebuild-NachOS">Compile / Rebuild NachOS</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/NachOS-4.0_MP2$ cd code/build.linux</span><br><span class="line">~/NachOS-4.0_MP2/code/build.linux$ make clean</span><br><span class="line">~/NachOS-4.0_MP2/code/build.linux$ make depend</span><br><span class="line">~/NachOS-4.0_MP2/code/build.linux$ make</span><br></pre></td></tr></table></figure>
+<h3 id="Test-NachOS">Test NachOS</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/NachOS-4.0_MP2$ cd code/test</span><br><span class="line">~/NachOS-4.0_MP2/code/test$ make clean</span><br><span class="line">~/NachOS-4.0_MP2/code/test$ make consoleIO_test1 consoleIO_test2</span><br><span class="line">~/NachOS-4.0_MP2/code/test$ ../build.linux/nachos -e consoleIO_test1 -e consoleIO_test2</span><br></pre></td></tr></table></figure>
 <h2 id="Reference">Reference</h2>
 <p>[1] shawn2000100/10810CS_342301_OperatingSystem<br>
 <a target="_blank" rel="noopener" href="https://github.com/shawn2000100/10810CS_342301_OperatingSystem">https://github.com/shawn2000100/10810CS_342301_OperatingSystem</a><br>
@@ -328,28 +333,6 @@
             
                 <!-- Comments -->
                 
-    
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    
-    <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-        <div id="gitalk-container"></div>
-    </div>
-
-    <script>
-        let gitalk = new Gitalk({
-            clientID: '97c34b7bba491c6a5007',
-            clientSecret: '6140d208bae6bbbc69c65e3e332a46d090094fc8',
-            repo: 'HackTech',
-            owner: 'luswdev',
-            admin: "luswdev",
-            id: '2021-07-18 21:44:55',
-            title: 'NachOS MP2 - Multi Programming',
-            distractionFreeMode: false  // Facebook-like distraction free mode
-        });
-        gitalk.render('gitalk-container');
-    </script>
-
 
                 
 
