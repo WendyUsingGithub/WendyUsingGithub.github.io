@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+#pp {
+    color:white;
+    height: 50px;
+    width: 100px;
+}
 .feed .posts{
     padding-bottom: 12rem;
 }
