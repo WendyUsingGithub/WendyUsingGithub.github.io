@@ -21,26 +21,38 @@ input[type="search" i]::-webkit-search-cancel-button {
 }
 
 html {
+    font-size: 15px;
     scrollbar-color: var(--murmur-black) var(--murmur-dark-black);
 }
 
-@media (max-width: 400px) {
+/* @media (max-width: 400px) {
     html {
         font-size: 30px;
     }
 }
 
-@media (min-width: 400px) {
+@media (min-width: 800px) {
     html {
         font-size: 30px;
     }
 }
 
-@media (min-width: 1500px) {
+@media (min-width: 1000px) {
     html {
         font-size: 15px;
     }
+} */
+
+@media only screen and (-webkit-min-device-pixel-ratio: 3), 
+only screen and (-min--moz-device-pixel-ratio: 3), 
+only screen and (-o-min-device-pixel-ratio: 3/1), 
+only screen and (min-device-pixel-ratio: 3)
+{ 
+    .html {
+        font-size: 30px;
+    }
 }
+
 
 body {
     margin: 0;
