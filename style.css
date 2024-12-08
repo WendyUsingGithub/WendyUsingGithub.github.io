@@ -25,6 +25,18 @@ html {
     scrollbar-color: var(--murmur-black) var(--murmur-dark-black);
 }
 
+@media (min-width: 500px) {
+    .html {
+      font-size: 5px;
+    }
+  }
+  
+  @media (min-width: 900px) {
+    .html {
+      font-size: 50px;
+    }
+  }
+
 /* @media (max-width: 400px) {
     html {
         font-size: 30px;
