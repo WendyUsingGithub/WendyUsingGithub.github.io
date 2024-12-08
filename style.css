@@ -21,28 +21,26 @@ input[type="search" i]::-webkit-search-cancel-button {
 }
 
 html {
+    font-size: 15px;
     scrollbar-color: var(--murmur-black) var(--murmur-dark-black);
 }
 
-@media (min-width: 900px) {
-    html {
-        font-size: 15px;
-    }
-}  
-@media (max-width: 900px) {
-    html {
-        font-size: 15px;
-    }
-}     
-@media (max-width: 600px) {
-    html {
-        font-size: 16px;
-    }
+@media (min-width: 800px) {
+html {
+font-size: 15px;
 }
+}
+  
+@media (max-width: 800px) {
+html {
+    font-size: 18px;
+}
+}
+
 @media (max-width: 500px) {
-    html {
-        font-size: 17px;
-    }
+html {
+    font-size: 20px;
+}
 }
 
 body {
@@ -217,7 +215,7 @@ button {
     background-color: var(--murmur-black);
 }
 
-@media (max-width: 690px) {
+@media (max-width: 500px) {
     .murmur .main {
         padding-top: 8rem;
     }
