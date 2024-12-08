@@ -26,13 +26,13 @@ html {
 }
 
 @media (min-width: 500px) {
-    .html {
+    html {
       font-size: 5px;
     }
   }
   
   @media (min-width: 900px) {
-    .html {
+    html {
       font-size: 50px;
     }
   }
