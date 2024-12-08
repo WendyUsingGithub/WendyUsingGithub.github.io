@@ -76,5 +76,3 @@ window.onscroll = function()
   prevScrollpos = currentScrollPos;
 }
 
-document.getElementById("pp").innerText = window.visualViewport.width;
-
