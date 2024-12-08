@@ -26,10 +26,30 @@ html {
 
 @media (min-width: 600px) {
     html {
-        font-size: 25px;
+        font-size: 35px;
     }
 }
 
+@media (min-width: 800px) {
+    html {
+        font-size: 35px;
+    }
+}
+@media (min-width: 1000px) {
+    html {
+        font-size: 35px;
+    }
+}
+@media (min-width: 1200px) {
+    html {
+        font-size: 35px;
+    }
+}
+@media (min-width: 1400px) {
+    html {
+        font-size: 35px;
+    }
+}
 @media (min-width: 1500px) {
     html {
         font-size: 15px;
