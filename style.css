@@ -37,6 +37,12 @@ html {
     }
   }
 
+  @media (min-width: 1200px) {
+    html {
+      font-size: 15px;
+    }
+  }
+
 /* @media (max-width: 400px) {
     html {
         font-size: 30px;
@@ -55,7 +61,7 @@ html {
     }
 } */
 
-@media only screen and (-webkit-min-device-pixel-ratio: 3/2), 
+/* @media only screen and (-webkit-min-device-pixel-ratio: 3/2), 
 only screen and (-min--moz-device-pixel-ratio: 3/2), 
 only screen and (-o-min-device-pixel-ratio: 2/3), 
 only screen and (min-device-pixel-ratio: 3/2)
@@ -63,7 +69,7 @@ only screen and (min-device-pixel-ratio: 3/2)
     .html {
         font-size: 30px;
     }
-}
+} */
 
 
 body {
