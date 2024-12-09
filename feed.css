@@ -57,6 +57,13 @@
     text-align: justify;
 }
 
+@media (max-width: 500px) {
+    .feed p {
+        margin-bottom: 1.4rem;
+        line-height: 1.8;
+    }
+}
+
 .feed .interact .item {
     cursor: pointer;
 }
