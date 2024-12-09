@@ -41,6 +41,12 @@ body {
     overflow-y: scroll;
 }
 
+body {
+    /* 禁用默认的下拉刷新和边界效果
+       但是依然可以进行滑动导航 */
+    overscroll-behavior-y: none;
+  }
+  
 button {
     color: none;
     background-color: none;
