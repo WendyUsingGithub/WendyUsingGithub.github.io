@@ -95,7 +95,7 @@ button {
 @media (max-width: 992px) {
     .murmur .navbar {
         height: 4rem;
-        transition: all 0.2s ease-out;
+        transition: all 0.1s ease-out;
     }
 }
 .murmur .navbar .logo {

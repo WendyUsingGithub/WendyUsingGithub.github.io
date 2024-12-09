@@ -68,17 +68,21 @@ let navbar = document.getElementById("navbar")
 
 window.onscroll = function()
 {
-  if(window.innerWidth > 992)
+  if(1)
   {
-    let currentScrollPos = window.scrollY;
-    if (prevScrollpos >= currentScrollPos)
-    {
-      navbar.style.top = "0";
-    }
-    else
-    {
-      navbar.style.top = "-6rem";
-    }
-    prevScrollpos = currentScrollPos;
+
+      let currentScrollPos = window.scrollY;
+      if (prevScrollpos >= currentScrollPos)
+      {
+        navbar.style.top = "0";
+      }
+      else
+      {
+        navbar.style.top = "-6rem";
+      }
+      prevScrollpos = currentScrollPos;
+      
+ 
+
   }
 }
