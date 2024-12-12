@@ -41,6 +41,15 @@ body {
     overflow-y: scroll;
 }
 
+<<<<<<< HEAD
+=======
+body {
+    /* 禁用默认的下拉刷新和边界效果
+       但是依然可以进行滑动导航 */
+    overscroll-behavior-y: none;
+  }
+  
+>>>>>>> parent of 53d1ff4 (Update style.css)
 button {
     color: none;
     background-color: none;

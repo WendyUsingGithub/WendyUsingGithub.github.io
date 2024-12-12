@@ -82,9 +82,3 @@ window.onscroll = function()
     prevScrollpos = currentScrollPos;
   }
 }
-
-document.addEventListener('touchstart', function(e) {
-  if (window.scrollY === 0) {  // 當頁面已經在最上方
-      e.preventDefault();  // 禁止默認的行為（即過度下拉）
-  }
-}
