@@ -1,136 +1,172 @@
 *,
 *::before,
 *::after { 
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-.feed .posts{
-    padding-bottom: 12rem;
+/* post */
+
+.post .title {
+    padding-bottom: 2rem;
 }
-.feed .post {
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
-    border-bottom: solid 0.1rem var(--murmur-black);
-}
-.feed .author {
-    padding-bottom: 1.5rem;
-}
-.feed .name {
-    cursor: pointer;
-    font-size: 1.05rem;
+.post .title-name {
+    padding-bottom: 0.35rem;
+    font-size: 1.2rem;
     font-weight: 600;
+    border-bottom: solid 0.15rem var(--murmur-dark-black);
     letter-spacing: 0.1rem;
-    text-align: left;
+    transition: all 0.1s;
 }
 
-.feed .animation {
-    position: relative;
-    padding-bottom: 0.5rem;
+.post .paragraphs{
+    padding-bottom: 2.5rem;
 }
-.feed .animation:after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--murmur-light-light-gray);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    opacity: 0;
-    transition: transform 0.5s, opacity 0s 0.5s;
-}
-.feed .name:hover .animation:after {
-    transform: scaleX(1);
-    opacity: 1;
-    transition: opacity 0.1s;
-}
-
-.feed .content:hover {
-    cursor: pointer;
-}
-.feed p {
-    margin-bottom: 1.2rem;
+.post p{
     font-size: 1.05rem;
     line-height: 1.6;
     letter-spacing: 0.08rem;
     text-align: justify;
+    margin-bottom: 1.4rem;
 }
 
-.feed .interact .item {
+/* post tag */
+
+.post .post-tags {
+    text-align: left;
+    margin-top: 2.5rem;
+}
+.post .post-tag::before {
+    font-family: "Open Sans";
+    position: relative;
+    right: 0.2rem;
+    font-size: 1.05rem;
+    content: "#";
+}  
+.post .post-tag {
+    display: inline-flex;
+    padding: 0rem 0.2rem 0.2rem 0.2rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.06rem;
+    cursor: pointer;
+    border-bottom: solid 0.15rem var(--murmur-dark-black);
+    margin-right: 0.6rem;
+    transition: all 0.1s;
+}
+.post .post-tag:hover,
+.post .post-tag:focus {
+    border-bottom: solid 0.15rem var(--murmur-light-light-gray);
+}
+
+.post .comments {
+    padding-bottom: 9rem;
     cursor: pointer;
 }
-.feed .interact .number {
-    position: relative;
-    bottom: 0.4rem;
-    font-size: 0.95rem;
-    color: var(--murmur-light-light-gray);
-    padding: 1rem 1rem 1rem 0;
+
+.post .comment .title {
+    padding-bottom: 1.4rem;
+}
+
+.post .comment .title-name {
+    padding-bottom: 0.35rem;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-bottom: solid 0.15rem var(--murmur-dark-black);
     letter-spacing: 0.1rem;
+    transition: all 0.1s ease-out;
 }
-.feed .interact .material-symbols-outlined {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 300,
-    'GRAD' 24;
-    font-size: 1.3rem;
+.post .comment .title-name:hover {
     color: var(--murmur-light-light-gray);
-    padding: 1rem 0.1rem 1rem 0;
+    border-bottom: solid 0.15rem var(--murmur-light-light-gray);
 }
-.feed .interact .item:hover .material-symbols-outlined,
-.feed .interact .item:focus .material-symbols-outlined
-{
+
+
+.post .leave-comment {
+    position: relative;
+    color: var(--murmur-dark-gray);
+}
+.post .leave-comment .content {
+    width: 100%;
+    line-height: 1.6;
+    min-height: 3.6rem;
+    height: auto;
+    padding: 2rem 0 2rem 0;
+    font-size: 1.05rem;
+    letter-spacing: 0.08rem;
+    font-family: "Noto Sans TC";
+    color: var(--murmur-light-light-gray);
+    background-color: var(--murmur-dark-black);
+    resize: none;
+    overflow-y: hidden;
+    border: none;
+}
+.post .leave-comment .content:active,
+.post .leave-comment .content:focus {    
+    outline: none;
+    border: none;
+}
+.post .leave-comment .content:focus::placeholder {
+    color: transparent;
+}
+
+.post .leave-comment .material-symbols-outlined {
+    display: none;
+    position: absolute;
+    right: -6rem;
+    bottom: 0;;
+    cursor: pointer;
+    padding: 2rem;
+}
+.post .leave-comment .empty {
+    display: block;
+    color: var(--murmur-dark-gray);
+}
+
+.post .leave-comment .active {
+    display: block;
+    color: var(--murmur-light-light-gray);
+}
+
+.post .leave-comment .active:hover {
     font-variation-settings:
     'FILL' 1;
 }
 
-.feed .leave-comment{
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
-    border-bottom: solid 0.1rem var(--murmur-black);
+.post .comment {
+    color: var(--murmur-light-light-gray);
+    margin: 2rem 0 2rem 0;
 }
-
-.feed .comments{
-    padding-bottom: 12rem;
-}
-.feed .comment {
-    padding-left: 2rem;
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
-    border-bottom: solid 0.1rem var(--murmur-black);
-}
-.feed .comment .author {
-    padding-bottom: 1.5rem;
-}
-.feed .comment .name {
-    cursor: pointer;
+.post .comment p{
     font-size: 1.05rem;
-    font-weight: 600;
-    letter-spacing: 0.1rem;
-    text-align: left;
+    line-height: 1.6;
+    letter-spacing: 0.08rem;
+    text-align: justify;
+    margin-bottom: 1.4rem;
+    transition: all 0.2s ease-out;
 }
 
-.feed .animation {
-    position: relative;
-    padding-bottom: 0.5rem;
+.post .comment .material-symbols-outlined {
+    font-size: 1.8rem;
+    font-weight: 300;
+
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 200,
+    'GRAD' 0,
+    'opsz' 24
 }
-.feed .animation:after {
-    content: "";
-    position: absolute;
+
+.post .comment-content {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    letter-spacing: 0.08rem;
+    text-align: justify;
+    margin-bottom: 1.4rem;
+}
+.post .divider {
+    height: 1px;
     width: 100%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--murmur-light-light-gray);
-    transform: scaleX(0);
-    transform-origin: bottom right;
-    opacity: 0;
-    transition: transform 0.5s, opacity 0s 0.5s;
+    margin: 0 auto 0 auto;
+    background-color: var(--murmur-black);
 }
-.feed .name:hover .animation:after {
-    transform: scaleX(1);
-    opacity: 1;
-    transition: opacity 0.1s;
-}
-
-/* .feed .author from Uiverse.io by ArturCodeCraft */ 

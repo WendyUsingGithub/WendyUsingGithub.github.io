@@ -64,21 +64,63 @@ if(subscribe_button)
 /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
 
 let prevScrollpos = window.scrollY;
-let navbar = document.getElementById("navbar")
-
 window.onscroll = function()
 {
-  if(window.innerWidth > 992)
-  {
-    let currentScrollPos = window.scrollY;
-    if (prevScrollpos >= currentScrollPos)
-    {
-      navbar.style.top = "0";
-    }
-    else
-    {
-      navbar.style.top = "-6rem";
-    }
-    prevScrollpos = currentScrollPos;
+  let currentScrollPos = window.scrollY;
+  if (prevScrollpos >= currentScrollPos) {
+    document.getElementById("navbar").style.top = "0";
+  }
+  else {
+    document.getElementById("navbar").style.top = "-5.4rem";
+  }
+  prevScrollpos = currentScrollPos;
+}
+
+/* leave comment auto size adjust */
+
+const leave_comment = document.getElementById("leave-comment");
+if(leave_comment)
+leave_comment.addEventListener("input", function () {
+  console.log(this.style.height);
+  this.style.height = "auto";
+  this.style.height = this.scrollHeight + "px";
+});
+
+
+/* leave comment icon style */
+
+const submit_icon = document.getElementById("submit-icon");
+
+function updateOnFocus() {
+  if (leave_comment.value.trim() === "") {
+    submit_icon.classList.add("empty");
+  } else {
+    submit_icon.classList.add("active");
   }
 }
+
+function updateOnInput() {
+  if (leave_comment.value.trim() === "") {
+    submit_icon.classList.remove("active");
+    submit_icon.classList.add("empty");
+  } else {
+    submit_icon.classList.add("active");
+  }
+}
+
+function updateOnBlur() {
+    submit_icon.classList.remove("active");
+    submit_icon.classList.remove("empty");
+}
+
+leave_comment.addEventListener("focus", function () {
+  updateOnFocus();
+});
+
+leave_comment.addEventListener("input", function () {
+  updateOnInput();
+});
+
+leave_comment.addEventListener("blur", function () {
+  updateOnBlur();
+});
